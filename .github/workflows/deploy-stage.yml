@@ -1,0 +1,42 @@
+name: Deploy to Stage
+
+on:
+  push:
+    branches:
+      - stage
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Build frontend
+      - name: Install dependencies and build frontend
+        run: |
+          npm install
+          npm run build
+          
+      # Frontend 
+      - name: Deploy frontend to Hostinger
+        uses: SamKirkland/ftp-deploy-action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_HOST_STAGE }}
+          username: ${{ secrets.FTP_USERNAME_STAGE }}
+          password: ${{ secrets.FTP_PASSWORD_STAGE }}
+          local-dir: dist/
+          server-dir: /public_html/
+
+      # Backend
+      - name: Deploy backend to Hostinger
+        uses: SamKirkland/ftp-deploy-action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_HOST_STAGE }}
+          username: ${{ secrets.FTP_USERNAME_STAGE }}
+          password: ${{ secrets.FTP_PASSWORD_STAGE }}
+          local-dir: backend/
+          server-dir: /public_html/backend/
+          exclude: |
+            **/vendor/**

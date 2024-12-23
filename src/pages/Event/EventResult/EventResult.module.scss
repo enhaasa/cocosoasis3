@@ -1,0 +1,79 @@
+@use '@styles/dimensions.scss' as dimensions;
+@use '@styles/breakpoints.scss' as breakpoints;
+@use '@styles/decorations.scss' as decorations;
+@use '@styles/colors.scss' as colors;
+
+.container {
+    position: relative;
+    padding: dimensions.padding('xl');
+
+    & .hero {
+        position: relative;
+        box-shadow: decorations.box-shadow('md');
+
+        & .content {
+            position: relative;
+            display: grid; 
+            place-items: center;
+            padding: dimensions.padding('md');
+            z-index: 2;
+
+            & .infoWrapper {
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: space-around;
+                align-items: center;
+                width: 100%;
+
+                & .countdown {
+                    
+                    & .title {
+                        text-align: center;
+                        color: colors.text('secondary');
+                    }
+
+                    & .date {
+                        text-align: center;
+
+                        & .timezone {
+                            color: colors.text('secondary');
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            & .localeInfoButton {
+                                margin: 0;
+                                padding: 0;
+                            }
+                        }
+                    }
+                }
+            }
+
+            @media (max-width: breakpoints.screen("desktop")) {
+                padding: dimensions.padding('md') 0;
+
+                & .infoWrapper {
+                    display: grid;
+                    justify-items: center;
+                    gap: dimensions.margin('lg');
+
+                    & .countdown {
+                        padding: 0;
+                    }
+                }
+            }
+        }
+
+        & .image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-size: cover;
+            filter: blur(4px) brightness(0.7);
+        }
+    }
+}

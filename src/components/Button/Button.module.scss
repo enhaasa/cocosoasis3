@@ -1,0 +1,41 @@
+@use '@styles/mixins.scss' as mixins;
+@use '@styles/colors.scss' as colors;
+@use '@styles/decorations.scss' as decorations;
+
+.container {
+    box-shadow: decorations.box-shadow('sm');
+
+    &.sm {
+        @include mixins.button('sm');
+    }
+    
+    &.md {
+        @include mixins.button('md');
+    }
+
+    &.lg {
+        @include mixins.button('lg');
+    }
+    
+    &.xl {
+        @include mixins.button('xl');
+    }
+
+
+    &.primary {
+        background-color: colors.fg('primary');
+        color: colors.text('tertiary');
+    }
+
+    &.secondary {
+        background-color: colors.fg('secondary');
+    }
+
+    &.accent {
+        background-color: colors.fg('accent');
+    }
+
+    &.neutral {
+        border: 1px solid colors.neutral('white');
+    }
+}

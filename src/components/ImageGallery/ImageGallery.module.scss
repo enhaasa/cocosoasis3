@@ -1,0 +1,98 @@
+@use '@styles/dimensions.scss' as dimensions;
+@use '@styles/decorations.scss' as decoration;
+@use '@styles/colors.scss' as colors;
+@use '@styles/breakpoints.scss' as breakpoints;
+
+.container {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: dimensions.margin('md');
+
+    & .carousel {
+        display: flex;
+        justify-content: space-between;
+        overflow: hidden;
+
+        & .slideBoardContainer {
+            display: flex;
+            width: 100%;
+            overflow: hidden;
+            
+            & .slideBoard {
+                display: flex;
+                overflow: hidden;
+
+                & .imageContainer {
+                    display: flex;
+                    flex-shrink: 0;
+                    justify-content: center;
+                    align-items: center;
+                    overflow: hidden;
+             
+                    & .image {
+
+                        object-fit: contain;
+                    }
+                }
+            }
+        }
+        
+        & .navButton {
+            display: flex;
+            
+            &:hover {
+                background: colors.bg('secondary');
+            }
+
+            &.disabled {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+    }
+
+    & .navigation {
+        display: flex;
+        justify-content: center;
+        gap: dimensions.margin('md');
+        padding: dimensions.margin('sm');
+        flex-wrap: wrap;
+
+        & .item {
+            background: colors.bg('secondary');
+            width: 80px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            
+            &.first {
+                border-radius:
+                    decoration.border-radius('md')
+                    0
+                    0
+                    decoration.border-radius('md');
+            }
+
+            &.last {
+                border-radius:
+                    0
+                    decoration.border-radius('md')
+                    decoration.border-radius('md')
+                    0;
+            }
+
+            &:hover {
+                cursor: pointer;
+                outline: decoration.border-width('xs') solid colors.fg('secondary');
+            }
+
+            &.active {
+                outline: decoration.border-width('xs') solid colors.fg('primary');
+            }
+
+            & .previewImage {
+                height: 40px;
+            }
+        }
+    }
+}

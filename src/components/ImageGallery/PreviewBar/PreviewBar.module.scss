@@ -1,0 +1,63 @@
+@use '@styles/dimensions.scss' as dimensions;
+@use '@styles/decorations.scss' as decoration;
+@use '@styles/colors.scss' as colors;
+
+.container {    
+    display: grid;
+    gap: dimensions.margin('md');
+
+    & .dotNav {
+        display: flex;
+        justify-content: center;
+        gap: dimensions.margin('sm');
+        flex-wrap: wrap;
+
+        & .dot {
+            all: unset;
+            cursor: pointer;
+            width: 8px;
+            height: 8px;
+            background: colors.bg('primary');
+            border-radius: 100%;
+
+            &.active {
+                background: colors.fg('primary');
+            }
+        }
+    }
+
+    & .imageNav {
+        display: flex;
+        justify-content: center;
+        gap: dimensions.margin('md');
+        flex-wrap: wrap;
+
+        & .navButton {
+            &.disabled {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+
+        & .item {
+            background: colors.bg('secondary');
+            width: 80px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+    
+            &:hover {
+                outline: decoration.border-width('xs') solid colors.fg('secondary');
+            }
+    
+            &.active {
+                outline: decoration.border-width('xs') solid colors.fg('primary');
+            }
+    
+            & .previewImage {
+                height: 40px;
+            }
+        }
+    }
+
+}

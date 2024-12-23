@@ -1,0 +1,18 @@
+@use '@styles/mixins.scss' as mixins;
+@use '@styles/colors.scss' as colors;
+
+.container {
+    filter: brightness(80%);
+
+    &.sm {
+        @include mixins.sqsize(14px);
+    }
+
+    &.md {
+        @include mixins.sqsize(22px);
+    }
+
+    &.lg {
+        @include mixins.sqsize(32px);
+    }
+}

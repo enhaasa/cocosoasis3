@@ -1,0 +1,40 @@
+$foreground-colors: (
+    "primary": #99C5B5,
+    "secondary": #899E8B,
+    "accent": #7D4E57,
+);
+
+@function fg($name) {
+    @return map-get($foreground-colors, $name);
+};
+
+$background-colors: (
+    "primary": #181818,
+    "secondary": #0e0e0e
+);
+
+@function bg($name) {
+    @return map-get($background-colors, $name);
+};
+
+$text-colors: (
+    "primary": #d6d6d6,
+    "secondary": #a8a8a8,
+    "tertiary": #1d1d1d,
+    "accent": #bb6877
+);
+
+@function text($name) {
+    @return map-get($text-colors, $name);
+};
+
+$neutral-colors: (
+    "white": rgb(228, 228, 220),
+    "black": rgb(15, 15, 15),
+    "green": rgb(122, 199, 107),
+    "red": rgb(211, 106, 106)
+);
+
+@function neutral($name) {
+    @return map-get($neutral-colors, $name);
+};

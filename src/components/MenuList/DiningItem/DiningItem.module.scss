@@ -1,0 +1,19 @@
+@use '@styles/colors.scss' as colors;
+
+.container {
+    width: 100%;
+
+    & .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & .price {
+            color: colors.fg('primary');
+        }
+    }
+
+    & .description {
+        color: colors.text('secondary');
+    }
+}

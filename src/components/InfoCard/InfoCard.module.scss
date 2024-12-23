@@ -1,0 +1,97 @@
+@use '@styles/colors.scss' as colors;
+@use '@styles/dimensions.scss' as dimensions;
+@use '@styles/decorations.scss' as decorations;
+@use '@styles/breakpoints.scss' as breakpoints;
+
+$cardHeightStandard: 400px;
+$cardHeightBig: 480px;
+$cardHeightBigger: 600px;
+
+.container {
+    perspective: $cardHeightStandard;
+    cursor: pointer;
+
+    &:hover .card {
+        filter: brightness(.8);
+    }
+
+    & .card {
+        position: relative;
+        padding: dimensions.padding('md');
+        min-height: $cardHeightStandard;
+        border: 1px solid rgb(26, 26, 26);
+        overflow: hidden;
+        box-shadow: decorations.box-shadow('md');
+        transform-style: preserve-3d;
+        border-radius: decorations.border-radius('md');
+
+        & .content, & .background {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+    
+        & .background {
+            $offset: 10px;
+
+            left: - $offset;
+            top: - $offset;
+            width: calc(100% + $offset);
+            height: calc(100% + $offset);
+            background-size: cover;
+        }
+    
+        & .title {
+            position: relative;
+            text-align: center;
+            padding: dimensions.padding('sm');
+            word-wrap: break-word;
+    
+            & .titleBackground {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(8px);
+                box-shadow: decorations.box-shadow('md');
+            }
+    
+            & > *:not(.titleBackground) {
+                position: relative;
+            }
+        }
+    
+        & .separatorWrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+    
+            & .separator {
+                margin: dimensions.margin('md');
+                background: colors.text('secondary');
+                height: 1px;
+                width: 50%;
+                opacity: 50%;
+            }
+        }
+    }
+
+    @media (max-width: breakpoints.screen('tablet')) {
+        perspective: $cardHeightBigger;
+
+        & .card {
+            min-height: $cardHeightBigger;
+        }
+    }
+    @media (max-width: breakpoints.screen('phone')) {
+        perspective: $cardHeightBig;
+
+        & .card {
+            min-height: $cardHeightBig;
+        }
+    }
+}

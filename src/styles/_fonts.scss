@@ -1,0 +1,44 @@
+$fonts: (
+    'typed': "Roboto",
+    'handwritten': 'Spanish Signature',
+);
+
+@function family($name) {
+    @return map-get($fonts, $name);
+}
+
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto/Roboto-Light.ttf");
+}
+@font-face {
+   font-family: "Sparky Garden";
+   src: url("../fonts/SparkyGarden.otf");
+   font-weight: lighter;
+}
+@font-face {
+    font-family: "Spanish Signature";
+    src: 
+        url("../fonts/SpanishSignatureRegular.otf"),
+        url("../fonts/SpanishSignatureRegular.ttf");
+    font-weight: normal;
+}
+@font-face {
+    font-family: "South Castle";
+    src: url("../fonts/SouthCastle.ttf");
+    font-weight: lighter;
+}
+
+$sizes: (
+    "xs": 14px,
+    "sm": 18px,
+    "md": 22px,
+    "lg": 28px,
+    "xl": 42px,
+    "xxl": 72px
+);
+
+@function size($name) {
+    @return map-get($sizes, $name);
+}

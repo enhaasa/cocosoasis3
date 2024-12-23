@@ -1,0 +1,43 @@
+@use '@styles/colors.scss' as colors;
+@use '@styles/dimensions.scss' as dimensions;
+@use '@styles/breakpoints.scss' as breakpoints;
+@use '@styles/decorations.scss' as decorations;
+
+.container {
+    display: grid;
+    margin: 0 dimensions.margin('xxl');
+    padding: dimensions.padding('lg');
+    gap: dimensions.margin('xl');
+
+    & .nav {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        gap: dimensions.margin('md');
+
+        & .bullet {
+            align-self: center;
+        }
+
+        @media (max-width: breakpoints.screen('phone')) {
+            display: grid;
+            gap: dimensions.margin('xs');
+        }
+    }
+
+    & .results {
+        display: flex;
+        flex-direction: column;
+        gap: dimensions.margin('lg');
+
+        border-radius: decorations.border-radius('md');
+        margin-bottom: dimensions.margin('xl');
+        padding: dimensions.padding('xl');
+        background: colors.bg('secondary');
+        box-shadow: decorations.box-shadow('md');
+    }
+    
+    @media (max-width: breakpoints.screen('tablet')) {
+        margin: 0;
+    }
+}

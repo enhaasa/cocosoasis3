@@ -1,0 +1,7 @@
+@use '@styles/dimensions.scss' as dimensions;
+
+.container {
+    & .teaser {
+        margin-top: dimensions.margin('xl');
+    }
+}

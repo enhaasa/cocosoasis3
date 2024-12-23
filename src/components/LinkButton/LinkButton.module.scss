@@ -1,0 +1,28 @@
+@use '@styles/mixins.scss' as mixins;
+@use '@styles/colors.scss' as colors;
+@use '@styles/dimensions.scss' as dimensions;
+
+.container {
+    all: unset;
+    display: inline-block;
+    @include mixins.button('primary', 'md');
+
+    &.active {
+        color: colors.fg('primary');
+    }
+
+    & .wrapper {
+        display: flex;
+        gap: dimensions.margin('sm');
+
+        & .icon {
+            height: dimensions.icon-size('md');
+            width: dimensions.icon-size('md');
+            filter: brightness(0.8);
+
+            &:hover {
+                filter: brightness(0.5);
+            }
+        }
+    }
+}

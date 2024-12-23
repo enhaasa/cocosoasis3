@@ -1,0 +1,31 @@
+@use '@styles/colors.scss' as colors;
+@use '@styles/dimensions.scss' as dimensions;
+
+.container {
+    min-width: 200px;
+
+    & .items {
+        display: grid;
+        gap: dimensions.margin('xs');
+
+        & .row {
+            display: flex;
+            justify-content: space-between;
+            gap: dimensions.margin('sm');
+    
+            & .column {
+                display: flex;
+                align-items: center;
+                gap: dimensions.margin('sm');
+
+                & .aetheryte {
+                    font-style: italic;
+                }
+            }
+        }
+    }
+
+    & .server {
+        color: colors.text('secondary');
+    }
+}

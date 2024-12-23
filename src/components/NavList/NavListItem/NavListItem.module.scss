@@ -1,0 +1,27 @@
+@use '@styles/dimensions.scss' as dimensions;
+@use '@styles/colors.scss' as colors;
+@use '@styles/decorations.scss' as decorations;
+
+.container {
+    all: unset;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    padding: dimensions.padding('sm') dimensions.padding('md');
+    border-radius: decorations.border-radius('md');
+
+    &:hover {
+        background-color: colors.bg('secondary');
+        cursor: pointer;
+    }
+
+    & .icon {
+        height: dimensions.icon-size('md');
+        filter: brightness(0.8);
+
+        & img {
+            height: 100%;
+        }
+    }
+}
