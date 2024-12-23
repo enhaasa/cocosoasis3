@@ -13,6 +13,8 @@ if (!$type) {
 $KIWI_BASE_URL = $_ENV['KIWI_BASE_URL'];
 $KIWI_REALM_ID = $_ENV['KIWI_REALM_ID'];
 
+echo "REALM ID" . $KIWI_REALM_ID;
+
 switch ($type) {
     case 'menu':
 
