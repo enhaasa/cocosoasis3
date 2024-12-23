@@ -27,7 +27,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME_STAGE }}
           password: ${{ secrets.FTP_PASSWORD_STAGE }}
           local-dir: dist/
-          server-dir: /public_html/
+          server-dir: /
 
       # Backend
       - name: Deploy backend to Hostinger
@@ -37,6 +37,6 @@ jobs:
           username: ${{ secrets.FTP_USERNAME_STAGE }}
           password: ${{ secrets.FTP_PASSWORD_STAGE }}
           local-dir: backend/
-          server-dir: /public_html/backend/
+          server-dir: /backend/
           exclude: |
             **/vendor/**
