@@ -12,6 +12,7 @@ import plot from '@assets/icons/plot.svg';
 import question from '@assets/icons/question.svg';
 import trash from '@assets/icons/trash.svg';
 import house from '@assets/icons/house.svg';
+import location from '@assets/icons/location.svg';
 
 export default {
     fullscreen,
@@ -27,5 +28,6 @@ export default {
     plot,
     question,
     trash,
-    house
+    house,
+    location
 }

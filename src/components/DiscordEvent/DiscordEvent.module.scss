@@ -1,3 +1,5 @@
+@use '@styles/colors.scss' as colors;
+
 .container {
     height: 100%;
     display: grid;
@@ -6,5 +8,10 @@
     & .nextOpening {
         display: grid;
         place-items: center;
+
+        & .title, & .location {
+            color: colors.text('secondary');
+        }
+
     }
 }
