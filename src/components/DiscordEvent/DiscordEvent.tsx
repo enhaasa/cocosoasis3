@@ -6,10 +6,9 @@ import { type DiscordEvent as DiscordEventType } from '@utils/discord';
 // Components
 import Countdown from '@components/Countdown/Countdown';
 import Text from '@components/Text/Text';
-import Icon from '@components/Icon/Icon';
-
-// Icons
-import icon from '@utils/icon';
+import Location from '@components/Location/Location';
+import location from '@config/location';
+import OasisLocation from '@components/Location/OasisLocation/OasisLocation';
 
 interface IDiscordEvent {
     event?: DiscordEventType;
@@ -26,11 +25,17 @@ export default function DiscordEvent({ event }: IDiscordEvent) {
 
                 <Countdown date={event?.raw_start_time} />
 
-                <div className={styles.location}>
-                    <Text> 
-                        <Icon icon={icon.location} size='md' />  {event?.location} 
-                    </Text>
+                <div className={styles.date}>
+                    <Text>{event?.local_start_time.time}</Text>
+
+                    <div className={styles.timezone}>
+                        <Text size='sm'>({event?.local_start_time.timezone})</Text>
+                    </div>
                 </div>
+            </div>
+
+            <div className={styles.location}>
+                
             </div>
         </div>    
     );

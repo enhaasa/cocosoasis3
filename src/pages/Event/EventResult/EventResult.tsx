@@ -11,14 +11,11 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 // Animations
 import animate from '@utils/animate';
 
-// Config
-import location from '@config/location';
-
 // Components
 import Text from '@components/Text/Text';
 import Title from '@components/Title/Title';
 import Countdown from '@components/Countdown/Countdown';
-import Location from '@components/Location/Location';
+import OasisLocation from '@components/Location/OasisLocation/OasisLocation';
 import EventFaq from './EventFaq/EventFaq';
 import Separator from '@components/Separator/Separator';
 
@@ -112,13 +109,7 @@ export default function EventResult({ content, assets }: IEventResult) {
                                 </div>
 
                                 <div className={styles.location}>
-                                    <Location
-                                        server={location.server}
-                                        area={location.area}
-                                        ward={location.ward}
-                                        plot={location.plot}
-                                        closestAetheryte={location.closestAetheryte}
-                                    />
+                                    <OasisLocation />
                                 </div>
                             </div>
                             <Separator />

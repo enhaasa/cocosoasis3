@@ -1,9 +1,11 @@
 @use '@styles/colors.scss' as colors;
+@use '@styles/dimensions.scss' as dimensions;
 
 .container {
     height: 100%;
     display: grid;
     place-items: center;
+    gap: dimensions.margin('lg');
 
     & .nextOpening {
         display: grid;
@@ -11,6 +13,22 @@
 
         & .title, & .location {
             color: colors.text('secondary');
+        }
+
+        & .date {
+            text-align: center;
+
+            & .timezone {
+                color: colors.text('secondary');
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                & .localeInfoButton {
+                    margin: 0;
+                    padding: 0;
+                }
+            }
         }
 
     }

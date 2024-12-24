@@ -1,5 +1,18 @@
+@use '@styles/dimensions.scss' as dimensions;
+
 .container {
     height: 100%;
     display: grid;
     place-items: center;
+
+    & .wrapper {
+        display: grid;
+        place-items: center;
+        gap: dimensions.margin('sm');
+
+        & .nav {
+            display: flex;
+            gap: dimensions.margin('md');
+        }
+    }
 }
