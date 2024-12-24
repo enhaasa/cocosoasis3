@@ -8,11 +8,10 @@ import { PageContext } from '@contexts/Page';
 // Components
 import Page from '@components/Page/Page';
 import Text from '@components/Text/Text';
-import PriceTable from './PriceTable/PriceTable';
+//import PriceTable from './PriceTable/PriceTable';
 import Button from '@components/Button/Button';
 import Title from '@components/Title/Title';
 import LinkButton from '@components/LinkButton/LinkButton';
-import Separator from '@components/Separator/Separator';
 
 export default function Reservations() {
 
