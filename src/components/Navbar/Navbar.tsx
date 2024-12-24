@@ -58,10 +58,6 @@ export default function Navbar() {
                     />
                 )) }
             </span>
-
-            <span className={styles.eventNav}>
-                <EventNavigation />
-            </span>
         </div>    
     );
 }

@@ -25,7 +25,7 @@ const CMSContext = createContext<ICMSContext>({} as ICMSContext);
 const client = new ContentfulClient();
 
 const pagesToFetch: any = {
-    landingPage: '2JVjG5yd2SmmYD7hfz1nQX',
+    landingPage: '1u8zPQ05ApcdTfu7CQNe6E',
     venuePage: '4V4xAQS5MnjbhkOkwk6HBv',
     servicesPage: 'gASSFvwM4G8UcYSFEMXZg',
     bookingsPage: '5K4VWVjFZ7xB8qDLrHIDki',

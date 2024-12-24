@@ -1,10 +1,10 @@
 import { Area } from "@components/Location/Location";
 
 const location = {
-    server: 'Odin',
+    server: 'Alpha',
     area: 'The Goblet' as Area,
-    ward: 27,
-    plot: 19,
+    ward: 2,
+    plot: 8,
     closestAetheryte: 'The Brimming Heart'
 }
 

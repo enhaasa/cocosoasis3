@@ -1,8 +1,7 @@
 import { ServiceClient } from "./ServiceClient";
 
 export enum Entry {
-    LandingPage = '2JVjG5yd2SmmYD7hfz1nQX',
-    VenuePage = '4V4xAQS5MnjbhkOkwk6HBv'
+    LandingPage = '1u8zPQ05ApcdTfu7CQNe6E',
 }
 
 export class ContentfulClient {

@@ -40,10 +40,10 @@
 
         /* Fonts */
         &.font-standard {
-            font-family: fonts.family('standard');
+            font-family: fonts.family('typed');
         }
         &.font-handwritten {
-            font-family: fonts.family('handwritten');
+            font-family: fonts.family('signature');
             margin: dimensions.margin('md');
         }
     }

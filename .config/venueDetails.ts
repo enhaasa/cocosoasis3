@@ -5,7 +5,7 @@ const venueDetails = [
     },
     {
         title: 'Founding Date',
-        content: '04.11.2024'
+        content: '27.03.2022'
     }
 ]
 

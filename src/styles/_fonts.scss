@@ -1,33 +1,29 @@
 $fonts: (
     'typed': "Roboto",
-    'handwritten': 'Spanish Signature',
+    'signature': 'Spanish Signature',
+    'handwritten': 'Dancing Script'
 );
 
 @function family($name) {
     @return map-get($fonts, $name);
 }
 
-
 @font-face {
     font-family: "Roboto";
     src: url("../fonts/Roboto/Roboto-Light.ttf");
 }
+
 @font-face {
-   font-family: "Sparky Garden";
-   src: url("../fonts/SparkyGarden.otf");
-   font-weight: lighter;
+    font-family: "Dancing Script";
+    src: url("../fonts/Dancing_Script/DancingScript-Regular.ttf");
 }
+
 @font-face {
     font-family: "Spanish Signature";
     src: 
         url("../fonts/SpanishSignatureRegular.otf"),
         url("../fonts/SpanishSignatureRegular.ttf");
     font-weight: normal;
-}
-@font-face {
-    font-family: "South Castle";
-    src: url("../fonts/SouthCastle.ttf");
-    font-weight: lighter;
 }
 
 $sizes: (

@@ -1,4 +1,6 @@
 @use '@styles/colors.scss' as colors;
+@use '@styles/fonts.scss' as fonts;
+
 
 .container {
     position: sticky;
@@ -7,4 +9,9 @@
     background: colors.bg('secondary');
     height: 42px;
     z-index: 2;
+
+    & * {
+        font-family: fonts.family('handwritten');
+        font-size: fonts.size('lg') !important;
+    }
 }

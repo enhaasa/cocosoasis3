@@ -6,6 +6,7 @@
     all: unset;
     display: inline-block;
     @include mixins.button('primary', 'md');
+    font-family: "Times New Roman";
 
     &.active {
         color: colors.fg('primary');

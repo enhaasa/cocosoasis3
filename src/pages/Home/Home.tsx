@@ -6,7 +6,6 @@ import { useContext } from 'react';
 import { CMSContext } from '@contexts/CMS';
 
 // Components
-import LagoonTeaser from '@components/lagoon/LagoonTeaser/LagoonTeaser';
 import Page from '@components/Page/Page';
 
 export default function Home() {
@@ -16,9 +15,14 @@ export default function Home() {
         <Page>
             <div 
                 className={styles.container} 
-                style={{ backgroundImage: `url("${home.content?.background}")` }} 
             >
-                <LagoonTeaser />
+
+                <div>Test</div>
+
+                <div 
+                    className={styles.background} 
+                    style={{ backgroundImage: `url("${home.content?.background}")` }} 
+                />
             </div>
         </Page>    
     );

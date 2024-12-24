@@ -1,11 +1,13 @@
 @use '@styles/dimensions.scss' as dimensions;
 @use '@styles/colors.scss' as colors;
+@use '@styles/fonts.scss' as fonts;
 
 .container {
     background: colors.bg('secondary');
     width: 100%;
     z-index: 2;
-    height: 42px;
+    padding-top: dimensions.padding('sm');
+    padding-bottom: dimensions.padding('sm');
 
     & .nav {
         display: flex;
@@ -14,6 +16,10 @@
         gap: dimensions.margin('md');
         color: colors.text('secondary');
         height: 100%;
+
+        & * {
+            font-size: fonts.size('sm');
+        }
 
         & span {
             display: flex;
