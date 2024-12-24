@@ -9,7 +9,9 @@ type DiningCategories = {
 
 export type UseMenu = null | DiningCategories;
 
-export default function useMenu(client: KiwiClient) {
+const client = new KiwiClient();
+
+export default function useMenu() {
     const [ content, setContent ] = useState<null | DiningCategories>(null);
 
     useEffect(() => {
@@ -27,7 +29,7 @@ export default function useMenu(client: KiwiClient) {
 
             setContent(parsedResult);
         });
-    }, [client]);
+    }, []);
 
     return content
 }

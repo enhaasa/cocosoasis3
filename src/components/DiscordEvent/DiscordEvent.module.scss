@@ -1,0 +1,10 @@
+.container {
+    height: 100%;
+    display: grid;
+    place-items: center;
+
+    & .nextOpening {
+        display: grid;
+        place-items: center;
+    }
+}
