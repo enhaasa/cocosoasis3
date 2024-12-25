@@ -10,14 +10,11 @@ if (!$type) {
     return;
 }
 
-$DISCORD_INFO_URL = $_ENV['DISCORD_INFO_URL'];
-
 switch ($type) {
     case 'events':
 
-        $query = $DISCORD_INFO_URL . '?data=Events';
-
-        $result = file_get_contents($query);
+        $cache_directory = __DIR__ . '/cache/discord/events.json';
+        $result = file_get_contents($cache_directory);
 
         echo $result;
 
