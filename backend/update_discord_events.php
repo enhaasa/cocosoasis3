@@ -20,7 +20,7 @@ $query = $DISCORD_INFO_URL . '?data=Events';
 $result = file_get_contents($query);
 $responsecode = extractHttpCode($result);
 
-if ($responsecode === '200') {
+if ($responsecode == '200') {
     file_put_contents(__DIR__ . '/cache/discord/events.json', $result);
 }
 
