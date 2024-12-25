@@ -10,14 +10,10 @@ import Page from '@components/Page/Page';
 import OasisTeaser from '@components/OasisTeaser/OasisTeaser';
 import StartScreen from '@components/StartScreen/StartScreen';
 
-// Animations
-import gsap from 'gsap';
-
-const START_SCREEN_DURATION = 2000;
 
 export default function Home() {
     const { home } = useContext(CMSContext);
-    const [ showStartScreen, setShowStartScreen ] = useState(true);
+    const [ showStartScreen ] = useState(true);
 
     useLayoutEffect(() => {
         /*
