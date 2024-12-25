@@ -6,9 +6,6 @@ import { type DiscordEvent as DiscordEventType } from '@utils/discord';
 // Components
 import Countdown from '@components/Countdown/Countdown';
 import Text from '@components/Text/Text';
-import Location from '@components/Location/Location';
-import location from '@config/location';
-import OasisLocation from '@components/Location/OasisLocation/OasisLocation';
 
 interface IDiscordEvent {
     event?: DiscordEventType;
