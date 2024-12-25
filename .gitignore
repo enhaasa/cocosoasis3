@@ -26,4 +26,4 @@ dist-ssr
 # Env variables
 env/.env
 backend/vendor
-backend/cache/*
+backend/cache/discord*
