@@ -1,9 +1,6 @@
 import styles from './Home.module.scss';
 
-import { useContext, useEffect, useState } from 'react';
-
-// Clients
-import { DiscordClient } from '@service_clients/DiscordClient';
+import { useContext, useState, useLayoutEffect } from 'react';
 
 // Contexts
 import { CMSContext } from '@contexts/CMS';
@@ -11,25 +8,43 @@ import { CMSContext } from '@contexts/CMS';
 // Components
 import Page from '@components/Page/Page';
 import OasisTeaser from '@components/OasisTeaser/OasisTeaser';
+import StartScreen from '@components/StartScreen/StartScreen';
 
-const discordClient = new DiscordClient();
+// Animations
+import gsap from 'gsap';
+
+const START_SCREEN_DURATION = 2000;
 
 export default function Home() {
     const { home } = useContext(CMSContext);
+    const [ showStartScreen, setShowStartScreen ] = useState(true);
+
+    useLayoutEffect(() => {
+        /*
+        setTimeout(() => {
+
+
+            setShowStartScreen(false);
+        }, START_SCREEN_DURATION);
+        */
+    }, []);
 
     return (
-        <Page>
-            <div 
-                className={styles.container} 
-            >
-
-                <OasisTeaser />
-
+        <>
+            {showStartScreen && <StartScreen closeIn={2500} />}
+            <Page>
                 <div 
-                    className={styles.background} 
-                    style={{ backgroundImage: `url("${home.content?.background}")` }} 
-                />
-            </div>
-        </Page>    
+                    className={styles.container} 
+                    >
+
+                    <OasisTeaser />
+
+                    <div 
+                        className={styles.background} 
+                        style={{ backgroundImage: `url("${home.content?.background}")` }} 
+                        />
+                </div>
+            </Page>    
+        </>
     );
 }

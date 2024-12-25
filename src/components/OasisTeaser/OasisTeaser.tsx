@@ -37,7 +37,6 @@ export default function OasisTeaser() {
 
                 </nav>
             </div>
-
         </div>    
     );
 }

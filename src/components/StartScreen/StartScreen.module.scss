@@ -1,0 +1,22 @@
+ @use '@styles/dimensions.scss' as dimensions;
+
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    z-index: 1;
+
+    display: grid;
+    place-items: center;
+
+
+    & .wrapper {
+        margin-top: -15vh;
+
+        display: grid;
+        place-items: center;
+    }
+}

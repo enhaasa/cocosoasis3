@@ -32,7 +32,6 @@ export default function EventNavigation() {
     }
 
     function animateAndToggleEventList(targetState: boolean) {
-        console.log(eventListRef)
         if (!eventListRef.current) return;
 
         if (targetState) {
