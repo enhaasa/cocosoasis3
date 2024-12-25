@@ -21,6 +21,7 @@ $result = file_get_contents($query);
 $responsecode = extractHttpCode($result);
 
 file_put_contents(__DIR__ . '/responsecode.txt', $responsecode);
+file_put_contents(__DIR__ . '/result.txt', $result);
 
 if ($responsecode == '200') {
     file_put_contents(__DIR__ . '/cache/discord/events.json', $result);
