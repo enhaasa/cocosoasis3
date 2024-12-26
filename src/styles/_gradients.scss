@@ -7,3 +7,15 @@
     background: linear-gradient(90deg, rgb(241, 75, 186) 0%, rgb(226, 243, 77) 100%);
     @include background-clip();
 }
+
+@mixin gold {
+    background: linear-gradient(to bottom right, #D1B464, #8A6E2F);
+}
+
+@mixin silver {
+    background: linear-gradient(to bottom right, lightgrey, grey);
+}
+
+@mixin steel {
+    background: linear-gradient(to bottom right,rgb(49, 49, 49), black);
+}

@@ -1,7 +1,25 @@
 @use '@styles/colors.scss' as colors;
+@use '@styles/breakpoints.scss' as breakpoints;
+@use '@styles/dimensions.scss' as dimensions;
 
 .container {
-    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+
+    & .image {
+        margin-right: dimensions.margin('lg');
+
+        & img {
+            width: 128px;
+
+            @media (max-width: breakpoints.screen('tablet')) {
+                width: 102px;
+            }
+            @media (max-width: breakpoints.screen('phone')) {
+                display: none;
+            }
+        }
+    }
 
     & .title {
         display: flex;
@@ -9,11 +27,23 @@
         align-items: center;
 
         & .price {
-            color: colors.fg('primary');
+            color: colors.text('accent');
         }
     }
 
     & .description {
         color: colors.text('secondary');
+    }
+
+    & .ingredients {
+        color: colors.text('quartenary');
+    }
+
+    @media (max-width: breakpoints.screen('widescreen')) {
+        padding: dimensions.padding('lg');
+    }
+
+    @media (max-width: breakpoints.screen('desktop')) {
+        padding: 0;
     }
 }

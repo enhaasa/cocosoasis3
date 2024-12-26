@@ -40,3 +40,39 @@
     width: $size;
     height: $size;
 }
+
+@mixin divider {
+    margin: 8px 0;
+    position: relative;
+                
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        box-shadow: inset 0 2px 8px black;
+    }
+}
+
+@mixin divider-dark {
+    @include divider;
+
+    border-bottom: 1px solid rgba(128, 128, 128, 0.8);
+
+    &::after {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    }
+} 
+
+@mixin divider-light {
+    @include divider;
+
+    border-bottom: 1px solid rgba(224, 224, 224, 0.2);
+
+    &::after {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: inset 0 0 4px rgb(136, 119, 108);
+    }
+} 

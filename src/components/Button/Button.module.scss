@@ -1,6 +1,7 @@
 @use '@styles/mixins.scss' as mixins;
 @use '@styles/colors.scss' as colors;
 @use '@styles/decorations.scss' as decorations;
+@use '@styles/gradients.scss' as gradients;
 
 .container {
     box-shadow: decorations.box-shadow('sm');
@@ -23,7 +24,8 @@
 
 
     &.primary {
-        background-color: colors.fg('primary');
+        @include gradients.silver();
+        //background-color: colors.fg('primary');
         color: colors.text('tertiary');
     }
 
@@ -32,7 +34,8 @@
     }
 
     &.accent {
-        background-color: colors.fg('accent');
+        @include gradients.gold();
+        color: colors.text('tertiary');
     }
 
     &.neutral {

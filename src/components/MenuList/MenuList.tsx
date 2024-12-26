@@ -37,19 +37,19 @@ export default function MenuList() {
 
     return (
         <div className={styles.container}>
-            <nav className={styles.nav}>
-                {Object.keys(categories ?? {}).map((category, index) => (
-                    <>
+            <div className={styles.navWrapper}>
+                <nav className={styles.nav}>
+                    {Object.keys(categories ?? {}).map((category, index) => (
                         <Category 
+                            key={`MenuListCategory-${index}`}
                             title={category} 
                             count={categories?.[category].length} 
-                            key={`MenuListCategory-${index}`} 
                             isSelected={selectedCategory === category}
                             selectCategory={selectCategory}
                         />
-                    </>
-                ))}
-            </nav>
+                    ))}
+                </nav>
+            </div>
 
             <div className={styles.results} ref={resultsRef}>
                 {selectedCategory &&
@@ -58,8 +58,6 @@ export default function MenuList() {
                     />
                 }
             </div>
-            
-
         </div>    
     );
 }

@@ -23,10 +23,14 @@ export default function Category({
     }
 
     return (
-        <div className={`${styles.container} ${isSelected && styles.selected}`} onClick={handleClick}>
-            <div className={styles.title}>
-                <Text size='lg'>{title}</Text>
-            </div>
-        </div>    
+        <> 
+            {title !== 'Legacy' &&
+            <div className={`${styles.container} ${isSelected && styles.selected}`} onClick={handleClick}>
+                <div className={styles.title}>
+                    <Text size='lg'>{title}</Text>
+                </div>
+            </div>  
+            }
+        </>  
     );
 }

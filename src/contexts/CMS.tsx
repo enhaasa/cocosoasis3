@@ -26,10 +26,10 @@ const client = new ContentfulClient();
 
 const pagesToFetch: any = {
     landingPage: '1u8zPQ05ApcdTfu7CQNe6E',
-    venuePage: '4V4xAQS5MnjbhkOkwk6HBv',
-    servicesPage: 'gASSFvwM4G8UcYSFEMXZg',
-    bookingsPage: '5K4VWVjFZ7xB8qDLrHIDki',
-    menuPage: '4SG12btygmP3HYE0G5IRi0'
+    venuePage: '',
+    servicesPage: '',
+    bookingsPage: '',
+    menuPage: 'kDjqBMkYFs6k5ZW79RTjj'
 };
 
 function CMSContextProvider({ children }: any) {
@@ -76,7 +76,7 @@ function CMSContextProvider({ children }: any) {
     const venue = useVenue(pages.venuePage, assets, components);
     const services = useServices(pages.servicesPage, assets, components);
     const bookings = useBookings(pages.bookingsPage);
-    const menu = useMenu(pages.menuPage);
+    const menu = useMenu(pages.menuPage, assets);
 
     return (
         <CMSContext.Provider value={{
