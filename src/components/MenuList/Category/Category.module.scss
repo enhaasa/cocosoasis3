@@ -12,6 +12,7 @@
     justify-content: center;
     padding: dimensions.padding('md') dimensions.padding('xl');
     background: colors.bg('primary');
+    box-shadow: decorations.box-shadow('md');
 
     &:first-child {
         border-radius: 
