@@ -2,7 +2,6 @@ import styles from './Title.module.scss';
 
 // Components
 import Text from '@components/Text/Text';
-import Icon from '@components/Icon/Icon';
 
 // Utils
 import decoration from '@utils/decoration';
