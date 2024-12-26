@@ -7,16 +7,3 @@
         margin-top: dimensions.margin('xl');
     }
 }
-
-.background {
-    position: fixed !important;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-
-    background-size: cover;
-
-    //filter: blur(5px) brightness(0.8);
-}

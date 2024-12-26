@@ -5,33 +5,70 @@ import { useLayoutEffect, useRef, useContext } from 'react';
 import { UIContext } from '@contexts/UI';
 
 // Animations
+import gsap from 'gsap';
 import animate from '@utils/animate';
 
 interface IPage {
     children: React.ReactNode;
+    background?: string;
+    backgroundOptions?: {
+        blur?: 'default' | number,
+        brightness?: 'default' | number,
+    }
 }
 
-export default function Page({ children }: IPage) {
+const DEFAULT_BACKGROUND_OPTIONS = {
+    blur: 4,
+    brightness: 0.7 
+}
+
+export default function Page({ background, backgroundOptions = DEFAULT_BACKGROUND_OPTIONS, children }: IPage) {
     const { page } = useContext(UIContext);
 
-    const ref = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const backgroundRef = useRef<HTMLDivElement>(null);
+
+    if (backgroundOptions !== DEFAULT_BACKGROUND_OPTIONS) {
+        backgroundOptions = {
+            ...DEFAULT_BACKGROUND_OPTIONS,
+            ...backgroundOptions
+        }
+    }
 
     useLayoutEffect(() => {
-        if (!ref.current) return;
+        if (!containerRef.current || !backgroundRef.current) return;
 
-        const animation = page.isShow 
-            ? animate.slideIn(ref, 'bottom', {fade: true})
-            : animate.slideOut(ref, 'bottom', {fade: true})
+        const containerAnimation = page.isShow 
+            ? animate.slideIn(containerRef, 'bottom', {fade: true})
+            : animate.slideOut(containerRef, 'bottom', {fade: true})
+
+        const backgroundAnimation = page.isShow
+            ? gsap.fromTo(backgroundRef.current, {opacity: 0}, {opacity: 1, duration: 1})
+            : gsap.fromTo(backgroundRef.current, {opacity: 1}, {opacity: 0});
 
         return () => {
-            animation?.kill();
+            containerAnimation?.kill();
+            backgroundAnimation?.kill();
         }
 
     }, [page.isShow]);
 
     return (
-        <div className={styles.container} ref={ref}>
-            {children}
-        </div>    
+        <>
+            <div className={styles.container} ref={containerRef}>
+                {children}
+            </div>    
+
+            {
+                <div 
+                    ref={backgroundRef}
+                    className={styles.background} 
+                    style={{ 
+                        backgroundImage: `url("${background}")`,
+                        filter: `blur(${backgroundOptions.blur}px) brightness(${backgroundOptions.brightness})`
+                    }} 
+                />
+            }
+        </>
     );
 }

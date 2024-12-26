@@ -28,17 +28,12 @@ export default function Home() {
     return (
         <>
             { !singleInteractions.startScreen.hasSeenStartScreen && <StartScreen closeIn={START_SCREEN_DURATION} />}
-            <Page>
+            <Page background={home.content?.background} backgroundOptions={{brightness: 0.3}}>
                 <div 
                     className={styles.container} 
                     >
 
                     <OasisTeaser />
-
-                    <div 
-                        className={styles.background} 
-                        style={{ backgroundImage: `url("${home.content?.background}")` }} 
-                    />
                 </div>
             </Page>    
         </>

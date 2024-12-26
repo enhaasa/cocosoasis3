@@ -16,7 +16,7 @@ export default function Menu() {
 
     return (
         <>
-            <Page>
+            <Page background={menu.content?.background}>
                 <div className={styles.container}>
                     <div className={styles.teaser}>
                         <Title 
@@ -33,11 +33,6 @@ export default function Menu() {
                 </div>
 
             </Page>   
-            
-            <div 
-                className={styles.background} 
-                style={{ backgroundImage: `url("${menu.content?.background}")` }} 
-            />
         </> 
     );
 }
