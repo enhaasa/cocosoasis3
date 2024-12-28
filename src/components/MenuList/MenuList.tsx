@@ -38,8 +38,6 @@ export default function MenuList() {
         setSelectedCategory(Object.keys(categories)[0]);
     }, [categories]);
 
-    console.log('selectedCategory', selectedCategory)
-
     return (
         <div className={styles.container}>
             <div className={styles.navWrapper}>
@@ -50,14 +48,18 @@ export default function MenuList() {
                 />
             </div>
 
+
             <div className={styles.results} ref={resultsRef}>
                 <>
-                    <Title 
-                        headline={selectedCategory ?? ''} 
-                        isWinged={true} 
-                        style='handwritten' 
-                        icon={(dining_icon as any)[selectedCategory?.toLocaleLowerCase() ?? '']}
-                    />
+                    <div className={styles.title}>
+                        <Title 
+                            headline={selectedCategory ?? ''} 
+                            isWinged={true} 
+                            style='handwritten' 
+                            icon={(dining_icon as any)[selectedCategory?.toLocaleLowerCase() ?? '']}
+                        />
+                    </div>
+                    
                     {selectedCategory &&
                         <ChainFadeIn
                             items={categories?.[selectedCategory]?.map(item => <DiningItem item={item} />)}

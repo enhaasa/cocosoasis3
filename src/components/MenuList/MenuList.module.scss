@@ -34,22 +34,26 @@
         background: colors.bg('secondary');
         box-shadow: decorations.box-shadow('md');
 
-        @media (max-width: breakpoints.screen('widescreen')) {
-            column-count: 2;
-            column-gap: dimensions.margin('lg');  
-            
-            & * {
-                break-inside: avoid;
-            }
+        column-count: 2;
+        column-gap: dimensions.margin('lg');  
+
+        & .title {
+            column-span: all;
         }
 
-        @media (max-width: breakpoints.screen('desktop')) {
+        & * {
+            break-inside: avoid;
+        }
+
+        @media (max-width: breakpoints.screen('tablet')) {
             display: flex;
             flex-direction: column;
         }
     }
     
     @media (max-width: breakpoints.screen('tablet')) {
+        display: flex;
+            flex-direction: column;
         margin: 0;
         gap: dimensions.margin('lg');
     }
