@@ -58,6 +58,7 @@ export default function DiscordEvent({ event }: IDiscordEvent) {
                     <div className={styles.timezone}>  
                         <MultiToggle 
                             options={['Local Time', 'Server Time']} 
+                            initSelected='Local Time'
                             onSelect={(timezone: string) => {setTimezone(timezone as Timezone)}} 
                             activeColor='blue'
                             size='xs' 
