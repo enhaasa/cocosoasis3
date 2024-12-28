@@ -39,6 +39,8 @@
 
         & .title {
             column-span: all;
+            margin-top: dimensions.margin('sm');
+            margin-bottom: dimensions.margin('lg');
         }
 
         & * {
