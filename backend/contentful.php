@@ -45,7 +45,7 @@ try {
                 }
             }
 
-            error_log("Constructed Contentful query URL: " . $query);
+            //error_log("Constructed Contentful query URL: " . $query);
 
             $options = [
                 "http" => [
@@ -56,7 +56,7 @@ try {
             $context = stream_context_create($options);
             $result = file_get_contents($query, false, $context);
 
-            error_log('result' . $result);
+            //error_log('result' . $result);
 
             echo $result;
 

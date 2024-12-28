@@ -21,22 +21,54 @@
         }
     }
 
-    & .title {
+    & .titleWrapper {
         display: flex;
         justify-content: space-between;
         align-items: center;
 
+        & .title {
+            display: flex;
+            align-items: end;
+            gap: dimensions.margin('md');
+
+            & img {
+                height: 52px;
+
+                @media (max-width: breakpoints.screen('tablet')) {
+                    height: 42px;
+                }
+            }
+        }
+
+        &.reverse {
+            direction: rtl;
+        }
+
         & .price {
             color: colors.text('accent');
+            direction: ltr;
+
+            & .originalPrice {
+                color: colors.text('secondary');
+                text-decoration-line: line-through;
+            }
         }
     }
 
     & .description {
         color: colors.text('secondary');
+
+        &.reverse {
+            text-align: right;
+        }
     }
 
     & .ingredients {
         color: colors.text('quartenary');
+
+        &.reverse {
+            text-align: right;
+        }
     }
 
     @media (max-width: breakpoints.screen('widescreen')) {

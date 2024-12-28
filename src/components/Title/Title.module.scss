@@ -2,22 +2,48 @@
 @use '@styles/fonts.scss' as fonts;
 @use '@styles/colors.scss' as colors;
 @use '@styles/breakpoints.scss' as breakpoints;
+@use '@styles/gradients.scss' as gradients;
 
 .container {
+    & .md {
+        font-size: fonts.size('md');
+
+        & .wing {
+            width: 32px;
+        }
+
+        @media (max-width: breakpoints.screen("tablet")) {
+            font-size: fonts.size('sm');
+
+            & .wing {
+                width: 22px;
+            }
+        }
+        @media (max-width: breakpoints.screen("phone")) {
+            font-size: fonts.size('sm');
+
+            & .wing {
+                display: none;
+            }
+        }
+    }
     & .lg {
         font-size: fonts.size('lg');
+
         & .wing {
             width: 64px;
         }
 
         @media (max-width: breakpoints.screen("tablet")) {
             font-size: fonts.size('md');
+
             & .wing {
                 width: 32px;
             }
         }
         @media (max-width: breakpoints.screen("phone")) {
             font-size: fonts.size('sm');
+
             & .wing {
                 display: none;
             }
@@ -25,12 +51,14 @@
     }
     & .xl {
         font-size: fonts.size('xl');
+
         & .wing {
             width: 128px;
         }
         
         @media (max-width: breakpoints.screen("tablet")) {
             font-size: fonts.size('lg');
+
             & .wing {
                 width: 64px;
             }
@@ -41,6 +69,7 @@
     }
     & .xxl {
         font-size: fonts.size('xxl');
+
         & .wing {
             width: 128px;
         }
@@ -53,13 +82,34 @@
         }
     }
 
-
     & .headline {
         margin: 0;
         display: flex;
         justify-content: center;
         align-items: center;
         gap: dimensions.margin('lg');
+
+        & .icon {
+            margin-right: - dimensions.margin('md');
+
+            &.md {
+                height: 42px;
+            }
+            &.lg {
+                height: 64px;
+            }
+            &.xl {
+                
+            }
+            &.xxl {
+
+            }
+        }
+
+        &.neon {
+            @include gradients.default();
+            padding: 10px 0 10px 0;
+        }
 
         /* Fonts */
         &.font-standard {
@@ -80,5 +130,4 @@
     &.centered {
         text-align: center;
     }
-
 }

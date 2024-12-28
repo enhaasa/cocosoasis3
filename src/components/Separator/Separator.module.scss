@@ -12,5 +12,15 @@
         height: 1px;
         width: 50%;
         opacity: 50%;
+
+        &.small {
+            width: 25%;
+        }
+    }
+
+    & .label {
+        display: flex;
+        align-items: center;
+        color: colors.text('secondary');
     }
 }

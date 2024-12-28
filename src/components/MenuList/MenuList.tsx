@@ -8,14 +8,17 @@ import { KiwiContext } from '@contexts/Kiwi';
 import Category from './Category/Category';
 import DiningItem from './DiningItem/DiningItem';
 import ChainFadeIn from '@components/ChainFadeIn/ChainFadeIn';
+import Title from '@components/Title/Title';
 
 // Animations
 import animate from '@utils/animate';
-
+import dining_icon from '@utils/dining_icon';
 
 export default function MenuList() {
-    const { menu: categories } = useContext(KiwiContext);
+    const { menu } = useContext(KiwiContext);
     const [ selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+    const { categories } = menu;
 
     const resultsRef = useRef(null);
 
@@ -52,11 +55,19 @@ export default function MenuList() {
             </div>
 
             <div className={styles.results} ref={resultsRef}>
-                {selectedCategory &&
-                    <ChainFadeIn
-                        items={categories?.[selectedCategory]?.map(item => <DiningItem item={item} />)}
+                <>
+                    <Title 
+                        headline={selectedCategory ?? ''} 
+                        isWinged={true} 
+                        style='handwritten' 
+                        icon={(dining_icon as any)[selectedCategory?.toLocaleLowerCase() ?? '']}
                     />
-                }
+                    {selectedCategory &&
+                        <ChainFadeIn
+                            items={categories?.[selectedCategory]?.map(item => <DiningItem item={item} />)}
+                        />
+                    }
+                </>
             </div>
         </div>    
     );

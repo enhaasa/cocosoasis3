@@ -10,7 +10,9 @@ interface ITitle {
     headline: string;
     subline?: string;
     style?: 'standard' | 'handwritten';
-    size?: 'lg' | 'xl' | 'xxl';
+    size?: 'md' | 'lg' | 'xl' | 'xxl';
+    icon?: string;
+    isNeon?: boolean;
     isCentered?: boolean;
     isWinged?: boolean;
 }
@@ -20,19 +22,22 @@ export default function Title({
     subline, 
     size = 'lg', 
     style = 'standard', 
+    icon = undefined,
+    isNeon = false,
     isCentered = false, 
     isWinged = false 
 }: ITitle) {
     return (
         <div className={`${styles.container} ${isCentered ? styles.centered : ''}`}>
 
-            <h1 className={`${styles.headline} ${styles[size]} ${styles[`font-${style}`]}`}>
+            <h1 className={`${styles.headline} ${styles[size]} ${styles[`font-${style}`]} ${isNeon ? styles.neon : ''}`}>
                 {isWinged &&
                     <img className={styles.wing} src={decoration.wingLeftWhite} />
-                }
-
-                { headline }
-
+                }                    
+                    { headline }
+                    {icon &&
+                        <img src={icon} className={`${styles.icon} ${styles[size]}`} />
+                    }
                 {isWinged &&
                     <img className={styles.wing} src={decoration.wingRightWhite} />
                 }

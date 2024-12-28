@@ -59,7 +59,7 @@
 
     &.selected {
         color: colors.text('tertiary');
-        @include gradients.gold();
+        @include gradients.silver();
     }
 
     &:not(.selected) {

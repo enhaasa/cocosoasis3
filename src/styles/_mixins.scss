@@ -9,6 +9,7 @@
     border: decorations.border-width('standard');
     border-radius: decorations.border-radius('lg');
     color: colors.text('primary');
+    box-shadow: decorations.box-shadow('md');
     
     @if $size == 'sm' {
         @if ($padding) {
