@@ -29,7 +29,6 @@ export default function Title({
 }: ITitle) {
     return (
         <div className={`${styles.container} ${isCentered ? styles.centered : ''}`}>
-
             <h1 className={`${styles.headline} ${styles[size]} ${styles[`font-${style}`]} ${isNeon ? styles.neon : ''}`}>
                 {isWinged &&
                     <img className={styles.wing} src={decoration.wingLeftWhite} />
