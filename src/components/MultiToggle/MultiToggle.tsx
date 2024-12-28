@@ -8,9 +8,11 @@ import Text from '@components/Text/Text';
 interface IMultiToggle {
     options?: string[];
     onSelect: (option: string) => any;
+    size?: 'xs' | 'sm' | 'md' | 'lg';
+    activeColor?: 'gold' | 'silver' | 'blue';
 }
 
-export default function MultiToggle({ options, onSelect }: IMultiToggle) {
+export default function MultiToggle({ options, onSelect, size = 'md', activeColor = 'gold' }: IMultiToggle) {
     const [ selectedOption, setSelectedOption ] = useState(options?.[0]);
 
     function handleSelect(option: string) {
@@ -26,9 +28,13 @@ export default function MultiToggle({ options, onSelect }: IMultiToggle) {
                         <button 
                             key={`MultiToggleOption-${index}`}
                             onClick={() => {handleSelect(options?.[index])}}
-                            className={`${styles.option} ${option === selectedOption ? styles['selected'] : ''}`}
+                            className={`
+                                ${styles.option} 
+                                ${styles[size ?? '']}
+                                ${option === selectedOption ? `${styles['selected']} ${styles[activeColor]}` : ''}
+                            `}
                         >
-                            <Text>{option}</Text>
+                            <Text size={size}>{option}</Text>
                         </button>
                     ))
                 }

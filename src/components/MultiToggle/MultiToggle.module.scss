@@ -23,6 +23,19 @@
             background: colors.bg('primary');
             padding: dimensions.padding('md') dimensions.padding('xl');
 
+            &.xs {
+                padding: dimensions.padding('xs') dimensions.padding('sm');
+            }
+            &.sm {
+                padding: dimensions.padding('sm') dimensions.padding('md');
+            }
+            &.md {
+                padding: dimensions.padding('md') dimensions.padding('xl');
+            }
+            &.lg {
+                padding: dimensions.padding('lg') dimensions.padding('xl');
+            }
+
             &:first-child {
                 border-radius: 
                     decorations.border-radius('lg')
@@ -39,13 +52,24 @@
             }
 
             &.selected {
-                @include gradients.gold();
                 box-shadow: decorations.box-shadow('lg');
                 color: colors.text('tertiary');
+
+                &.gold {
+                    @include gradients.gold();
+                }
+                &.silver {
+                    @include gradients.silver();
+                }
+                &.blue {
+                    @include gradients.blue();
+                    color: colors.text('primary');
+                }
             }
 
             &:not(.selected) {
                 box-shadow: inset decorations.box-shadow('sm');
+                filter: brightness(0.6);
 
                 &:hover {
                     filter: brightness(0.7);

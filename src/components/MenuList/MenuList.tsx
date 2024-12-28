@@ -41,9 +41,7 @@ export default function MenuList() {
     return (
         <div className={styles.container}>
             <div className={styles.navWrapper}>
-
                 <MultiToggle options={Object.keys(categories ?? {})} onSelect={selectCategory} />
-
             </div>
 
             <div className={styles.results} ref={resultsRef}>

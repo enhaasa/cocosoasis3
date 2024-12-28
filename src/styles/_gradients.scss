@@ -19,3 +19,7 @@
 @mixin steel {
     background: linear-gradient(to bottom right,rgb(49, 49, 49), black);
 }
+
+@mixin blue {
+    background: linear-gradient(to bottom right, rgb(74, 96, 194), rgb(40, 54, 129));
+}
