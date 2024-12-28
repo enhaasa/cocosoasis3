@@ -63,10 +63,12 @@ export default function useMenu(client: KiwiClient) {
                 parsedSpecialItems[item.type] = item;
             });
 
-            console.log('parsedSpecialItems', parsedSpecialItems)
+            const categories = _sortMenuByOrder(parsedMenu);
+
+            delete categories.Legacy;
 
             setSpecialItems(parsedSpecialItems);
-            setCategories(_sortMenuByOrder(parsedMenu));
+            setCategories(categories);
         })();
     }, [client]);
 
