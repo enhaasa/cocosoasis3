@@ -5,10 +5,10 @@ import { useContext, useState, useEffect, useRef } from 'react';
 import { KiwiContext } from '@contexts/Kiwi';
 
 // Components
-import Category from './Category/Category';
 import DiningItem from './DiningItem/DiningItem';
 import ChainFadeIn from '@components/ChainFadeIn/ChainFadeIn';
 import Title from '@components/Title/Title';
+import MultiToggle from '@components/MultiToggle/MultiToggle';
 
 // Animations
 import animate from '@utils/animate';
@@ -41,17 +41,9 @@ export default function MenuList() {
     return (
         <div className={styles.container}>
             <div className={styles.navWrapper}>
-                <nav className={styles.nav}>
-                    {Object.keys(categories ?? {}).map((category, index) => (
-                        <Category 
-                            key={`MenuListCategory-${index}`}
-                            title={category} 
-                            count={categories?.[category].length} 
-                            isSelected={selectedCategory === category}
-                            selectCategory={selectCategory}
-                        />
-                    ))}
-                </nav>
+
+                <MultiToggle options={Object.keys(categories ?? {})} onSelect={selectCategory} />
+
             </div>
 
             <div className={styles.results} ref={resultsRef}>

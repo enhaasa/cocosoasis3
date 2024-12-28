@@ -37,14 +37,12 @@ export default function DiningItem({ item, showImage = true, isReversed = false 
 
                     <div className={styles.price}>
                         {(item as any)?.original_price &&
-                            <>
-                                <span className={styles.originalPrice}>
-                                    <Text size='sm'>
-                                        {(item as any)?.original_price.toLocaleString('en-US')} gil
-                                    </Text>
-                                    <div className={styles.strikethrough} />
-                                </span>
-                            </>
+                            <span className={styles.originalPrice}>
+                                <Text size='sm'>
+                                    {(item as any)?.original_price.toLocaleString('en-US')} gil
+                                </Text>
+                                <div className={styles.strikethrough} />
+                            </span>
                         }
                         <Text>{item?.price?.toLocaleString('en-US')} gil</Text>
                     </div>
