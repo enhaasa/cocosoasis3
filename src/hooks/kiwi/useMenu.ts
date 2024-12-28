@@ -64,11 +64,10 @@ export default function useMenu(client: KiwiClient) {
             });
 
             const categories = _sortMenuByOrder(parsedMenu);
-
-            delete categories.Legacy;
+            const {Legacy, ...filteredCategories } = categories;
 
             setSpecialItems(parsedSpecialItems);
-            setCategories(categories);
+            setCategories(filteredCategories);
         })();
     }, [client]);
 
