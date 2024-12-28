@@ -1,6 +1,6 @@
 import styles from './MultiToggle.module.scss';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // Components
 import Text from '@components/Text/Text';
@@ -8,17 +8,22 @@ import Text from '@components/Text/Text';
 interface IMultiToggle {
     options?: string[];
     onSelect: (option: string) => any;
+    initSelected: string;
     size?: 'xs' | 'sm' | 'md' | 'lg';
     activeColor?: 'gold' | 'silver' | 'blue';
 }
 
-export default function MultiToggle({ options, onSelect, size = 'md', activeColor = 'gold' }: IMultiToggle) {
-    const [ selectedOption, setSelectedOption ] = useState(options?.[0]);
+export default function MultiToggle({ options, onSelect, size = 'md', activeColor = 'gold', initSelected }: IMultiToggle) {
+    const [ selectedOption, setSelectedOption ] = useState(initSelected);
 
     function handleSelect(option: string) {
         setSelectedOption(option);
         onSelect(option);
     }
+
+    useEffect(() => {
+        setSelectedOption(initSelected);
+    }, [ initSelected ]);
 
     return (
         <div className={styles.container}>

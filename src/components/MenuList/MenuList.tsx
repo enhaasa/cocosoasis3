@@ -38,10 +38,16 @@ export default function MenuList() {
         setSelectedCategory(Object.keys(categories)[0]);
     }, [categories]);
 
+    console.log('selectedCategory', selectedCategory)
+
     return (
         <div className={styles.container}>
             <div className={styles.navWrapper}>
-                <MultiToggle options={Object.keys(categories ?? {})} onSelect={selectCategory} />
+                <MultiToggle 
+                    options={Object.keys(categories ?? {})}
+                    initSelected={selectedCategory ?? ''}
+                    onSelect={selectCategory} 
+                />
             </div>
 
             <div className={styles.results} ref={resultsRef}>
