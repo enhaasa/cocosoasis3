@@ -52,15 +52,15 @@ function CMSContextProvider({ children }: any) {
             ));
             
             Object.keys(pagesToFetch).forEach(page => {
-
-                const resultEntryIndex = result.items.filter((entry: any) => entry).findIndex((entry: any) => 
-                    (entry.sys.id === pagesToFetch[page]));
-
-                newPages[page] = result.items[resultEntryIndex];
-                delete result.items[resultEntryIndex];
+                const resultEntryIndex = result.items.findIndex((entry: any) => {
+                    return entry && entry.sys.id === pagesToFetch[page];
+                });
+            
+                if (resultEntryIndex !== -1) {
+                    newPages[page] = result.items[resultEntryIndex];
+                    result.items.splice(resultEntryIndex, 1); 
+                }
             });
-
-            console.log('remaining results', result)
 
             if (result.includes?.Entry) {
                 result.includes?.Entry.forEach((item: any) => {
