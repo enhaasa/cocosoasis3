@@ -8,8 +8,8 @@ export class ContentfulClient {
     private client = new ServiceClient(this.baseUrl);
     private endpoint = 'contentful.php';
 
-    public async getEntries(params?: string) {
-        let target = `${this.endpoint}?type=entries`;
+    public async getEntries(entryIds: string, params?: string) {
+        let target = `${this.endpoint}?type=entries&entry_ids=${entryIds}`;
 
         if (params) {
             target = `${target}&params=${params}`

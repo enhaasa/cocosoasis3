@@ -26,10 +26,11 @@ const client = new ContentfulClient();
 
 const pagesToFetch: any = {
     landingPage: '1u8zPQ05ApcdTfu7CQNe6E',
+    servicesPage: '71G1HyUiJr1hpdjOfGmVMO',
+    menuPage: 'kDjqBMkYFs6k5ZW79RTjj',
     venuePage: '',
-    servicesPage: '',
     bookingsPage: '',
-    menuPage: 'kDjqBMkYFs6k5ZW79RTjj'
+
 };
 
 function CMSContextProvider({ children }: any) {
@@ -38,7 +39,7 @@ function CMSContextProvider({ children }: any) {
     const [ pages, setPages ] = useState(_copyNullValuedObject(pagesToFetch));
 
     useEffect(() => {
-        client.getEntries().then(result => {
+        client.getEntries(Object.values(pagesToFetch).filter(e => e !== '').join(',')).then(result => {
             const newAssets: any = {};
             const newComponents: any = {};
             const newPages: any = {};
@@ -59,12 +60,15 @@ function CMSContextProvider({ children }: any) {
                 delete result.items[resultEntryIndex];
             });
 
-            // Remaining results after deleting the page matches
-            result.items.forEach((item: any) => {
-                if (item) {
-                    newComponents[item.sys.id] = item.fields;
-                }
-            });
+            console.log('remaining results', result)
+
+            if (result.includes?.Entry) {
+                result.includes?.Entry.forEach((item: any) => {
+                    if (item) {
+                        newComponents[item.sys.id] = item.fields;
+                    }
+                });
+            }
 
             setAssets(newAssets);
             setComponents(newComponents);

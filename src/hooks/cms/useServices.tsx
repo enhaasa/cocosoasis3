@@ -32,7 +32,7 @@ export default function useServices(page: any, assets: any, components: any) {
 
             if (!component) return;
 
-            const price = components[component.price.sys.id]
+            const price = components[component?.price?.sys?.id] ?? '';
             const backgroundId = component?.background?.sys?.id;
 
             parsedPaidServices[index] = {

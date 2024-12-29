@@ -15,7 +15,6 @@ export default function Menu() {
     const cmsMenu = useContext(CMSContext).menu;
     const { specialItems } = useContext(KiwiContext).menu;
     
-
     return (
         <>
             <Page background={cmsMenu.content?.background}>

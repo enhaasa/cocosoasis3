@@ -4,9 +4,11 @@ require __DIR__ . '/cors.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
 $entry_id = isset($_GET['entry_id']) ? htmlspecialchars($_GET['entry_id']) : null;
+$entry_ids = isset($_GET['entry_ids']) ? $_GET['entry_ids'] : null;
 $type = isset($_GET['type']) ? htmlspecialchars($_GET['type']) : null;
 $name = isset($_GET['name']) ? htmlspecialchars($_GET['name']) : null;
 $params = isset($_GET['params']) ? $_GET['params'] : null;
+
 
 if (!$type) {
     echo 'Missing parameters';
@@ -29,10 +31,16 @@ try {
 
     switch ($type) {
         case 'entries':
+            if (!$entry_ids) {
+                http_response_code(400);
+                return;
+            }
+
             $query = $CONTENTFUL_BASE_URL
                 . '/spaces/'
                 . $CONTENTFUL_SPACE_ID
-                . '/environments/master/entries?include=10';
+                . '/environments/master/entries?include=10'
+                . '&sys.id[in]=' . $entry_ids;
 
             if ($params) {
                 $decodedParams = json_decode($params, true);
@@ -56,7 +64,7 @@ try {
             $context = stream_context_create($options);
             $result = file_get_contents($query, false, $context);
 
-            //error_log('result' . $result);
+            error_log('result' . $result);
 
             echo $result;
 

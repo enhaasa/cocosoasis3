@@ -34,8 +34,6 @@ export default function Modal({
     const { modals } = useContext(UIContext);
     const ref = useRef(null);
 
-    console.log(background)
-
     function handleModalClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
         e.stopPropagation();
     }
