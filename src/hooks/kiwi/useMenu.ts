@@ -28,11 +28,11 @@ enum CategoryId {
 }
 
 const CATEGORIES_WITH_SPECIAL_ITEM = [
+    CategoryId.Meals,
     CategoryId.Cocktails,
-    CategoryId.Meals
 ];
 
-    const MENU_SORTING_ORDER = ['Meals', 'Drinks', 'Cocktails', ];
+const MENU_SORTING_ORDER = ['Meals', 'Drinks', 'Cocktails', ];
 
 export default function useMenu(client: KiwiClient) {
     const [ categories, setCategories ] = useState<null | DiningCategories>(null);

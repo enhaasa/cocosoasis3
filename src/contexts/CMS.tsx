@@ -28,7 +28,7 @@ const pagesToFetch: any = {
     landingPage: '1u8zPQ05ApcdTfu7CQNe6E',
     servicesPage: '71G1HyUiJr1hpdjOfGmVMO',
     menuPage: 'kDjqBMkYFs6k5ZW79RTjj',
-    venuePage: '',
+    venuePage: '6aDXMh2xKpf2pIZkDhErDH',
     bookingsPage: '',
 
 };

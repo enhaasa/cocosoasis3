@@ -48,7 +48,6 @@ export default function MenuList() {
                 />
             </div>
 
-
             <div className={styles.results} ref={resultsRef}>
                 <>
                     <div className={styles.title}>
