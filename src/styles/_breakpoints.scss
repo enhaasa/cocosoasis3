@@ -13,5 +13,5 @@ $screen-sizes: (
     $size1: map-get($screen-sizes, $device1);
     $size2: map-get($screen-sizes, $device2);
 
-    @return ($size1 + $size2) / 2;
+    @return calc(($size1 + $size2) / 2);
 }
