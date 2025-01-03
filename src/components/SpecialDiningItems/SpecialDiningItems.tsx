@@ -37,7 +37,7 @@ export default function SpecialDiningItems({ items }: ISpecialDiningItems) {
         <div className={styles.container}>
             <div className={styles.wrapper}>
                 <div className={styles.title}>
-                    <Title headline='Deals of the Week' style='handwritten' isNeon={true} size='md' />
+                    <Title headline='Deals of the Week' style='signature' isNeon={true} size='md' />
                     
                     {parsedItems.map((item, index) => (
                         <>

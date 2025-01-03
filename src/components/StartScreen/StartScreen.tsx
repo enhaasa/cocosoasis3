@@ -31,7 +31,7 @@ export default function StartScreen({ closeIn }: IStartScreen) {
             // Container
             gsap.fromTo(containerRef.current,
                 { opacity: 1 },
-                { opacity: 0, duration: 1, pointerEvents: 'none' }
+                { opacity: 0, duration: 1, pointerEvents: 'none', ease: 'expo.in'  }
             );
         }, closeIn);
     }, []);

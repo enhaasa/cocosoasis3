@@ -54,7 +54,7 @@ export default function MenuList() {
                         <Title 
                             headline={selectedCategory ?? ''} 
                             isWinged={true} 
-                            style='handwritten' 
+                            style='signature' 
                             icon={(dining_icon as any)[selectedCategory?.toLocaleLowerCase() ?? '']}
                         />
                     </div>

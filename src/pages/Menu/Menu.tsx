@@ -26,7 +26,7 @@ export default function Menu() {
 
                     <div className={styles.teaser}>
                         <Title 
-                            style='handwritten'
+                            style='signature'
                             size='xl'
                             isCentered={true}
                             isWinged={true}

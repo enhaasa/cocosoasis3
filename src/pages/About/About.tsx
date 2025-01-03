@@ -16,7 +16,7 @@ import Separator from '@components/Separator/Separator';
 import PageCTA from '@components/PageCTA/PageCTA';
 
 export default function About() {
-    const { venue } = useContext(CMSContext);
+    const { about } = useContext(CMSContext);
 
     return (
         <Page>
@@ -29,10 +29,11 @@ export default function About() {
                 
                 <div className={styles.title}>
                     <Title 
-                        headline={venue?.content?.headline}
-                        subline={venue?.content?.subline}
+                        headline={about?.content?.headline}
+                        subline={about?.content?.subline}
                         size='xl'
                         isCentered={true}
+                        style='signature'
                     />
                 </div>
 
@@ -40,7 +41,7 @@ export default function About() {
 
                 <div className={styles.highlights}>
                 {
-                    venue?.content?.highlights.map((highlight: any) => (
+                    about?.content?.highlights.map((highlight: any) => (
                         <Highlight
                             key={highlight.internalName}
                             images={highlight?.imageGallery?.map((img: any) => ({src: img?.file?.url}))}
@@ -52,11 +53,11 @@ export default function About() {
                 }
                 </div>
                 <PageCTA 
-                    title='Looks like a good fit for your event?'
-                    description='Check out our'
+                    title='Ready to experience the Oasis?'
+                    description='Proceed to'
                     button={{
-                        target: '/services',
-                        text: 'Services'
+                        target: '/reservations',
+                        text: 'Reservations'
                     }}
                 />
             </div>    

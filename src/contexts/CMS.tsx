@@ -13,7 +13,7 @@ import useMenu, { IUseMenu } from '@hooks/cms/useMenu';
 
 export interface ICMSContext {
     home: IUseHome;
-    venue: IUseVenue;
+    about: IUseVenue;
     services: IUseServices;
     bookings: IUseBookings;
     menu: IUseMenu;
@@ -28,7 +28,7 @@ const pagesToFetch: any = {
     landingPage: '1u8zPQ05ApcdTfu7CQNe6E',
     servicesPage: '71G1HyUiJr1hpdjOfGmVMO',
     menuPage: 'kDjqBMkYFs6k5ZW79RTjj',
-    venuePage: '6aDXMh2xKpf2pIZkDhErDH',
+    venuePage: '34f4IKaKm2iYFOLPoJJ0JE',
     bookingsPage: '',
 
 };
@@ -77,7 +77,7 @@ function CMSContextProvider({ children }: any) {
     }, []);
 
     const home = useHome(pages.landingPage, assets);
-    const venue = useVenue(pages.venuePage, assets, components);
+    const about = useVenue(pages.venuePage, assets, components);
     const services = useServices(pages.servicesPage, assets, components);
     const bookings = useBookings(pages.bookingsPage);
     const menu = useMenu(pages.menuPage, assets);
@@ -87,7 +87,7 @@ function CMSContextProvider({ children }: any) {
             assets: assets,
             components,
             home,
-            venue,
+            about,
             services,
             bookings,
             menu

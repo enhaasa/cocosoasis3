@@ -29,20 +29,22 @@ export default function Services() {
                             headline={services?.content?.headline}
                             subline={services?.content?.subline}
                             size='xl'
-                            style='standard'
+                            style='handwritten'
+                            isWinged={true}
                             isCentered={true}
                         />
                     </div>
 
-                    <Separator />
-
+                    <Separator label='Included' size='md' />
+                    <Title
+                        headline='Enjoy our included offerings to enhance your dining experience at our restaurant.'
+                        isCentered={true}
+                        size='md'
+                    />
+                        
                     <div className={styles.services} ref={ref}>
                         {services.content?.includedServices.length > 0 &&
                             <div className={styles.category}>
-                                <div className={styles.serviceTitle}>
-                                    <Title headline='Included' />
-                                </div>
-
                                 <div className={styles.cards}>
                                     <Grid>
                                         <ChainSpawn items={services.content?.includedServices.map((service: any) => 
@@ -58,11 +60,17 @@ export default function Services() {
                         }
 
                         {services.content?.paidServices.length > 0 &&
+                        <>
+                            <div>
+                                <Separator label='Paid Additions' size='md' />
+                                <Title
+                                    headline='Indulge in our premium offerings to take your dining experience to the next level.'
+                                    isCentered={true}
+                                    size='md'
+                                />
+                            </div>
+                        
                             <div className={styles.category}>
-                                <div className={styles.serviceTitle}>
-                                    <Title headline='Additions' />
-                                </div>
-                                
                                 <div className={styles.cards}>
                                     <Grid>
                                         <ChainSpawn items={services.content?.paidServices.map((service: any) => 
@@ -75,18 +83,18 @@ export default function Services() {
                                     </Grid>
                                 </div>
                             </div>
+                        </>
                         }
                     </div>
 
                     <PageCTA 
-                        title='Ready to make your event a reality?'
-                        description='Proceed to'
+                        title='Want an addition to your reservation?'
+                        description='Mention it in your'
                         button={{
-                            target: '/bookings',
-                            text: 'Bookings'
+                            target: '/reservations',
+                            text: 'Reservation'
                         }}
                     />
-
                 </div>
             </div>
         </Page>    

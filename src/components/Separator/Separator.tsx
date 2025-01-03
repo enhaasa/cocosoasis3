@@ -18,7 +18,7 @@ export default function Separator({ label, size }: ISeparator) {
                 <>
                     <div className={`${styles.separator} ${styles.small}`} />
                     <div className={styles.label}>
-                        <Title headline={label ?? ''} style='handwritten' size={size} />
+                        <Title headline={label ?? ''} style='signature' size={size} />
                     </div>
                     <div className={`${styles.separator} ${styles.small}`} />
                 </>

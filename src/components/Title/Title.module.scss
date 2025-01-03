@@ -116,6 +116,10 @@
             font-family: fonts.family('typed');
         }
         &.font-handwritten {
+            font-family: fonts.family('handwritten');
+            margin: dimensions.margin('sm');
+        }
+        &.font-signature {
             font-family: fonts.family('signature');
             margin: dimensions.margin('md');
         }

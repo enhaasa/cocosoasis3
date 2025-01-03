@@ -9,7 +9,7 @@ import decoration from '@utils/decoration';
 interface ITitle {
     headline: string;
     subline?: string;
-    style?: 'standard' | 'handwritten';
+    style?: 'standard' | 'handwritten' | 'signature';
     size?: 'md' | 'lg' | 'xl' | 'xxl';
     icon?: string;
     isNeon?: boolean;
