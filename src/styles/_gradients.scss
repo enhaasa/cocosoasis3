@@ -8,6 +8,22 @@
     @include background-clip();
 }
 
+@mixin wine {
+    background:  linear-gradient(to bottom right, rgb(107, 0, 0), rgb(49, 0, 0));
+}
+
+@mixin grape {
+    background: linear-gradient(to bottom right, #712E5F, #290d21);
+}
+
+@mixin dark-grape {
+    background: linear-gradient(to bottom right, #803A5C, #27121c);
+}
+
+@mixin dark {
+    background: linear-gradient(to bottom right, #58545a, #1b1a1b);
+}
+
 @mixin gold {
     background: linear-gradient(to bottom right, #D1B464, #8A6E2F);
 }

@@ -14,6 +14,7 @@ import VenueDetails from '@components/VenueDetails/VenueDetails';
 import Title from '@components/Title/Title';
 import Separator from '@components/Separator/Separator';
 import PageCTA from '@components/PageCTA/PageCTA';
+import StaffList from '@components/StaffList/StaffList';
 
 export default function About() {
     const { about } = useContext(CMSContext);
@@ -41,9 +42,9 @@ export default function About() {
 
                 <div className={styles.highlights}>
                 {
-                    about?.content?.highlights.map((highlight: any) => (
+                    about?.content?.highlights.map((highlight: any, index: number) => (
                         <Highlight
-                            key={highlight.internalName}
+                            key={`Highlight-${index}`}
                             images={highlight?.imageGallery?.map((img: any) => ({src: img?.file?.url}))}
                             headline={highlight.headline}
                             subline={highlight.subline}
@@ -52,6 +53,11 @@ export default function About() {
                     ))
                 }
                 </div>
+
+                <Separator />
+
+                <StaffList />
+                
                 <PageCTA 
                     title='Ready to experience the Oasis?'
                     description='Proceed to'

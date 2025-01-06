@@ -23,6 +23,14 @@ switch ($type) {
 
         break;
 
+    case 'staff':
+        $query = $KIWI_BASE_URL . '/staff?realm_id=' . $KIWI_REALM_ID;
+        $result = file_get_contents($query);
+
+        echo $result;
+
+        break;
+
     case 'specialMenuItem':
         if (!$category_id) {
             echo 'Missing category_id parameter!';
