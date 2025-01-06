@@ -6,7 +6,7 @@
 .container {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    height: 70vh;
+    height: 80vh;
     width: 70vw;
 
     @media (max-width: breakpoints.screen('phone')) {
@@ -81,11 +81,16 @@
             }
 
             @media (max-width: breakpoints.screen('tablet')) {
-                align-items: end;
+                align-items: center;
 
                 & .left, & .right {
+                    height: 360px;
+                }
+            }
+
+            @media (max-width: breakpoints.screen('phone')) {
+                & .left, & .right {
                     height: 350px;
-                    
                 }
             }
         }
