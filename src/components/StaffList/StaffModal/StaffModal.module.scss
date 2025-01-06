@@ -46,6 +46,7 @@
 
             display: flex;
             justify-content: space-between;
+            margin-bottom: 10px;
             z-index: -1;
 
             overflow-x: hidden;
@@ -76,6 +77,15 @@
                     transform: rotate(0deg);
                     margin-bottom: -50px;
                     margin-right: -350px;
+                }
+            }
+
+            @media (max-width: breakpoints.screen('tablet')) {
+                align-items: end;
+
+                & .left, & .right {
+                    height: 350px;
+                    
                 }
             }
         }
