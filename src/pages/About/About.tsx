@@ -54,6 +54,15 @@ export default function About() {
                 }
                 </div>
 
+                <div className={styles.title}>
+                    <Title 
+                        headline={'Our family'}
+                        size='xl'
+                        isCentered={true}
+                        style='signature'
+                    />
+                </div>
+
                 <Separator />
 
                 <StaffList />
