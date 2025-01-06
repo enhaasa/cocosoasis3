@@ -75,3 +75,32 @@ export type LocalTimezone = {
     return formatUTCTimeString(date);
   }
   
+  export function getTimeSinceDate(dateString: string): string {
+    const currentDate = new Date();
+    const pastDate = new Date(dateString);
+  
+    let yearDiff = currentDate.getFullYear() - pastDate.getFullYear();
+    let monthDiff = currentDate.getMonth() - pastDate.getMonth();
+    let dayDiff = currentDate.getDate() - pastDate.getDate();
+  
+    if (dayDiff < 0) {
+      monthDiff--;
+      const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
+      dayDiff += daysInMonth;
+    }
+  
+    if (monthDiff < 0) {
+      yearDiff--;
+      monthDiff += 12;
+    }
+  
+    // Pluralization helper
+    const pluralize = (count: number, noun: string) => `${count} ${noun}${count !== 1 ? 's' : ''}`;
+  
+    let timeDiffParts = [];
+    if (yearDiff > 0) timeDiffParts.push(pluralize(yearDiff, 'year'));
+    if (monthDiff > 0) timeDiffParts.push(pluralize(monthDiff, 'month'));
+    if (dayDiff > 0 && timeDiffParts.length < 2) timeDiffParts.push(pluralize(dayDiff, 'day'));
+  
+    return timeDiffParts.slice(0, 2).join(' ') || '0 days';
+}

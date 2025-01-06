@@ -41,12 +41,28 @@ export default function useStaff(client: KiwiClient) {
         });
     }
 
+    function capitalizeFirstLetter(string: string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+    
+    function parsePositions(positions: string) {
+        return positions.split(',')
+            .map(position => capitalizeFirstLetter(position))
+            .join(' & ');
+    }
+
+    function parsePositionsOfStaff(staff: TCharacter[]): TCharacter[] {
+        return staff.map(character => ({
+            ...character,
+            positions: parsePositions(character.positions)
+        }));
+    }
+    
+
     useEffect(() => {
         client.getStaff().then(res => {
-
-
-            setCharacters(sortByTitle(sortByHireDate(res)));
-        })
+            setCharacters(sortByTitle(sortByHireDate(parsePositionsOfStaff(res))));
+        });
     }, []);
  
     return {

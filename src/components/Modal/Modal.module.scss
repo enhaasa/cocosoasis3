@@ -42,9 +42,11 @@
 
         overflow-x: hidden;
         overflow-y: auto;
-        padding: dimensions.padding('xs') dimensions.padding('md');
+        //padding: dimensions.padding('xs') dimensions.padding('md');
         z-index: 1;
         border-radius: 0 0 decorations.border-radius('md') decorations.border-radius('md');
+        height: 100%;
+        width: 100%;
 
         & .contentOverlay {
             position: absolute;
@@ -83,7 +85,6 @@
                 width: 26px;
                 height: 26px;
             }
-            
         }
     }
 
@@ -111,7 +112,6 @@
     @media (max-width: breakpoints.screen("phone")) {
         max-width: unset;
         width: 95vw;
-        max-height: 75vh;
-        
+        height: 85vh;
     }
 }

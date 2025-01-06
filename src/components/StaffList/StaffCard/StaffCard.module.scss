@@ -61,7 +61,6 @@
 
             &:hover {
                 cursor: pointer;
-                //outline: decorations.border-width('xs') colors.text('secondary') solid;
                 background-color: colors.fg('accent');
                 transform: scale(1.05);
             }
@@ -76,7 +75,6 @@
                 height: 150px;
             }
         }
-
     }
 
     & .positions {

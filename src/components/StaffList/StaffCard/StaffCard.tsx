@@ -1,27 +1,31 @@
 import styles from './StaffCard.module.scss';
+import { useContext } from 'react';
 
 // Types
 import { TCharacter } from '@enhasa/kiwicore';
 
+// Contexts
+import { UIContext } from '@contexts/UI';
+
 // Components
 import Text from '@components/Text/Text';
+import StaffModal from '@components/StaffList/StaffModal/StaffModal';
 
 interface IStaffCard {
     character: TCharacter;
 }
 
 export default function StaffCard({ character }: IStaffCard) {
+    const { modals } = useContext(UIContext);
 
-    function parsePositions(positions: string) {
-        return positions.split(',')
-            .map(position => capitalizeFirstLetter(position))
-            .join(' & ');
+    function handleClick() {
+        modals.add(
+            <StaffModal 
+                character={character}
+            />
+        );
     }
 
-    function capitalizeFirstLetter(string: string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-    
     return (
         <div className={styles.container}>
             {character.title !== 'staff' && 
@@ -34,6 +38,7 @@ export default function StaffCard({ character }: IStaffCard) {
 
             <div className={styles.imageWrapper}>
                 <div 
+                    onClick={handleClick}
                     className={styles.image}
                     style={{backgroundImage: `url("${character.image_url?.trim()}")`}}
                 />
@@ -45,7 +50,7 @@ export default function StaffCard({ character }: IStaffCard) {
                 </div>
 
                 <div className={styles.positions}>
-                    <Text size='sm'>{parsePositions(character.positions)}</Text>
+                    <Text size='sm'>{character.positions}</Text>
                 </div>
             </div>            
         </div>    

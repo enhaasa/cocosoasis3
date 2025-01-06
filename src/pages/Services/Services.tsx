@@ -29,7 +29,7 @@ export default function Services() {
                             headline={services?.content?.headline}
                             subline={services?.content?.subline}
                             size='xl'
-                            style='handwritten'
+                            style='signature'
                             isWinged={true}
                             isCentered={true}
                         />
