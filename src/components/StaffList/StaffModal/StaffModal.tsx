@@ -49,7 +49,8 @@ export default function StaffModal({ id, character }: IStaffModal) {
 
             gsap.to(bioWrapperRef.current, {
                 marginTop: 0,
-                height: '100%'
+                height: '100%',
+                duration: 0.2,
             });
 
             gsap.to(bioRef.current, {
@@ -70,7 +71,7 @@ export default function StaffModal({ id, character }: IStaffModal) {
             gsap.to(bioWrapperRef.current, {
                 marginTop: '-10px',
                 height: '48px',
-                duration: 0.05,
+                duration: 0.2,
                 onComplete: () => {
                     setIsBioOpen(false);
                 }
