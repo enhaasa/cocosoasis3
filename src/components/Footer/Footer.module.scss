@@ -10,20 +10,22 @@
     padding-bottom: dimensions.padding('sm');
 
     & .nav {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: dimensions.margin('md');
-        color: colors.text('secondary');
-        height: 100%;
-
-        & * {
-            font-size: fonts.size('sm');
-        }
-
-        & span {
+        & .col {
             display: flex;
+            justify-content: center;
             align-items: center;
+            gap: dimensions.margin('md');
+            color: colors.text('secondary');
+            height: 100%;
+    
+            & * {
+                font-size: fonts.size('sm');
+            }
+    
+            & span {
+                display: flex;
+                align-items: center;
+            }
         }
     }
 }

@@ -8,13 +8,45 @@ export default function Footer() {
     return (
         <div className={styles.container}>
             <nav className={styles.nav}>
-                <span><Text>©2022-2024 Coco's Oasis</Text></span>
-                <span>&bull;</span>
-                <span>
+                <div className={styles.col}>
+                    <span><Text>©2022-2024 Coco's Oasis</Text></span>
+                    <span>&bull;</span>
+                    <span>
+                        <Text>
+                            Website by _enhasa
+                        </Text>
+                    </span>
+                </div>
+                <div className={styles.col}>
                     <Text>
                         Website by _enhasa
                     </Text>
-                </span>
+                </div>
+                <div className={styles.col}>
+                    <Text>
+                        Website by _enhasa
+                    </Text>
+                </div>
+                <div className={styles.col}>
+                    <Text>
+                        Website by _enhasa
+                    </Text>
+                </div>
+                <div className={styles.col}>
+                    <Text>
+                        Website by _enhasa
+                    </Text>
+                </div>
+                <div className={styles.col}>
+                    <Text>
+                        Website by _enhasa
+                    </Text>
+                </div>
+                <div className={styles.col}>
+                    <Text>
+                        Website by _enhasa
+                    </Text>
+                </div>
             </nav>
         </div>    
     );

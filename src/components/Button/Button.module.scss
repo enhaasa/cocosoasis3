@@ -4,8 +4,6 @@
 @use '@styles/gradients.scss' as gradients;
 
 .container {
-    box-shadow: decorations.box-shadow('sm');
-
     &.sm {
         @include mixins.button('sm');
     }
@@ -27,18 +25,22 @@
         @include gradients.silver();
         //background-color: colors.fg('primary');
         color: colors.text('tertiary');
+        box-shadow: decorations.box-shadow('sm');
     }
 
     &.secondary {
         background-color: colors.fg('secondary');
+        box-shadow: decorations.box-shadow('sm');
     }
 
     &.accent {
         @include gradients.gold();
         color: colors.text('tertiary');
+        box-shadow: decorations.box-shadow('sm');
     }
 
     &.neutral {
         border: 1px solid colors.neutral('white');
+        box-shadow: decorations.box-shadow('sm');
     }
 }

@@ -40,7 +40,7 @@ function App() {
                       }
                       <Route path={'/e/:slug'} element={<Event />}/>
                     </Routes>
-                    <Footer />
+
                   </SiteContainer>
                 </PageContextProvider>
               </DiscordContextProvider>

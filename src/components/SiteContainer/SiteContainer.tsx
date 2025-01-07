@@ -4,6 +4,7 @@ import { useContext, useEffect } from 'react';
 
 // Contexts
 import { PageContext } from '@contexts/Page';
+import Footer from '@components/Footer/Footer';
 
 interface ISiteContainer {
     children?: React.ReactNode;
@@ -20,7 +21,13 @@ export default function SiteContainer({ children }: ISiteContainer) {
 
     return (
         <div className={styles.container}>
-            { children }
+            <main>
+                { children }
+            </main>
+
+            <footer>
+                <Footer />    
+            </footer>
         </div>    
     );
 }
