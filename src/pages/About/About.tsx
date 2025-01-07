@@ -35,6 +35,7 @@ export default function About() {
                         size='xl'
                         isCentered={true}
                         style='signature'
+                        isWinged={true}
                     />
                 </div>
 
@@ -60,6 +61,7 @@ export default function About() {
                         size='xl'
                         isCentered={true}
                         style='signature'
+                        isWinged={true}
                     />
                 </div>
 
