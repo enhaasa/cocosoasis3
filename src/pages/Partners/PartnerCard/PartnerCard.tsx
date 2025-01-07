@@ -26,7 +26,7 @@ export default function PartnerCard({ partner }: IPartnerCard) {
             <div className={styles.name}>
                 <Title 
                     headline={partner.name}
-                    subline={'Placeholder Address'}
+                    subline={partner.address}
                     style='handwritten'
                     size={'xl'}
                     isCentered={true}
@@ -47,11 +47,12 @@ export default function PartnerCard({ partner }: IPartnerCard) {
                 ><Text>Website</Text></a>
             </nav>
 
+           {partner.description &&
             <div className={styles.description}>
                 <Text>
                     {documentToReactComponents(partner.description)}
                 </Text>
-            </div>
+            </div>}
         </div>    
     );
 }

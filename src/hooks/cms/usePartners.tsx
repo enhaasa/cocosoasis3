@@ -6,7 +6,8 @@ import { Document } from '@contentful/rich-text-types';
 
 export type Partner = {
     name: string;
-    description: Document;
+    address?: string;
+    description?: Document;
     logo: string;
     websiteLink: string;
     discordLink: string;
