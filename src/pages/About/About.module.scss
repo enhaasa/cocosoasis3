@@ -4,6 +4,16 @@
 @use '@styles/decorations.scss' as decorations;
 
 .container {
+   display: grid;
+   gap: dimensions.margin('xl');
+
+   @media (max-width: breakpoints.screen('tablet')) {
+      gap: dimensions.margin('lg');
+   }
+
+   @media (max-width: breakpoints.screen('phone')) {
+      gap: dimensions.margin('md');
+   }
    
    & .highlights {
       display: grid;
