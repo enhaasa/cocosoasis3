@@ -29,10 +29,7 @@ export default function Home() {
         <>
             { !singleInteractions.startScreen.hasSeenStartScreen && <StartScreen closeIn={START_SCREEN_DURATION} />}
             <Page background={home.content?.background} backgroundOptions={{brightness: 0.3}}>
-                <div 
-                    className={styles.container} 
-                    >
-
+                <div className={styles.container} >
                     <OasisTeaser />
                 </div>
             </Page>    

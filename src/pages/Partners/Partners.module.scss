@@ -1,0 +1,33 @@
+@use '@styles/dimensions.scss' as dimensions;
+@use '@styles/breakpoints.scss' as breakpoints;
+
+.container {
+    margin: dimensions.margin('xxl');
+
+    & .title {
+        margin-top: dimensions.margin('xxl');
+        margin-bottom: dimensions.margin('lg');
+    }
+
+    & .partnerVenues {
+        display: grid;
+        gap: dimensions.margin('xxl');
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: breakpoints.screen('tablet')) {
+        & .partnerVenues {
+            grid-template-columns: repeat(2, 1fr);
+            gap: dimensions.margin('xl');
+        }
+    }
+
+    @media (max-width: breakpoints.screen('phone')) {
+        margin: dimensions.margin('md');
+
+        & .partnerVenues {
+            grid-template-columns: 1fr;
+            gap: dimensions.margin('lg');
+        }
+    }
+}
