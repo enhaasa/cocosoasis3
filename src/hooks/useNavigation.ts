@@ -19,6 +19,7 @@ export interface IUseNavigation {
         set: React.Dispatch<React.SetStateAction<number>>
     },
     isCurrentPath: (T: string) => boolean;
+    getCurrentPath: () => string;
     internalNavigate: (T: string) => void;
     externalNavigate: (T: string, R: boolean) => void;
     dynamicNavigate: (path: string, isNewTab: boolean) => void;
@@ -47,6 +48,10 @@ export default function useNavigation() {
 
     function isCurrentPath(path: string) {
         return (location.pathname === `/${path}` || location.pathname === path);
+    }
+
+    function getCurrentPath() {
+        return location.pathname;
     }
 
     function getPageIndexByPath(path: string) {
@@ -89,6 +94,7 @@ export default function useNavigation() {
             set: setCurrentPageIndex
         },
         isCurrentPath,
+        getCurrentPath,
         internalNavigate,
         externalNavigate,
         dynamicNavigate,

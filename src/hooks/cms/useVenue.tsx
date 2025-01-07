@@ -13,7 +13,7 @@ export default function useVenue(page: any, assets: any, components: any) {
         if (isLoaded.current || !page) return;
 
         const { fields } = page;
-        const parsedHighlights = [ ...fields.highlights ];
+        const parsedHighlights = [ ...fields?.highlights ?? [] ];
 
         parsedHighlights.forEach((highlight: any, index: number) => {
             parsedHighlights[index] = {

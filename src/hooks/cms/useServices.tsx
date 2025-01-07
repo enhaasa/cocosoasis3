@@ -32,7 +32,7 @@ export default function useServices(page: any, assets: any, components: any) {
 
             if (!component) return;
 
-            const price = components[component.price.sys.id]
+            const price = components[component?.price?.sys?.id] ?? '';
             const backgroundId = component?.background?.sys?.id;
 
             parsedPaidServices[index] = {
@@ -46,7 +46,8 @@ export default function useServices(page: any, assets: any, components: any) {
             headline: fields.headline,
             subline: fields?.subline,
             includedServices: parsedIncludedServices,
-            paidServices: parsedPaidServices
+            paidServices: parsedPaidServices,
+            bottomCta: components[fields?.nextPageCta?.sys?.id]
         });
 
     }, [ page, assets, components ]);

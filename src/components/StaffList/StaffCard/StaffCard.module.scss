@@ -1,0 +1,83 @@
+@use '@styles/colors.scss' as colors;
+@use '@styles/dimensions.scss' as dimensions;
+@use '@styles/decorations.scss' as decorations;
+@use '@styles/breakpoints.scss' as breakpoints;
+@use '@styles/gradients.scss' as gradients;
+
+.container {
+    display: grid;
+    gap: dimensions.margin('md');
+
+    & * {
+        text-align: center;
+    }
+
+    & .titleWrapper {
+        display: flex;
+        justify-content: center;
+
+        & .title {
+            border-radius: dimensions.margin('xl');
+
+            &.owner {
+                @include gradients.wine();
+                @include gradients.background-clip();
+                filter: brightness(2);
+            }
+
+            &.assistant {
+                @include gradients.grape();
+                @include gradients.background-clip();
+                filter: brightness(2);
+            }
+
+            &.head-of-operations {
+                @include gradients.dark-grape();
+                @include gradients.background-clip();
+                filter: brightness(2);
+            }
+
+            &.head-of-relations {
+                @include gradients.dark();
+                @include gradients.background-clip();
+                filter: brightness(2.5);
+            }
+        }
+    }
+
+    & .imageWrapper {
+        display: flex;
+        justify-content: center;
+
+        & .image {
+            background-color: colors.bg('primary');
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 250px;
+            height: 250px;
+            border-radius: 100%;
+            box-shadow: decorations.box-shadow('md');
+            transition: 100ms all ease-in-out;
+
+            &:hover {
+                cursor: pointer;
+                background-color: colors.fg('accent');
+                transform: scale(1.05);
+            }
+
+            @media (max-width: breakpoints.screen('desktop')) {
+                width: 200px;
+                height: 200px;
+            }
+
+            @media (max-width: breakpoints.halfway('desktop', 'tablet')) {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    }
+
+    & .positions {
+        color: colors.text('secondary');
+    }
+}

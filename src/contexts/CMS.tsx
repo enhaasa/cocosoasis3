@@ -13,7 +13,7 @@ import useMenu, { IUseMenu } from '@hooks/cms/useMenu';
 
 export interface ICMSContext {
     home: IUseHome;
-    venue: IUseVenue;
+    about: IUseVenue;
     services: IUseServices;
     bookings: IUseBookings;
     menu: IUseMenu;
@@ -25,11 +25,12 @@ const CMSContext = createContext<ICMSContext>({} as ICMSContext);
 const client = new ContentfulClient();
 
 const pagesToFetch: any = {
-    landingPage: '2JVjG5yd2SmmYD7hfz1nQX',
-    venuePage: '4V4xAQS5MnjbhkOkwk6HBv',
-    servicesPage: 'gASSFvwM4G8UcYSFEMXZg',
-    bookingsPage: '5K4VWVjFZ7xB8qDLrHIDki',
-    menuPage: '4SG12btygmP3HYE0G5IRi0'
+    landingPage: '1u8zPQ05ApcdTfu7CQNe6E',
+    servicesPage: '71G1HyUiJr1hpdjOfGmVMO',
+    menuPage: 'kDjqBMkYFs6k5ZW79RTjj',
+    venuePage: '34f4IKaKm2iYFOLPoJJ0JE',
+    bookingsPage: '',
+
 };
 
 function CMSContextProvider({ children }: any) {
@@ -38,7 +39,7 @@ function CMSContextProvider({ children }: any) {
     const [ pages, setPages ] = useState(_copyNullValuedObject(pagesToFetch));
 
     useEffect(() => {
-        client.getEntries().then(result => {
+        client.getEntries(Object.values(pagesToFetch).filter(e => e !== '').join(',')).then(result => {
             const newAssets: any = {};
             const newComponents: any = {};
             const newPages: any = {};
@@ -51,20 +52,23 @@ function CMSContextProvider({ children }: any) {
             ));
             
             Object.keys(pagesToFetch).forEach(page => {
-
-                const resultEntryIndex = result.items.filter((entry: any) => entry).findIndex((entry: any) => 
-                    (entry.sys.id === pagesToFetch[page]));
-
-                newPages[page] = result.items[resultEntryIndex];
-                delete result.items[resultEntryIndex];
-            });
-
-            // Remaining results after deleting the page matches
-            result.items.forEach((item: any) => {
-                if (item) {
-                    newComponents[item.sys.id] = item.fields;
+                const resultEntryIndex = result.items.findIndex((entry: any) => {
+                    return entry && entry.sys.id === pagesToFetch[page];
+                });
+            
+                if (resultEntryIndex !== -1) {
+                    newPages[page] = result.items[resultEntryIndex];
+                    result.items.splice(resultEntryIndex, 1); 
                 }
             });
+
+            if (result.includes?.Entry) {
+                result.includes?.Entry.forEach((item: any) => {
+                    if (item) {
+                        newComponents[item.sys.id] = item.fields;
+                    }
+                });
+            }
 
             setAssets(newAssets);
             setComponents(newComponents);
@@ -73,17 +77,17 @@ function CMSContextProvider({ children }: any) {
     }, []);
 
     const home = useHome(pages.landingPage, assets);
-    const venue = useVenue(pages.venuePage, assets, components);
+    const about = useVenue(pages.venuePage, assets, components);
     const services = useServices(pages.servicesPage, assets, components);
     const bookings = useBookings(pages.bookingsPage);
-    const menu = useMenu(pages.menuPage);
+    const menu = useMenu(pages.menuPage, assets);
 
     return (
         <CMSContext.Provider value={{
             assets: assets,
             components,
             home,
-            venue,
+            about,
             services,
             bookings,
             menu

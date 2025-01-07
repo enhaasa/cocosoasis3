@@ -1,0 +1,24 @@
+@use '@styles/dimensions.scss' as dimensions;
+@use '@styles/gradients.scss' as gradients;
+@use '@styles/decorations.scss' as decorations;
+@use '@styles/colors.scss' as colors;
+@use '@styles/breakpoints.scss' as breakpoints;
+
+.container {
+    display: flex;
+    justify-content: center;
+
+    & .wrapper {
+        width: 60%;
+        margin: dimensions.margin('xxl');
+        padding: dimensions.padding('xl');
+        box-shadow: decorations.box-shadow('md');
+        background: colors.bg('secondary');
+        border-radius: decorations.border-radius('md');
+
+        @media (max-width: breakpoints.screen('tablet')) {
+            width: 100%;
+            margin: dimensions.padding('lg');
+        }
+    }
+}

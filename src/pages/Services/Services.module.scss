@@ -13,6 +13,10 @@
     & .content {
         margin: dimensions.margin('lg') dimensions.margin('xl');
 
+        & .title {
+            margin-bottom: dimensions.margin('xl');
+        }
+
         & .services {
             display: grid;
             gap: dimensions.margin('xl');

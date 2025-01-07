@@ -3,32 +3,43 @@ import { useContext } from 'react';
 
 // Contexts
 import { CMSContext } from '@contexts/CMS';
+import { KiwiContext } from '@contexts/Kiwi';
 
 // Components
 import Page from '@components/Page/Page';
 import MenuList from '@components/MenuList/MenuList';
 import Title from '@components/Title/Title';
-import Separator from '@components/Separator/Separator';
+import SpecialDiningItems from '@components/SpecialDiningItems/SpecialDiningItems';
 
 export default function Menu() {
-    const { menu } = useContext(CMSContext);
-
+    const cmsMenu = useContext(CMSContext).menu;
+    const { specialItems } = useContext(KiwiContext).menu;
+    
     return (
-        <Page>
-            <div className={styles.container}>
-                <div className={styles.teaser}>
-                    <Title 
-                        size='xl'
-                        isCentered={true}
-                        headline={menu?.content?.headline}
-                        subline={menu?.content?.subline}
+        <>
+            <Page background={cmsMenu.content?.background}>
+                <div className={styles.container}>
+
+                    <div className={styles.specialMenuItem}>
+                        <SpecialDiningItems items={specialItems} />
+                    </div>
+
+                    <div className={styles.teaser}>
+                        <Title 
+                            style='signature'
+                            size='xl'
+                            isCentered={true}
+                            isWinged={true}
+                            headline={cmsMenu?.content?.headline}
+                            subline={cmsMenu?.content?.subline}
+                        />
+                    </div>
+
+                    <MenuList 
+
                     />
                 </div>
-
-                <Separator />
-
-                <MenuList />
-            </div>
-        </Page>    
+            </Page>   
+        </> 
     );
 }

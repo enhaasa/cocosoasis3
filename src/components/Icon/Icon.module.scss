@@ -15,4 +15,8 @@
     &.lg {
         @include mixins.sqsize(32px);
     }
+
+    &.xl {
+        @include mixins.sqsize(64px);
+    }
 }

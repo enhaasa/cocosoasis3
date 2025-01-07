@@ -18,7 +18,7 @@ export default function Highlight({ headline, subline, text, images }: IHighligh
     return (
         <div className={styles.container}>
             <div className={`${styles.textContainer} ${styles.column}`}>
-                <Title headline={headline} subline={subline} size={'xl'} style='handwritten' />
+                <Title headline={headline} subline={subline} size={'xl'} style='handwritten' isCentered={true} />
                 <div className={styles.text}>
                     <Text>
                         {text}

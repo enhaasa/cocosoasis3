@@ -15,7 +15,7 @@ export default function useHome(page: any, assets: any) {
         const { fields } = page;
 
         setContent({
-            background: assets[fields.background.sys.id].file.url,
+            background: assets[fields?.background?.sys?.id]?.file?.url ?? '',
             heroWords: fields.heroWords
         });
 

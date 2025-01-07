@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import NavList from '@components/NavList/NavList';
 import LinkButton from '../LinkButton/LinkButton';
 import Button from '../Button/Button';
-import EventNavigation from '@components/EventNavigation/EventNavigation';
+//import EventNavigation from '@components/EventNavigation/EventNavigation';
 
 // Contexts
 import { UIContext } from '@contexts/UI';
@@ -57,10 +57,6 @@ export default function Navbar() {
                         isActive={getIsCurrentPathByIndex(item.target)}
                     />
                 )) }
-            </span>
-
-            <span className={styles.eventNav}>
-                <EventNavigation />
             </span>
         </div>    
     );

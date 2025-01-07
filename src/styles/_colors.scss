@@ -1,6 +1,6 @@
 $foreground-colors: (
-    "primary": #99C5B5,
-    "secondary": #899E8B,
+    "primary": rgb(158, 66, 66),
+    "secondary": rgb(228, 3, 3),
     "accent": #7D4E57,
 );
 
@@ -21,7 +21,8 @@ $text-colors: (
     "primary": #d6d6d6,
     "secondary": #a8a8a8,
     "tertiary": #1d1d1d,
-    "accent": #bb6877
+    "quartenary": #616060,
+    "accent": #cead54
 );
 
 @function text($name) {

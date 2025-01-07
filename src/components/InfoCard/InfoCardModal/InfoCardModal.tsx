@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import styles from './InfoCardModal.module.scss';
+
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Document } from '@contentful/rich-text-types';
 
@@ -22,9 +24,11 @@ export default function InfoCardModal({ id, title, description, background }: II
             background={background}
         >
             {description &&
-                <Text>
-                    {documentToReactComponents(description)}
-                </Text>
+                <div className={styles.container}>
+                    <Text>
+                        {documentToReactComponents(description)}
+                    </Text>
+                </div>
             }
         </ContentModal>
     );

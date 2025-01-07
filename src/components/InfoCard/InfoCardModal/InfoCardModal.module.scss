@@ -1,3 +1,5 @@
-.container {
+@use '@styles/dimensions.scss' as dimensions;
 
+.container {
+    padding: 0 dimensions.padding('lg');
 }

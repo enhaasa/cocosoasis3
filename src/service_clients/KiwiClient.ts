@@ -13,4 +13,16 @@ export class KiwiClient {
 
         return await this.client.get(target, true);
     }
+
+    public async getStaff() {
+        const target = `${this.endpoint}?type=staff`;
+
+        return await this.client.get(target, true);
+    }
+
+    public async getSpecialItem(categoryId: number) {
+        const target = `${this.endpoint}?type=specialMenuItem&category_id=${categoryId}`;
+
+        return await this.client.get(target, true);
+    }
 }

@@ -1,0 +1,34 @@
+@use '@styles/breakpoints.scss' as breakpoints;
+
+.container {
+
+    &.hidden {
+        opacity: 0;
+    }
+    
+    & .images {
+        width: 100%;
+
+        display: grid;
+        grid-auto-flow: column;
+
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    
+        @media (max-width: breakpoints.screen('tablet')) {
+            display: flex;
+            justify-content: center;
+    
+            & .test {
+                width: 80%;
+            }
+    
+            & .leftLeaf, & .rightLeaf {
+                display: none;
+            }
+        }
+    }
+}
