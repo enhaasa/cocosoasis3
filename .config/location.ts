@@ -5,7 +5,7 @@ const location = {
     area: 'The Goblet' as Area,
     ward: 2,
     plot: 8,
-    closestAetheryte: 'The Brimming Heart'
+    closestAetheryte: 'Goblet West'
 }
 
 export default location;
