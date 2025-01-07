@@ -6,7 +6,6 @@ import { type Partner } from '@hooks/cms/usePartners';
 // Components
 import Text from '@components/Text/Text';
 import Title from '@components/Title/Title';
-import LinkButton from '@components/LinkButton/LinkButton';
 
 // Utils
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
