@@ -17,36 +17,6 @@ export default function Footer() {
                         </Text>
                     </span>
                 </div>
-                <div className={styles.col}>
-                    <Text>
-                        Website by _enhasa
-                    </Text>
-                </div>
-                <div className={styles.col}>
-                    <Text>
-                        Website by _enhasa
-                    </Text>
-                </div>
-                <div className={styles.col}>
-                    <Text>
-                        Website by _enhasa
-                    </Text>
-                </div>
-                <div className={styles.col}>
-                    <Text>
-                        Website by _enhasa
-                    </Text>
-                </div>
-                <div className={styles.col}>
-                    <Text>
-                        Website by _enhasa
-                    </Text>
-                </div>
-                <div className={styles.col}>
-                    <Text>
-                        Website by _enhasa
-                    </Text>
-                </div>
             </nav>
         </div>    
     );
