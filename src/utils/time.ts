@@ -104,3 +104,7 @@ export type LocalTimezone = {
   
     return timeDiffParts.slice(0, 2).join(' ') || '0 days';
 }
+
+export function getCurrentYear() {
+  return new Date().getFullYear();
+}

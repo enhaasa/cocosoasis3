@@ -1,0 +1,12 @@
+@use '@styles/colors.scss' as colors;
+
+.container {
+    & a, & a:visited {
+        color: colors.text('secondary');
+        text-decoration: none;
+    }
+
+    & a:hover {
+        text-decoration: underline;
+    }
+}

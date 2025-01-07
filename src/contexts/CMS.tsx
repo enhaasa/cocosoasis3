@@ -10,12 +10,14 @@ import useVenue, { IUseVenue } from '@hooks/cms/useVenue';
 import useServices, { IUseServices } from '@hooks/cms/useServices';
 import useBookings, { IUseBookings } from '@hooks/cms/useBookings';
 import useMenu, { IUseMenu } from '@hooks/cms/useMenu';
+import usePartners, { IUsePartners } from '@hooks/cms/usePartners';
 
 export interface ICMSContext {
     home: IUseHome;
     about: IUseVenue;
     services: IUseServices;
     bookings: IUseBookings;
+    partners: IUsePartners;
     menu: IUseMenu;
     components: any;
     assets: any;
@@ -30,7 +32,7 @@ const pagesToFetch: any = {
     menuPage: 'kDjqBMkYFs6k5ZW79RTjj',
     venuePage: '34f4IKaKm2iYFOLPoJJ0JE',
     bookingsPage: '',
-
+    partnersPage: '5NK880y5IAoil7DxEHLgtu'
 };
 
 function CMSContextProvider({ children }: any) {
@@ -80,6 +82,7 @@ function CMSContextProvider({ children }: any) {
     const about = useVenue(pages.venuePage, assets, components);
     const services = useServices(pages.servicesPage, assets, components);
     const bookings = useBookings(pages.bookingsPage);
+    const partners = usePartners(pages.partnersPage, assets, components);
     const menu = useMenu(pages.menuPage, assets);
 
     return (
@@ -90,6 +93,7 @@ function CMSContextProvider({ children }: any) {
             about,
             services,
             bookings,
+            partners,
             menu
         }}>
             {children}

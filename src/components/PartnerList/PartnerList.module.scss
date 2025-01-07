@@ -1,3 +1,38 @@
-.container {
+@use '@styles/breakpoints.scss' as breakpoints;
+@use '@styles/dimensions.scss' as dimensions;
+@use '@styles/colors.scss' as colors;
 
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: dimensions.margin('lg');
+
+    & .category {
+        display: grid;
+        align-content: start;
+
+        & .title {
+            color: colors.text('primary');
+        }
+
+        & .title, & .list {
+            text-align: center;
+        }
+        
+        & .list {
+            display: grid;
+            column-gap: dimensions.margin('md');
+            grid-template-columns: 1fr;
+            color: colors.text('secondary');
+        }
+    }
+
+    @media (max-width: breakpoints.screen('tablet')) {
+        justify-content: start;
+    }
+
+    @media (max-width: breakpoints.screen('phone')) {
+        justify-content: space-around;
+    }
 }

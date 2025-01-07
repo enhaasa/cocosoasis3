@@ -23,7 +23,7 @@ function PageContextProvider({ children }: any) {
         <PageContext.Provider value={{
             navigator,
             storedEvents,
-            singleInteractions
+            singleInteractions,
         }}>
             {children}
         </PageContext.Provider>
