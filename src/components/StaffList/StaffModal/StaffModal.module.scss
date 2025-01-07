@@ -54,14 +54,14 @@
             & .left {
                 margin-left: -50px;
                 transform: rotate(45deg);
-                animation: left-appear 1.5s ease;
+                //animation: left-appear 1.5s ease;
             }
 
             & .right {
                 margin-bottom: 0;
                 margin-right: -10px;
                 transform: rotate(-35deg);
-                animation: right-appear 1.5s ease;
+                //animation: right-appear 1.5s ease;
             }
 
             @keyframes left-appear {
@@ -80,7 +80,7 @@
                 }
             }
 
-            @media (max-width: breakpoints.screen('tablet')) {
+            @media (max-width: breakpoints.halfway('desktop', 'tablet')) {
                 align-items: center;
 
                 & .left, & .right {
