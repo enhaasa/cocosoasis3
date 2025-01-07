@@ -125,8 +125,10 @@ export default function StaffModal({ id, character }: IStaffModal) {
                     }
 
                     <div className={styles.plantWrapper}>
-                        <img src={PalmImage1} className={styles.left} />
-                        <img src={PalmImage2} className={styles.right}/>
+                        <div className={styles.innerWrapper}>
+                            <img src={PalmImage2} className={styles.left} />
+                            <img src={PalmImage1} className={styles.right}/>
+                        </div>
                     </div>
                 </div>
 

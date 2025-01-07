@@ -44,53 +44,47 @@
             height: 100%;
             pointer-events: none;
 
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
             z-index: -1;
 
             overflow-x: hidden;
 
-            & .left {
-                margin-left: -50px;
-                transform: rotate(45deg);
-                //animation: left-appear 1.5s ease;
-            }
+            & .innerWrapper {
+                position: relative;
 
-            & .right {
-                margin-bottom: 0;
-                margin-right: -10px;
-                transform: rotate(-35deg);
-                //animation: right-appear 1.5s ease;
+                & .left {
+                    position: absolute;
+                    animation: left-appear 1.5s ease;
+                    left: 32%;
+                    top: 50%;
+                    transform: translateY(10%) translateX(-50%) rotate(-40deg);
+                }
+    
+                & .right {
+                    position: absolute;
+                    animation: right-appear 1.5s ease;
+                    right: 30%;
+                    top: 50%;
+                    transform: translateY(20%) translateX(50%) rotate(45deg);
+                }
             }
 
             @keyframes left-appear {
-                0% {
-                    margin-bottom: -50px;
-                    margin-left: -350px;
-                    transform: rotate(0deg);
+                from {
+                    left: 40%;
+                    transform: translateY(80%);
                 }
             }
 
             @keyframes right-appear {
-                0% {
-                    transform: rotate(0deg);
-                    margin-bottom: -50px;
-                    margin-right: -350px;
-                }
-            }
-
-            @media (max-width: breakpoints.halfway('desktop', 'tablet')) {
-                align-items: center;
-
-                & .left, & .right {
-                    height: 360px;
+                from {
+                    transform: translateY(80%);
+                    right: 40%;
                 }
             }
 
             @media (max-width: breakpoints.screen('phone')) {
                 & .left, & .right {
-                    height: 350px;
+                    animation: none;
                 }
             }
         }
