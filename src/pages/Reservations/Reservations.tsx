@@ -39,7 +39,7 @@ export default function Reservations() {
 
                     <div className={styles.title}>
 
-                        <Title headline='Ready to make your event unforgettable?' subline='' size='xl' />
+                        <Title headline='Ready to make your evening unforgettable?' subline='' size='xl' />
                         <div className={styles.subline}>
                             <Text>
                                 Head over to the
