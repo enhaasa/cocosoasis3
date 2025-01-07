@@ -53,7 +53,7 @@
 
                 & .left {
                     position: absolute;
-                    animation: left-appear 1.5s ease;
+                    animation: left-appear 1.3s ease;
                     left: 32%;
                     top: 50%;
                     transform: translateY(10%) translateX(-50%) rotate(-40deg);
@@ -61,7 +61,7 @@
     
                 & .right {
                     position: absolute;
-                    animation: right-appear 1.5s ease;
+                    animation: right-appear 1.3s ease;
                     right: 30%;
                     top: 50%;
                     transform: translateY(20%) translateX(50%) rotate(45deg);
@@ -71,13 +71,13 @@
             @keyframes left-appear {
                 from {
                     left: 40%;
-                    transform: translateY(80%);
+                    transform: translateY(100%);
                 }
             }
 
             @keyframes right-appear {
                 from {
-                    transform: translateY(80%);
+                    transform: translateY(100%);
                     right: 40%;
                 }
             }
