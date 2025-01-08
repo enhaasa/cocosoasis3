@@ -14,8 +14,8 @@ export default function SiteContainer({ children }: ISiteContainer) {
     const { navigator, singleInteractions } = useContext(PageContext);
 
     useEffect(() => {
-        if (!['/', '/home'].includes(navigator.getCurrentPath())) {
-            singleInteractions.startScreen.setHasSeenStartScreen(true);
+        if (!['/', '/home'].includes(navigator?.getCurrentPath())) {
+            singleInteractions?.startScreen?.setHasSeenStartScreen(true);
         }
     }, []);
 

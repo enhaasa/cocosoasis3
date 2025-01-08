@@ -8,7 +8,7 @@ import { ContentfulClient } from '@service_clients/ContentfulClient';
 import useHome, { IUseHome } from '@hooks/cms/useHome';
 import useVenue, { IUseVenue } from '@hooks/cms/useVenue';
 import useServices, { IUseServices } from '@hooks/cms/useServices';
-import useBookings, { IUseBookings } from '@hooks/cms/useBookings';
+import useReservations, { IUseReservations } from '@hooks/cms/useReservations';
 import useMenu, { IUseMenu } from '@hooks/cms/useMenu';
 import usePartners, { IUsePartners } from '@hooks/cms/usePartners';
 
@@ -16,7 +16,7 @@ export interface ICMSContext {
     home: IUseHome;
     about: IUseVenue;
     services: IUseServices;
-    bookings: IUseBookings;
+    reservations: IUseReservations;
     partners: IUsePartners;
     menu: IUseMenu;
     components: any;
@@ -31,7 +31,8 @@ const pagesToFetch: any = {
     servicesPage: 'servicesPage',
     menuPage: 'menuPage',
     venuePage: 'aboutPage',
-    partnersPage: 'partnersPage'
+    partnersPage: 'partnersPage',
+    reservationsPage: 'reservationsPage'
 };
 
 function CMSContextProvider({ children }: any) {
@@ -80,7 +81,7 @@ function CMSContextProvider({ children }: any) {
     const home = useHome(pages.landingPage, assets);
     const about = useVenue(pages.venuePage, assets, components);
     const services = useServices(pages.servicesPage, assets, components);
-    const bookings = useBookings(pages.bookingsPage);
+    const reservations = useReservations(pages.reservationsPage);
     const partners = usePartners(pages.partnersPage, assets, components);
     const menu = useMenu(pages.menuPage, assets);
 
@@ -91,7 +92,7 @@ function CMSContextProvider({ children }: any) {
             home,
             about,
             services,
-            bookings,
+            reservations,
             partners,
             menu
         }}>

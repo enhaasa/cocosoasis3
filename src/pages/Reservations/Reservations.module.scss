@@ -4,7 +4,7 @@
 @use '@styles/breakpoints.scss' as breakpoints;
 
 .container {
-    height: 100vh;
+    height: 100%;
 
     & .teaser {
         display: flex;
@@ -26,10 +26,42 @@
             & .subline {
                 color: colors.text('secondary');
             }
+
+            & .description {
+                text-align: center;
+            }
         }
 
         @media (max-width: breakpoints.screen('tablet')) {
             margin: dimensions.margin('lg') dimensions.margin('md');
+        }
+
+        & .lagoon {
+            & .logo {
+                display: flex;
+                justify-content: center;
+                margin-bottom: dimensions.margin('lg');
+
+                & img {
+                    height: 250px;
+                    max-width: 100%;
+                }
+            }
+
+            & .description {
+                color: colors.text('secondary');
+                text-align: center;
+
+                & a {
+                    color: colors.text('primary');
+                }
+            }
+
+            & nav {
+                display: flex;
+                justify-content: center;
+                gap: dimensions.margin('md');
+            }
         }
     }
 }
