@@ -5,7 +5,7 @@
 
 .container {
    display: grid;
-   gap: dimensions.margin('xl');
+   gap: dimensions.margin('lg');
 
    @media (max-width: breakpoints.screen('tablet')) {
       gap: dimensions.margin('lg');
@@ -38,7 +38,7 @@
    }
 
    & .highlights {
-      margin: dimensions.margin('xxl');
+      margin: 0 dimensions.margin('xxl');
 
       @media (max-width: breakpoints.screen("tablet")) {
          margin: 0 dimensions.margin('md');

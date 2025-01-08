@@ -17,6 +17,7 @@ import Separator from '@components/Separator/Separator';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 // Logo
+import OasisLogo from '@assets/logo/logo.webp';
 import LagoonLogo from '@assets/logo/lagoon-250.webp';
 
 export default function Reservations() {
@@ -44,6 +45,10 @@ export default function Reservations() {
                 <div className={styles.content}>
 
                     <div className={styles.title}>
+
+                        <div className={styles.logo}>
+                            <img src={OasisLogo} />
+                        </div>
 
                         <Title headline='Ready to make your evening unforgettable?' subline='' size='xl' />
                         <div className={styles.subline}>
