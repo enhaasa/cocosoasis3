@@ -27,12 +27,11 @@ const CMSContext = createContext<ICMSContext>({} as ICMSContext);
 const client = new ContentfulClient();
 
 const pagesToFetch: any = {
-    landingPage: '1u8zPQ05ApcdTfu7CQNe6E',
-    servicesPage: '71G1HyUiJr1hpdjOfGmVMO',
-    menuPage: 'kDjqBMkYFs6k5ZW79RTjj',
-    venuePage: '34f4IKaKm2iYFOLPoJJ0JE',
-    bookingsPage: '',
-    partnersPage: '5NK880y5IAoil7DxEHLgtu'
+    landingPage: 'landingPage',
+    servicesPage: 'servicesPage',
+    menuPage: 'menuPage',
+    venuePage: 'aboutPage',
+    partnersPage: 'partnersPage'
 };
 
 function CMSContextProvider({ children }: any) {
@@ -55,7 +54,7 @@ function CMSContextProvider({ children }: any) {
             
             Object.keys(pagesToFetch).forEach(page => {
                 const resultEntryIndex = result.items.findIndex((entry: any) => {
-                    return entry && entry.sys.id === pagesToFetch[page];
+                    return entry && entry.sys.contentType.sys.id === pagesToFetch[page];
                 });
             
                 if (resultEntryIndex !== -1) {
