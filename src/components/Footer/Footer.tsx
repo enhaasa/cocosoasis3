@@ -1,4 +1,8 @@
 import styles from './Footer.module.scss';
+import { useContext } from 'react';
+
+// Contexts
+import { KiwiContext } from '@contexts/Kiwi';
 
 // Components
 import Text from '@components/Text/Text';
@@ -11,6 +15,8 @@ import { getCurrentYear } from '@utils/time';
 import GithubIcon from '@assets/external_icons/github-mark-white.svg';
 
 export default function Footer() {
+    const { realm } = useContext(KiwiContext);
+
     return (
         <div className={styles.container}>
             <nav className={styles.nav}>
@@ -41,7 +47,7 @@ export default function Footer() {
 
                         <div className={styles.links}>
                             <Text size='sm'>
-                                <a href='https://google.se' target='_blank'>Coco's Oasis Discord</a>
+                                <a href={realm.data?.discord_invite_link} target='_blank'>Coco's Oasis Discord</a>
                             </Text>
                             <Text size='sm'>
                                 <a href='https://lagoon.events' target='_blank'>The Lagoon</a>

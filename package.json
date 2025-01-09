@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^16.0.0",
-    "@enhasa/kiwicore": "^1.0.6",
+    "@enhasa/kiwicore": "^1.0.7",
     "gsap": "^3.12.5",
     "html-react-parser": "^5.2.2",
     "path": "^0.12.7",

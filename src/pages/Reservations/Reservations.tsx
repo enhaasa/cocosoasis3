@@ -4,6 +4,7 @@ import { useContext } from 'react';
 // Contexts
 import { CMSContext } from '@contexts/CMS';
 import { PageContext } from '@contexts/Page';
+import { KiwiContext } from '@contexts/Kiwi';
 
 // Components
 import Page from '@components/Page/Page';
@@ -24,9 +25,10 @@ export default function Reservations() {
 
     const { reservations } = useContext(CMSContext);
     const { navigator } = useContext(PageContext);
+    const { realm } = useContext(KiwiContext);
 
     function handleDiscordClick() {
-        navigator.externalNavigate('', true);
+        navigator.externalNavigate(realm.data?.discord_invite_link ?? '', true);
     }
 
     return (
