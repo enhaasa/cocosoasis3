@@ -15,9 +15,10 @@ type ReservationsContent = {
         headline: string;
     },
     lagoonDescription: Document,
+    background?: string;
 }
 
-export default function useReservations(page: any) {
+export default function useReservations(page: any, assets: any) {
    const [ content, setContent ] = useState<null | ReservationsContent>(null);
    const isLoaded = useRef<boolean>(false);
 
@@ -27,11 +28,13 @@ export default function useReservations(page: any) {
         const { fields } = page;
 
         setContent({
-            description: fields.description,
+            description: fields.description
+            ,
             lagoonTitle: {
                 headline: fields.lagoonHeadline,
             },
-            lagoonDescription: fields.lagoonDescription
+            lagoonDescription: fields.lagoonDescription,
+            background: assets[fields.background?.sys.id]?.file?.url
         });
 
     }, [ page ]);

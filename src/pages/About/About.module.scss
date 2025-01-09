@@ -7,12 +7,20 @@
    display: grid;
    gap: dimensions.margin('lg');
 
-   @media (max-width: breakpoints.screen('tablet')) {
-      gap: dimensions.margin('lg');
-   }
-
    @media (max-width: breakpoints.screen('phone')) {
       gap: dimensions.margin('md');
+   }
+
+   & .logo {
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin: dimensions.margin('lg') 0;
+
+      & img {
+         max-width: 100%;
+      }
    }
    
    & .highlights {
@@ -34,7 +42,7 @@
    }
 
    & .title {
-      margin-top: dimensions.margin('xxl');
+      margin-top: dimensions.margin('xl');
    }
 
    & .highlights {

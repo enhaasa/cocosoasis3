@@ -32,7 +32,7 @@ export default function Reservations() {
     }
 
     return (
-        <Page>
+        <Page background={reservations.content?.background}>
             <div className={styles.container}>
                 <div className={styles.teaser}>
                     <div></div>
@@ -71,9 +71,11 @@ export default function Reservations() {
                                 <Text>
                                     {documentToReactComponents(reservations?.content?.description)}
                                 </Text>
+
+                                <Button name='Book a table for free' onClick={handleDiscordClick} style='accent' />
                             </div>
                         }
-                        <Button name='Book a table for free' onClick={handleDiscordClick} style='accent' />
+                        
                     </div>
 
                     <Separator />
@@ -86,25 +88,25 @@ export default function Reservations() {
                             </a>
                         </div>
 
-                        <div className={styles.title}>
-                            <Title 
-                                headline={reservations.content?.lagoonTitle.headline ?? ''}
-                                size='lg'
-                            />
-                        </div>
-
                         {reservations?.content?.lagoonDescription &&
                             <div className={styles.description}>
+                                <div className={styles.title}>
+                                    <Title 
+                                        headline={reservations.content?.lagoonTitle.headline ?? ''}
+                                        size='lg'
+                                    />
+                                </div>
+
                                 <Text>
                                     {documentToReactComponents(reservations?.content?.lagoonDescription)}
                                 </Text>
+
+                                <nav>
+                                    <Button name='Lagoon Site' onClick={() => {navigator.externalNavigate('https://lagoon.events/', true)}} style='neutral' />
+                                    <Button name='Book a private event' onClick={handleDiscordClick} style='accent' />
+                                </nav>
                             </div>
                         }
-
-                        <nav>
-                            <Button name='Lagoon Site' onClick={() => {navigator.externalNavigate('https://lagoon.events/', true)}} style='neutral' />
-                            <Button name='Book a private event' onClick={handleDiscordClick} style='accent' />
-                        </nav>
                     </div>
 
                 </div>

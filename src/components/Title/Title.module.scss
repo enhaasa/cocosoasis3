@@ -134,4 +134,10 @@
     &.centered {
         text-align: center;
     }
+
+    & .wing {
+        @media (max-width: breakpoints.screen('phone')) {
+            display: none;
+        }
+    }
 }

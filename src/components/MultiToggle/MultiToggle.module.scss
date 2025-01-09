@@ -20,7 +20,7 @@
             
             cursor: pointer;
             color: colors.text('primary');
-            background: colors.bg('primary');
+            background: rgba(0, 0, 0, 0.75);
             padding: dimensions.padding('md') dimensions.padding('xl');
 
             &.xs {
@@ -68,7 +68,6 @@
             }
 
             &:not(.selected) {
-                box-shadow: inset decorations.box-shadow('sm');
                 filter: brightness(0.6);
 
                 &:hover {

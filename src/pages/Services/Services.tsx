@@ -20,7 +20,7 @@ export default function Services() {
     const ref = useRef(null);
 
     return (
-        <Page>
+        <Page background={services?.content?.background}>
             <div className={styles.container}>
                 <div className={styles.content}>
 

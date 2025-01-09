@@ -27,7 +27,9 @@ export default function useVenue(page: any, assets: any, components: any) {
         setContent({
             headline: fields.headline,
             subline: fields.subline,
-            highlights: parsedHighlights
+            highlights: parsedHighlights,
+            background: assets[fields?.background?.sys?.id]?.file?.url,
+            rules: fields.rules
         });
         
     }, [ page, assets, components ]);

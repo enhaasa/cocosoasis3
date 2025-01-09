@@ -1,12 +1,20 @@
 @use '@styles/dimensions.scss' as dimensions;
 @use '@styles/breakpoints.scss' as breakpoints;
+@use '@styles/decorations.scss' as decorations;
 
 .container {
+    margin: 0 dimensions.margin('xxl');
+
     & .list {
         display: grid;
         align-items: end;
         grid-template-columns: repeat(7, 1fr);
         gap: dimensions.margin('lg');
+
+        background: rgba(0, 0, 0, 0.75);
+        padding: dimensions.padding('xl');
+        border-radius: decorations.border-radius('md');
+        box-shadow: decorations.box-shadow('md');
 
         @media (max-width: breakpoints.screen('desktop')) {
             grid-template-columns: repeat(6, 1fr);
@@ -24,4 +32,9 @@
             grid-template-columns: repeat(2, 1fr);
         }
     }
+
+    @media (max-width: breakpoints.screen('tablet')) {
+        margin: 0 dimensions.margin('md');
+    }
+
 }

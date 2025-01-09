@@ -16,6 +16,7 @@ export type Partner = {
 export type PartnersContent = {
     partners: Partner[],
     communities: Partner[],
+    background?: string;
 }
 
 export interface IUsePartners {
@@ -50,7 +51,8 @@ export default function usePartners(page: any, assets: any, components: any) {
 
         setContent({
             partners: parsedPartners,
-            communities: parsedCommunities
+            communities: parsedCommunities,
+            background: assets[fields.background?.sys?.id]?.file?.url
         });
 
     }, [ page ]);

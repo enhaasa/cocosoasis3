@@ -13,7 +13,7 @@
         margin: dimensions.margin('xxl');
         padding: dimensions.padding('xl');
         box-shadow: decorations.box-shadow('md');
-        background: colors.bg('secondary');
+        background: rgba(0, 0, 0, 0.75);
         border-radius: decorations.border-radius('md');
 
         @media (max-width: breakpoints.screen('tablet')) {

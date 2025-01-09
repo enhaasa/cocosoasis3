@@ -1,11 +1,17 @@
 @use '@styles/dimensions.scss' as dimensions;
 @use '@styles/breakpoints.scss' as breakpoints;
+@use '@styles/decorations.scss' as decorations;
 
 .container {
     display: flex;
     
-    margin: dimensions.margin('md') 0;
+    margin: dimensions.margin('lg') 0;
     gap: dimensions.margin('lg');
+
+    background: rgba(0, 0, 0, 0.75);
+    padding: dimensions.padding('xl');
+    border-radius: decorations.border-radius('md');
+    box-shadow: decorations.box-shadow('md');
 
     &:nth-child(even) {
         flex-direction: row-reverse;

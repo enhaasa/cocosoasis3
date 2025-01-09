@@ -14,7 +14,7 @@ export default function Partners() {
     const { partners } = useContext(CMSContext);
 
     return (
-        <Page>
+        <Page background={partners.content?.background}>
             <div className={styles.container}>
                 <div className={styles.title}>
                     <Title 

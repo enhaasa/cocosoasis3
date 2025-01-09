@@ -81,7 +81,7 @@ function CMSContextProvider({ children }: any) {
     const home = useHome(pages.landingPage, assets);
     const about = useVenue(pages.venuePage, assets, components);
     const services = useServices(pages.servicesPage, assets, components);
-    const reservations = useReservations(pages.reservationsPage);
+    const reservations = useReservations(pages.reservationsPage, assets);
     const partners = usePartners(pages.partnersPage, assets, components);
     const menu = useMenu(pages.menuPage, assets);
 
