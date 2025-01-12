@@ -11,6 +11,11 @@
     & .nextOpening {
         display: grid;
         place-items: center;
+        gap: dimensions.margin('lg');
+
+        & .countdown {
+            text-align: center;
+        }
 
         & .title, & .location {
             color: colors.text('secondary');
@@ -24,7 +29,6 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                margin-top: dimensions.margin('sm');
 
                 & .localeInfoButton {
                     margin: 0;
@@ -50,6 +54,5 @@
                 }
             }
         }
-
     }
 }

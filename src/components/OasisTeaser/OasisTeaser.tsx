@@ -16,15 +16,16 @@ export default function OasisTeaser() {
 
     return (
         <div className={styles.container}>
-
+            
             <div className={styles.wrapper}>
+
                 <div className={styles.nextEvent}>
                     <DiscordEvent event={discord.data.nextDiscordEvent} />
                 </div>
 
                 <nav className={styles.nav}>
                     <Button 
-                        name='Info & Location' 
+                        name='What the heck?' 
                         onClick={() => navigator.internalNavigate('/about')} 
                         style='neutral'
                     />
@@ -34,7 +35,6 @@ export default function OasisTeaser() {
                         onClick={() => navigator.internalNavigate('/reservations')} 
                         style='accent'
                     />
-
                 </nav>
             </div>
         </div>    

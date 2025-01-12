@@ -24,6 +24,7 @@
                 justify-content: space-around;
                 align-items: center;
                 width: 100%;
+                
 
                 & .countdown {
                     
@@ -34,16 +35,35 @@
 
                     & .date {
                         text-align: center;
-
+            
                         & .timezone {
                             color: colors.text('secondary');
                             display: flex;
                             justify-content: center;
                             align-items: center;
-
+                            margin-top: dimensions.margin('sm');
+            
                             & .localeInfoButton {
                                 margin: 0;
                                 padding: 0;
+                            }
+                        }
+            
+                        & .timeunit {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            gap: dimensions.margin('sm');
+            
+                            img {
+                                height: 22px;
+            
+                                @media (max-width: breakpoints.screen('tablet')) {
+                                    height: 16px;
+                                }
+                                @media (max-width: breakpoints.screen('phone')) {
+                                    height: 14px;
+                                }
                             }
                         }
                     }

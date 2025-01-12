@@ -4,7 +4,11 @@ import Location from '../Location';
 // Config
 import location from '@config/location';
 
-export default function OasisLocation() {
+interface IOasisLocation {
+    isCentered?: boolean;
+}
+
+export default function OasisLocation({ isCentered }: IOasisLocation) {
 
     return (
         <Location
@@ -13,6 +17,7 @@ export default function OasisLocation() {
             ward={location.ward}
             plot={location.plot}
             closestAetheryte={location.closestAetheryte}
+            isCentered={isCentered}
         />    
     );
 }
