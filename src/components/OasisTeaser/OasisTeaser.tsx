@@ -25,7 +25,7 @@ export default function OasisTeaser() {
 
                 <nav className={styles.nav}>
                     <Button 
-                        name='What the heck?' 
+                        name='About us' 
                         onClick={() => navigator.internalNavigate('/about')} 
                         style='neutral'
                     />
