@@ -9,6 +9,7 @@ import Page from '@components/Page/Page';
 import Title from '@components/Title/Title';
 import PartnerCard from './PartnerCard/PartnerCard';
 import Separator from '@components/Separator/Separator';
+import ChainSpawn from '@components/ChainSpawn/ChainSpawn';
 
 export default function Partners() {
     const { partners } = useContext(CMSContext);
@@ -29,10 +30,13 @@ export default function Partners() {
                 <Separator />
 
                 <div className={styles.partnerVenues}>
-                    {partners.content?.partners.map((partner, index) => (
-                        <PartnerCard key={`PartnerCardVenue-${index}`} partner={partner} />
-                    ))
-                    }
+                    <ChainSpawn 
+                        items={partners.content?.partners.map((partner, index) => (
+                            <PartnerCard key={`PartnerCardVenue-${index}`} partner={partner} />
+                        )) ?? []
+
+                        }
+                    />
                 </div>
 
                 <div className={styles.title}>
@@ -48,10 +52,13 @@ export default function Partners() {
                 <Separator />
 
                 <div className={styles.partnerVenues}>
-                    {partners.content?.communities.map((partner, index) => (
-                        <PartnerCard key={`PartnerCardCommunity-${index}`} partner={partner} />
-                    ))
-                    }
+                    <ChainSpawn 
+                        items={partners.content?.communities.map((partner, index) => (
+                            <PartnerCard key={`PartnerCardCommunity-${index}`} partner={partner} />
+                        )) ?? []
+                        }
+                    
+                    />
                 </div>
             </div>    
         </Page>
