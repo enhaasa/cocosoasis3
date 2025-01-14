@@ -30,7 +30,6 @@
                     overflow: hidden;
              
                     & .image {
-
                         object-fit: contain;
                     }
                 }
@@ -39,6 +38,11 @@
         
         & .navButton {
             display: flex;
+
+            & button {
+                border-radius: none;
+                box-shadow: none;
+            }
             
             &:hover {
                 background: colors.bg('secondary');

@@ -20,7 +20,7 @@ export default function Services() {
     const ref = useRef(null);
 
     return (
-        <Page>
+        <Page background={services?.content?.background}>
             <div className={styles.container}>
                 <div className={styles.content}>
 
@@ -35,12 +35,14 @@ export default function Services() {
                         />
                     </div>
 
-                    <Separator label='Included' size='md' />
-                    <Title
-                        headline='Enjoy our included offerings to enhance your dining experience at our restaurant.'
-                        isCentered={true}
-                        size='md'
-                    />
+                    <div>
+                        <Separator label='Included' size='md' />
+                        <Title
+                            headline='Enjoy our included offerings to enhance your dining experience at our restaurant.'
+                            isCentered={true}
+                            size='md'
+                        />
+                    </div>
                         
                     <div className={styles.services} ref={ref}>
                         {services.content?.includedServices.length > 0 &&

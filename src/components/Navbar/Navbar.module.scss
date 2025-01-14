@@ -19,6 +19,10 @@
         display: none;
         z-index: 0;
         @include centered(left, 0);
+
+        & button {
+            box-shadow: none;
+        }
     }
 
     & .nav {

@@ -11,7 +11,6 @@ import { DiscordContextProvider } from '@contexts/Discord';
 import Header from './components/Header/Header';
 import OffCanvas from '@components/OffCanvas/OffCanvas';
 import ModalManager from '@components/ModalManager/ModalManager';
-import Footer from '@components/Footer/Footer';
 import SiteContainer from '@components/SiteContainer/SiteContainer';
 
 // Pages
@@ -40,7 +39,6 @@ function App() {
                       }
                       <Route path={'/e/:slug'} element={<Event />}/>
                     </Routes>
-                    <Footer />
                   </SiteContainer>
                 </PageContextProvider>
               </DiscordContextProvider>

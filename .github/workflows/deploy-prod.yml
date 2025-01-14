@@ -1,0 +1,42 @@
+name: Deploy to Prod
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Build frontend
+      - name: Install dependencies and build frontend
+        run: |
+          npm install
+          npm run build
+          
+      # Frontend 
+      - name: Deploy frontend to Hostinger
+        uses: SamKirkland/ftp-deploy-action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_HOST_PROD }}
+          username: ${{ secrets.FTP_USERNAME_PROD }}
+          password: ${{ secrets.FTP_PASSWORD_PROD }}
+          local-dir: dist/
+          server-dir: /
+
+      # Backend
+      - name: Deploy backend to Hostinger
+        uses: SamKirkland/ftp-deploy-action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_HOST_PROD }}
+          username: ${{ secrets.FTP_USERNAME_PROD }}
+          password: ${{ secrets.FTP_PASSWORD_PROD }}
+          local-dir: backend/
+          server-dir: /backend/
+          exclude: |
+            **/vendor/**

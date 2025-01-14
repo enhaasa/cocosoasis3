@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import NavList from '@components/NavList/NavList';
 import LinkButton from '../LinkButton/LinkButton';
 import Button from '../Button/Button';
-//import EventNavigation from '@components/EventNavigation/EventNavigation';
+import EventNavigation from '@components/EventNavigation/EventNavigation';
 
 // Contexts
 import { UIContext } from '@contexts/UI';
@@ -50,13 +50,17 @@ export default function Navbar() {
             <span className={styles.nav}>
                 { navbar.map((item, index) => (
                     <LinkButton 
-                        key={`NavbarItem${index}`}
+                        key={`NavbarItem-${index}`}
                         name={item.name}
                         icon={item.icon}
                         target={item.target}
                         isActive={getIsCurrentPathByIndex(item.target)}
                     />
                 )) }
+            </span>
+
+            <span className={styles.eventNav}>
+                <EventNavigation />
             </span>
         </div>    
     );

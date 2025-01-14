@@ -5,10 +5,12 @@ import { createContext } from 'react';
 import { KiwiClient } from '@service_clients/KiwiClient';
 
 // Hooks
+import useRealm, { UseRealm } from '@hooks/kiwi/useRealm';
 import useMenu, { UseMenu } from '@hooks/kiwi/useMenu';
 import useStaff, { UseStaff } from '@hooks/kiwi/useStaff';
 
 export interface IKiwiContext {
+    realm: UseRealm;
     menu: UseMenu;
     staff: UseStaff;
 }
@@ -17,11 +19,13 @@ const KiwiContext = createContext<IKiwiContext>({} as IKiwiContext);
 const client = new KiwiClient();
 
 function KiwiContextProvider({ children }: any) {
-   const menu = useMenu(client);
-   const staff = useStaff(client);
+    const realm = useRealm(client);
+    const menu = useMenu(client);
+    const staff = useStaff(client);
 
     return (
         <KiwiContext.Provider value={{
+            realm,
             menu,
             staff
         }}>

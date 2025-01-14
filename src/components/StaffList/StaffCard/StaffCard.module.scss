@@ -74,6 +74,11 @@
                 width: 150px;
                 height: 150px;
             }
+
+            @media (max-width: breakpoints.screen('tablet')) {
+                width: 140px;
+                height: 140px;
+            }
         }
     }
 

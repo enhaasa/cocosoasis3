@@ -4,7 +4,7 @@
 @use '@styles/breakpoints.scss' as breakpoints;
 
 .container {
-    height: 100vh;
+    display: grid;
 
     & .teaser {
         display: flex;
@@ -16,20 +16,81 @@
         padding: dimensions.padding('md');
     }
 
+    & .description {
+        margin-top: dimensions.margin('xl');
+        background: rgba(0, 0, 0, 0.75);
+        padding: dimensions.padding('xl');
+        border-radius: decorations.border-radius('md');
+        box-shadow: decorations.box-shadow('md');
+        justify-self: center;
+    }
+
     & .content {
         margin: dimensions.margin('lg') dimensions.margin('xl');
 
-        & .title {
-            display: grid;
-            justify-items: center;
+        @media (max-width: breakpoints.screen('tablet')) {
+            margin: dimensions.margin('lg') dimensions.margin('md');
+        }
 
-            & .subline {
-                color: colors.text('secondary');
+        & .lagoon {
+            display: grid;
+
+            & .logo {
+                display: flex;
+                justify-content: center;
+
+                & img {
+                    height: 250px;
+                    max-width: 100%;
+
+                    @media (max-width: breakpoints.screen('tablet')) {
+                        height: 200px;
+                    }
+
+                    @media (max-width: breakpoints.screen('phone')) {
+                        height: 100px;
+                    }
+                }
+            }
+
+            & .description {
+             
+                text-align: center;
+
+                & a {
+                    color: colors.text('primary');
+                }
+            }
+
+            & nav {
+                display: flex;
+                justify-content: center;
+                gap: dimensions.margin('md');
+            }
+        }
+    }
+
+    & .title {
+        display: grid;
+        text-align: center;
+
+        & .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: dimensions.margin('lg');
+
+            & img {
+                max-height: 100px;
+                max-width: 100%;
             }
         }
 
-        @media (max-width: breakpoints.screen('tablet')) {
-            margin: dimensions.margin('lg') dimensions.margin('md');
+        & .subline {
+            color: colors.text('secondary');
+        }
+
+        & .description {
+            text-align: center;
         }
     }
 }

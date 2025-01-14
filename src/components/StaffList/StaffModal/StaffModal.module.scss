@@ -34,7 +34,7 @@
         align-items: end;
 
         position: relative;
-        overflow-y: auto;
+        overflow-y: hidden;
 
         & .plantWrapper {
             display: absolute;
@@ -46,7 +46,7 @@
 
             z-index: -1;
 
-            overflow-x: hidden;
+            overflow: hidden;
 
             & .innerWrapper {
                 position: relative;

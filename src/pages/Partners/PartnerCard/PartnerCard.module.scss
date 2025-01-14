@@ -1,0 +1,26 @@
+@use '@styles/dimensions.scss' as dimensions;
+@use '@styles/colors.scss' as colors;
+
+.container {
+    display: grid;
+    justify-content: center;
+    align-content: start;
+
+    & .name {
+        margin-bottom: dimensions.margin('md');
+    }
+
+    & .logo, &.name {
+        display: flex;
+        justify-content: center;
+    }
+
+    & .links {
+        display: flex;
+        justify-content: space-around;
+
+        & a {
+            color: colors.text('primary');
+        }
+    }
+}

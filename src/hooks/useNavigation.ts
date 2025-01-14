@@ -26,6 +26,10 @@ export interface IUseNavigation {
     getPageIndexByPath: (T: string) => number;
 }
 
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 export default function useNavigation() {
     const navigate = useNavigate();
     const location = useLocation();
@@ -66,10 +70,12 @@ export default function useNavigation() {
         setCurrentPageIndex(getPageIndexByPath(path));
         page.hide();
 
+        scrollToTop();
+
         setTimeout(() => {
             navigate(path);
             page.show();
-        }, PAGE_NAVIGATION_DELAY)
+        }, PAGE_NAVIGATION_DELAY);        
     }
 
     function externalNavigate(path: string, isNewTab: boolean = false) {

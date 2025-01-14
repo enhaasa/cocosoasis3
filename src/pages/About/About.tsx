@@ -15,30 +15,27 @@ import Title from '@components/Title/Title';
 import Separator from '@components/Separator/Separator';
 import PageCTA from '@components/PageCTA/PageCTA';
 import StaffList from '@components/StaffList/StaffList';
+import Rules from '@components/Rules/Rules';
+
+// LOgo
+import Logo from '@assets/logo/logo.webp';
 
 export default function About() {
     const { about } = useContext(CMSContext);
 
     return (
-        <Page>
+        <Page background={about?.content?.background}>
             <div className={styles.container}>
                 <div className={styles.teaser}>
                     <OasisLocation />
-                
                     <VenueDetails />
                 </div>
-                
-                <div className={styles.title}>
-                    <Title 
-                        headline={about?.content?.headline}
-                        subline={about?.content?.subline}
-                        size='xl'
-                        isCentered={true}
-                        style='signature'
-                    />
+            
+                <div className={styles.logo}>
+                    <img src={Logo} />
                 </div>
 
-                <Separator />
+                <Rules />
 
                 <div className={styles.highlights}>
                 {
@@ -60,6 +57,7 @@ export default function About() {
                         size='xl'
                         isCentered={true}
                         style='signature'
+                        isWinged={true}
                     />
                 </div>
 

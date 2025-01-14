@@ -40,7 +40,7 @@ export default function SpecialDiningItems({ items }: ISpecialDiningItems) {
                     <Title headline='Deals of the Week' style='signature' isNeon={true} size='md' />
                     
                     {parsedItems.map((item, index) => (
-                        <>
+                        <div key={`SpecialDiningItemWrapper-${index}`}>
                             <DiningItem 
                                 key={`SpecialDiningItem-${index}`}
                                 item={item} 
@@ -49,9 +49,9 @@ export default function SpecialDiningItems({ items }: ISpecialDiningItems) {
                             />
 
                             {index !== parsedItems.length -1 &&
-                                <Separator label='&' size='md' />
+                                <Separator key={`Separator-${index}`} label='&' size='md' />
                             }
-                        </>
+                        </div>
                     ))
                     }
                 </div>

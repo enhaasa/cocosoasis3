@@ -9,7 +9,7 @@ export class ContentfulClient {
     private endpoint = 'contentful.php';
 
     public async getEntries(entryIds: string, params?: string) {
-        let target = `${this.endpoint}?type=entries&entry_ids=${entryIds}`;
+        let target = `${this.endpoint}?type=entries&content_type_ids=${entryIds}`;
 
         if (params) {
             target = `${target}&params=${params}`

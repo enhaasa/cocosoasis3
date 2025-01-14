@@ -47,7 +47,7 @@ export default function useServices(page: any, assets: any, components: any) {
             subline: fields?.subline,
             includedServices: parsedIncludedServices,
             paidServices: parsedPaidServices,
-            bottomCta: components[fields?.nextPageCta?.sys?.id]
+            background: assets[fields?.background?.sys?.id]?.file?.url
         });
 
     }, [ page, assets, components ]);

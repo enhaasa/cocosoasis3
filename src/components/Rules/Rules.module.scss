@@ -1,0 +1,28 @@
+@use '@styles/dimensions.scss' as dimensions;
+@use '@styles/decorations.scss' as decorations;
+@use '@styles/breakpoints.scss' as breakpoints;
+@use '@styles/colors.scss' as colors;
+
+.container {
+    margin: 0 dimensions.margin('xxl');
+
+    background: rgba(0, 0, 0, 0.75);
+    padding: dimensions.padding('xl');
+    border-radius: decorations.border-radius('md');
+    box-shadow: decorations.box-shadow('md');
+
+    & .content {        
+        & h1, & h2, & h3, & h4 {
+            color: colors.text('secondary');
+            text-align: center;
+        }
+
+        & hr {
+            opacity: 50%;
+        }
+    }
+
+    @media (max-width: breakpoints.screen('tablet')) {
+        margin: 0 dimensions.margin('md');
+    }
+}

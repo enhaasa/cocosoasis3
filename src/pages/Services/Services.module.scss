@@ -14,7 +14,8 @@
         margin: dimensions.margin('lg') dimensions.margin('xl');
 
         & .title {
-            margin-bottom: dimensions.margin('xl');
+            margin-top: dimensions.margin('xxl');
+            margin-bottom: dimensions.margin('xxl');
         }
 
         & .services {
@@ -24,7 +25,7 @@
 
             & .category {
                 & .cards {
-                    background: colors.bg('secondary');
+                    background: rgba(0, 0, 0, 0.75);
                     padding: dimensions.padding('xl');
                     border-radius: decorations.border-radius('md');
                     box-shadow: decorations.box-shadow('md');

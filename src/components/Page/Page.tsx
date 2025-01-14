@@ -19,7 +19,7 @@ interface IPage {
 
 const DEFAULT_BACKGROUND_OPTIONS = {
     blur: 4,
-    brightness: 0.7 
+    brightness: 0.6 
 }
 
 export default function Page({ background, backgroundOptions = DEFAULT_BACKGROUND_OPTIONS, children }: IPage) {

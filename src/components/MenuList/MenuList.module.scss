@@ -31,7 +31,7 @@
         border-radius: decorations.border-radius('md');
         margin-bottom: dimensions.margin('xl');
         padding: dimensions.padding('xl');
-        background: colors.bg('secondary');
+        background: rgba(0, 0, 0, 0.75);
         box-shadow: decorations.box-shadow('md');
 
         column-count: 2;
