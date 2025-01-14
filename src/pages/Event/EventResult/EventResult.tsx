@@ -19,6 +19,7 @@ import OasisLocation from '@components/Location/OasisLocation/OasisLocation';
 import EventFaq from './EventFaq/EventFaq';
 import Separator from '@components/Separator/Separator';
 import MultiToggle from '@components/MultiToggle/MultiToggle';
+import RichTextRenderer from '@components/RichTextRenderer';
 
 // Utils
 import icon from '@utils/icon';
@@ -139,9 +140,7 @@ export default function EventResult({ event }: IEventResult) {
                             <Separator />
 
                             <div className={styles.description}>
-                                <Text>
-                                    {documentToReactComponents(event?.description)}
-                                </Text>
+                                <RichTextRenderer richTextDocument={event?.description} />
                             </div>
                         </>
                     }
