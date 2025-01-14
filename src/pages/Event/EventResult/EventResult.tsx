@@ -5,9 +5,6 @@ import { useState, useLayoutEffect, useRef } from 'react';
 // Contexts
 //import { PageContext } from '@contexts/Page';
 
-// Utils
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-
 // Animations
 import animate from '@utils/animate';
 
