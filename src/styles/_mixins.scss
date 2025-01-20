@@ -9,12 +9,12 @@
     border: decorations.border-width('standard');
     border-radius: decorations.border-radius('lg');
     color: colors.text('primary');
-    box-shadow: decorations.box-shadow('md');
+
+    @if ($background == 'true') {
+        box-shadow: decorations.box-shadow('md');
+    }
     
     @if $size == 'sm' {
-        @if ($padding) {
-
-        }
         padding: dimensions.padding('sm') dimensions.padding('md');
         font-size: fonts.size('sm');
     } @else if $size == 'md' {

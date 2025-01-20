@@ -40,6 +40,7 @@ export interface ICMSContext {
     menu: IUseMenu;
     components: any;
     assets: any;
+    pages: any;
     events: null | ContentfulEvent[];
 }
 
@@ -95,10 +96,25 @@ function CMSContextProvider({ children }: any) {
                 });
             }
 
-            // Probably events
             if (result.items) {
+                // Probably content pages
+                result.items.forEach((item: any) => {
+                    if (item?.sys?.contentType?.sys?.id === 'contentPage') {
+                        newPages[item.fields.slug] = {
+                            ...item,
+                            background: newAssets?.[item.fields?.background?.sys?.id]?.file?.url ?? ''
+                        };
+                    }
+                });
+
+                // Cleaning up the content pages
+                result.items = result.items.filter((item: any) => item?.sys?.contentType?.sys.id !== 'contentPage');
+
+                // Probably events
                 sortEventsByDate(result.items).forEach((item: any) => {
-                    if (item) {
+                    if (!item) return;
+
+                    if (item?.sys?.contentType?.sys?.id === 'event') {
                         newEvents.push({
                             ...formatCmsEvent(item.fields),
                             background: newAssets[item?.fields?.background?.sys?.id]?.file?.url
@@ -132,6 +148,7 @@ function CMSContextProvider({ children }: any) {
             partners,
             menu,
             events,
+            pages
         }}>
             {children}
         </CMSContext.Provider>
@@ -139,9 +156,13 @@ function CMSContextProvider({ children }: any) {
 }
 
 function sortEventsByDate(events: any): Event[] {
-    const sortedEvents = events.sort((a: any, b: any) => 
-        new Date(a.fields.startTime).getTime() - new Date(b.fields.startTime).getTime()
-    );
+    const today = new Date(); 
+
+    const sortedEvents = events
+        .filter((event: any) => new Date(event.fields.startTime) > today) 
+        .sort((a: any, b: any) => 
+            new Date(a.fields.startTime).getTime() - new Date(b.fields.startTime).getTime()
+        );
 
     return sortedEvents;
 }

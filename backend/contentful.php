@@ -40,7 +40,7 @@ try {
                 . '/spaces/'
                 . $CONTENTFUL_SPACE_ID
                 . '/environments/master/entries?include=10'
-                . '&sys.contentType.sys.id[in]=' . $content_type_ids . ',event';
+                . '&sys.contentType.sys.id[in]=' . $content_type_ids . ',event,contentPage';
 
             if ($params) {
                 $decodedParams = json_decode($params, true);

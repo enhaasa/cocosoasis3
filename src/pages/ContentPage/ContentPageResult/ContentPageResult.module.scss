@@ -1,0 +1,19 @@
+@use '@styles/dimensions.scss' as dimensions;
+@use '@styles/decorations.scss' as decorations;
+
+.container {
+    min-height: 100vh;
+
+    margin-top: dimensions.margin('xxl');
+    margin-left: dimensions.margin('xl');
+    margin-right: dimensions.margin('xl');
+
+    display: grid;
+    align-content: start;
+    gap: dimensions.margin('lg');
+
+    background: rgba(0, 0, 0, 0.75);
+    padding: dimensions.padding('xl');
+    border-radius: decorations.border-radius('md');
+    box-shadow: decorations.box-shadow('md');
+}

@@ -6,13 +6,13 @@ import { UIContext } from "@contexts/UI";
 
 // Components
 import Text from "@components/Text/Text";
+import Icon from "@components/Icon/Icon";
 
 // Animations
 import animate, { AnimationDuration } from "@utils/animate";
 
 // Icons
 import icon from "@utils/icon";
-import Icon from "@components/Icon/Icon";
 
 interface IModal {
     id?: number;

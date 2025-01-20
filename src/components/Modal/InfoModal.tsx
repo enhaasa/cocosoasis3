@@ -9,7 +9,6 @@ export interface IInfoModal {
 
 export default function InfoModal({ headline, message, id }: IInfoModal) {
     
-
     return (
         <Modal
             id={id}

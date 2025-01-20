@@ -29,6 +29,8 @@ export default function Home() {
         const nextDiscordEvent = discord.data.nextDiscordEvent;
         const nextContentfulEvent = events?.[0];
 
+        console.log('discord', discord.data)
+
         if (nextContentfulEvent) {
             const contentfulISOStartTime = new Date(nextContentfulEvent.raw_start_time);
             const discordISOStartTime = new Date(nextDiscordEvent?.raw_start_time ?? Infinity);

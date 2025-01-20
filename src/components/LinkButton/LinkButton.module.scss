@@ -5,7 +5,7 @@
 .container {
     all: unset;
     display: inline-block;
-    @include mixins.button('primary', 'md');
+    @include mixins.button('primary', 'sm', 'false');
     font-family: "Times New Roman";
 
     &.active {
@@ -14,11 +14,12 @@
 
     & .wrapper {
         display: flex;
+        align-items: center;
         gap: dimensions.margin('sm');
 
         & .icon {
-            height: dimensions.icon-size('md');
-            width: dimensions.icon-size('md');
+            height: dimensions.icon-size('lg');
+            width: dimensions.icon-size('lg');
             filter: brightness(0.8);
 
             &:hover {

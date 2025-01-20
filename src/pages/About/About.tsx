@@ -64,6 +64,8 @@ export default function About() {
                 <Separator />
 
                 <StaffList />
+
+                <Separator />
                 
                 <PageCTA 
                     title='Ready to experience the Oasis?'
