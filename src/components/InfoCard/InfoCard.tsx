@@ -41,7 +41,6 @@ export default function InfoCard({ title, background, description }: IInfoCard) 
                 description={description}
                 background={background}
             />
-
         )
     }
 

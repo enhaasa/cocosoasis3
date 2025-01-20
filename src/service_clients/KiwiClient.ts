@@ -1,7 +1,7 @@
 import { ServiceClient } from "./ServiceClient";
 
 // Types
-import type { TCharacter, TRealm, TDiningItem } from "@enhasa/kiwicore";
+import type { TCharacter, TRealm, TDiningItem, TSeating } from "@enhasa/kiwicore";
 
 export class KiwiClient {
     private baseUrl = window.location.hostname === 'localhost' 
@@ -12,26 +12,32 @@ export class KiwiClient {
     private endpoint = 'kiwi.php';
 
     public async getRealm(): Promise<TRealm> {
-        const target = `${this.endpoint}?type=realm`;
+        const url = `${this.endpoint}?type=realm`;
 
-        return (await this.client.get(target, true))?.[0];
+        return (await this.client.get(url, true))?.[0];
     }
 
     public async getMenu(): Promise<TDiningItem[]> {
-        const target = `${this.endpoint}?type=menu`;
+        const url = `${this.endpoint}?type=menu`;
 
-        return await this.client.get(target, true);
+        return await this.client.get(url, true);
     }
 
     public async getStaff(): Promise<TCharacter[]> {
-        const target = `${this.endpoint}?type=staff`;
+        const url = `${this.endpoint}?type=staff`;
 
-        return await this.client.get(target, true);
+        return await this.client.get(url, true);
+    }
+
+    public async getSeatings(): Promise<TSeating[]> {
+        const url = `${this.endpoint}?type=seatings`;
+
+        return await this.client.get(url, true);
     }
 
     public async getSpecialItem(categoryId: number): Promise<TDiningItem> {
-        const target = `${this.endpoint}?type=specialMenuItem&category_id=${categoryId}`;
+        const url = `${this.endpoint}?type=specialMenuItem&category_id=${categoryId}`;
 
-        return await this.client.get(target, true);
+        return await this.client.get(url, true);
     }
 }

@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { CMSContext } from '@contexts/CMS';
 import { PageContext } from '@contexts/Page';
 import { KiwiContext } from '@contexts/Kiwi';
+//import { UIContext } from '@contexts/UI';
 
 // Components
 import Page from '@components/Page/Page';
@@ -13,6 +14,9 @@ import Button from '@components/Button/Button';
 import Title from '@components/Title/Title';
 import LinkButton from '@components/LinkButton/LinkButton';
 import Separator from '@components/Separator/Separator';
+
+// Modals
+//import SeatingPlanModal from '@components/SeatingPlanModal/SeatingPlanModal';
 
 // Utils
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
@@ -26,17 +30,24 @@ export default function Reservations() {
     const { reservations } = useContext(CMSContext);
     const { navigator } = useContext(PageContext);
     const { realm } = useContext(KiwiContext);
+    //const { modals } = useContext(UIContext);
 
     function handleDiscordClick() {
         navigator.externalNavigate(realm.data?.discord_invite_link ?? '', true);
     }
 
+    /*
+    function handleSeatingPlanClick() {
+        modals.add(
+            <SeatingPlanModal />
+        );
+    }
+        */
+
     return (
         <Page background={reservations.content?.background}>
             <div className={styles.container}>
                 <div className={styles.teaser}>
-                    <div></div>
-
                     <Button 
                         name='Book through Discord' 
                         style='primary'
@@ -72,7 +83,10 @@ export default function Reservations() {
                                     {documentToReactComponents(reservations?.content?.description)}
                                 </Text>
 
-                                <Button name='Book a table for free' onClick={handleDiscordClick} style='accent' />
+                                <nav>
+                                    {/*<Button name='Seating Plan' onClick={handleSeatingPlanClick} style='neutral' />*/}
+                                    <Button name='Book a table for free' onClick={handleDiscordClick} style='accent' />
+                                </nav>
                             </div>
                         }
                         

@@ -139,9 +139,13 @@ function CMSContextProvider({ children }: any) {
 }
 
 function sortEventsByDate(events: any): Event[] {
-    const sortedEvents = events.sort((a: any, b: any) => 
-        new Date(a.fields.startTime).getTime() - new Date(b.fields.startTime).getTime()
-    );
+    const today = new Date(); 
+
+    const sortedEvents = events
+        .filter((event: any) => new Date(event.fields.startTime) >= today) 
+        .sort((a: any, b: any) => 
+            new Date(a.fields.startTime).getTime() - new Date(b.fields.startTime).getTime()
+        );
 
     return sortedEvents;
 }
