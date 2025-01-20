@@ -100,7 +100,10 @@ function CMSContextProvider({ children }: any) {
                 // Probably content pages
                 result.items.forEach((item: any) => {
                     if (item?.sys?.contentType?.sys?.id === 'contentPage') {
-                        newPages[item.fields.slug] = item;
+                        newPages[item.fields.slug] = {
+                            ...item,
+                            background: newAssets?.[item.fields?.background?.sys?.id]?.file?.url ?? ''
+                        };
                     }
                 });
 

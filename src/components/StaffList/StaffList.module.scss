@@ -11,14 +11,12 @@
         border-radius: decorations.border-radius('md');
         box-shadow: decorations.box-shadow('md');
 
-
         & .list {
             display: grid;
             align-items: end;
             grid-template-columns: repeat(7, 1fr);
             gap: dimensions.margin('lg');
 
-    
             @media (max-width: breakpoints.screen('desktop')) {
                 grid-template-columns: repeat(6, 1fr);
             }
@@ -42,10 +40,7 @@
         }
     }
 
-    
-
     @media (max-width: breakpoints.screen('tablet')) {
         margin: 0 dimensions.margin('md');
     }
-
 }

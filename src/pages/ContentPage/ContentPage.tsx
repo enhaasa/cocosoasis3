@@ -36,7 +36,7 @@ export default function ContentPage() {
     }, [slug, pages]);
 
     return (
-        <Page background={content?.fields?.background}>
+        <Page background={content?.background}>
             <div className={styles.container}>
                 {
                     content && !noresult
