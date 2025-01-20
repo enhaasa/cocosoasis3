@@ -44,9 +44,11 @@ export default function Button({
                     />
                 </span>
             }
-            <span className={styles.name}>
-                <Text>{ name }</Text>
-            </span>
+            {name &&
+                <span className={styles.name}>
+                    <Text>{ name }</Text>
+                </span>
+            }
         </button>    
     );
 }
