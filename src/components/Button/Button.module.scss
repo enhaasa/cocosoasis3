@@ -2,8 +2,13 @@
 @use '@styles/colors.scss' as colors;
 @use '@styles/decorations.scss' as decorations;
 @use '@styles/gradients.scss' as gradients;
+@use '@styles/dimensions.scss' as dimensions;
 
 .container {
+    display: flex !important;
+    align-items: center !important;
+    gap: dimensions.margin('md') !important;
+    
     &.sm {
         @include mixins.button('sm');
     }

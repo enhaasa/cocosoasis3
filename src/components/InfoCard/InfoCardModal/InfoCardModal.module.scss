@@ -2,4 +2,7 @@
 
 .container {
     padding: 0 dimensions.padding('lg');
+
+    max-height: 75vh;
+    overflow-y: auto;
 }

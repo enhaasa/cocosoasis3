@@ -16,11 +16,17 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      margin: dimensions.margin('lg') 0;
+      margin-top: dimensions.margin('xl');
 
       & img {
          max-width: 100%;
       }
+   }
+
+   & nav {
+      display: flex;
+      justify-content: center;
+      gap: dimensions.margin('md');
    }
    
    & .highlights {

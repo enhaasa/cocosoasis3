@@ -21,6 +21,7 @@ interface IModal {
     children?: ReactNode;
     closable?: boolean;
     background?: string | null;
+    display?: 'flex' | 'grid';
 }
 
 export default function Modal({
@@ -29,7 +30,8 @@ export default function Modal({
     message,
     children,
     closable = true,
-    background = null
+    background = null,
+    display = 'flex'
 }: IModal) {
     const { modals } = useContext(UIContext);
     const ref = useRef(null);
@@ -78,6 +80,7 @@ export default function Modal({
             </div>
             <div className={styles.message}><Text>{message}</Text></div>
             <div 
+                style={{ display: display }}
                 className={styles.content}
             >
                 {children}

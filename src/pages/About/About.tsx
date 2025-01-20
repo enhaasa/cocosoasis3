@@ -5,6 +5,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 // Contexts
 import { CMSContext } from '@contexts/CMS';
+import { UIContext } from '@contexts/UI';
 
 // Components
 import Page from '@components/Page/Page';
@@ -19,12 +20,33 @@ import Rules from '@components/Rules/Rules';
 
 // LOgo
 import Logo from '@assets/logo/logo.webp';
+import Modal from '@components/Modal/Modal';
+import Button from '@components/Button/Button';
+
+// Utils
+import icon from '@utils/icon';
 
 export default function About() {
     const { about } = useContext(CMSContext);
+    const { modals } = useContext(UIContext);
+
+    function handleRulesClick() {
+        modals.add(
+            <Modal headline='Rules' display='grid'>
+                <div>
+                    <Rules />
+                </div>
+            </Modal>
+        );
+    }
+
+    function handleStaffScrollClick() {
+        location.hash = '';
+        location.hash = '#staff-list';
+    }
 
     return (
-        <Page background={about?.content?.background}>
+        <Page background={about?.content?.background} backgroundOptions={{ brightness: 0.4}}>
             <div className={styles.container}>
                 <div className={styles.teaser}>
                     <OasisLocation />
@@ -35,7 +57,10 @@ export default function About() {
                     <img src={Logo} />
                 </div>
 
-                <Rules />
+                <nav>
+                    <Button name='Staff' style='neutral' onClick={handleStaffScrollClick} icon={icon.chevronDown} /> 
+                    <Button name='Rules' onClick={handleRulesClick} /> 
+                </nav>
 
                 <div className={styles.highlights}>
                 {
@@ -51,7 +76,7 @@ export default function About() {
                 }
                 </div>
 
-                <div className={styles.title}>
+                <div className={styles.title} >
                     <Title 
                         headline={'Our family'}
                         size='xl'
@@ -61,8 +86,9 @@ export default function About() {
                     />
                 </div>
 
+                <div id='staff-list' />
                 <Separator />
-
+                        
                 <StaffList />
 
                 <Separator />
