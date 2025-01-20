@@ -41,6 +41,7 @@ export default function About() {
     }
 
     function handleStaffScrollClick() {
+        location.hash = '';
         location.hash = '#staff-list';
     }
 
