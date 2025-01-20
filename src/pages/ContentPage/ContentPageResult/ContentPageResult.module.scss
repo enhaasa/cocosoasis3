@@ -1,0 +1,13 @@
+@use '@styles/dimensions.scss' as dimensions;
+
+.container {
+    min-height: 100vh;
+
+    margin-top: dimensions.margin('xxl');
+    margin-left: dimensions.margin('xl');
+    margin-right: dimensions.margin('xl');
+
+    display: grid;
+    align-content: start;
+    gap: dimensions.margin('lg');
+}

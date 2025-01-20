@@ -15,6 +15,7 @@ import house from '@assets/icons/house.svg';
 import location from '@assets/icons/location.svg';
 import clock from '@assets/icons/clock.svg';
 import calendar from '@assets/icons/calendar.svg';
+import flower from '@assets/icons/flower.svg';
 
 export default {
     fullscreen,
@@ -34,4 +35,5 @@ export default {
     location,
     clock,
     calendar,
+    flower
 }

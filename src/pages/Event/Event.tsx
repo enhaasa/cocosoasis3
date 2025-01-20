@@ -53,15 +53,9 @@ export default function Event({ manualSlug }: IEvent) {
                     ? <EventResult event={content} />
                     : !noresult 
                     ? <ResultLoading />
-                    : <NoResult />
+                    : <NoResult text='Hmm, it seems this event has expired...' />
                 }
             </div>    
         </Page>
     );    
 }
-
-/*
-function _isSlugValid(slug?: string) {
-    return !(navbar.map(i => i.target).includes(`/${slug}`));
-}
-*/
