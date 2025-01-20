@@ -142,7 +142,7 @@ function sortEventsByDate(events: any): Event[] {
     const today = new Date(); 
 
     const sortedEvents = events
-        .filter((event: any) => new Date(event.fields.startTime) >= today) 
+        .filter((event: any) => new Date(event.fields.startTime) > today) 
         .sort((a: any, b: any) => 
             new Date(a.fields.startTime).getTime() - new Date(b.fields.startTime).getTime()
         );
