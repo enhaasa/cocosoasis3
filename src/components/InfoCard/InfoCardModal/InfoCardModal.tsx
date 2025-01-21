@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from './InfoCardModal.module.scss';
 
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Document } from '@contentful/rich-text-types';
 
 // Components
 import ContentModal from '@components/Modal/ContentModal';
-import Text from '@components/Text/Text';
+import RichTextRenderer from '@components/RichTextRenderer';
 
 interface IInfoCardModal {
     id?: number;
@@ -25,9 +24,7 @@ export default function InfoCardModal({ id, title, description, background }: II
         >
             {description &&
                 <div className={styles.container}>
-                    <Text>
-                        {documentToReactComponents(description)}
-                    </Text>
+                    <RichTextRenderer richTextDocument={description} />
                 </div>
             }
         </ContentModal>
