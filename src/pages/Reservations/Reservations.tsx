@@ -14,12 +14,10 @@ import Button from '@components/Button/Button';
 import Title from '@components/Title/Title';
 import LinkButton from '@components/LinkButton/LinkButton';
 import Separator from '@components/Separator/Separator';
+import RichTextRenderer from '@components/RichTextRenderer';
 
 // Modals
 //import SeatingPlanModal from '@components/SeatingPlanModal/SeatingPlanModal';
-
-// Utils
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 // Logo
 import OasisLogo from '@assets/logo/logo.webp';
@@ -79,9 +77,7 @@ export default function Reservations() {
 
                         {reservations?.content?.description &&
                             <div className={styles.description}>
-                                <Text>
-                                    {documentToReactComponents(reservations?.content?.description)}
-                                </Text>
+                                <RichTextRenderer richTextDocument={reservations?.content?.description} />
 
                                 <nav>
                                     {/*<Button name='Seating Plan' onClick={handleSeatingPlanClick} style='neutral' />*/}
@@ -111,9 +107,7 @@ export default function Reservations() {
                                     />
                                 </div>
 
-                                <Text>
-                                    {documentToReactComponents(reservations?.content?.lagoonDescription)}
-                                </Text>
+                                <RichTextRenderer richTextDocument={reservations?.content?.lagoonDescription} />
 
                                 <nav>
                                     <Button name='Lagoon Site' onClick={() => {navigator.externalNavigate('https://lagoon.events/', true)}} style='neutral' />

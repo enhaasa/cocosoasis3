@@ -7,9 +7,9 @@ import { type Partner } from '@hooks/cms/usePartners';
 // Components
 import Text from '@components/Text/Text';
 import Title from '@components/Title/Title';
+import RichTextRenderer from '@components/RichTextRenderer';
 
 // Utils
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import gsap from 'gsap';
 
 
@@ -62,9 +62,7 @@ export default function PartnerCard({ partner }: IPartnerCard) {
 
            {partner.description &&
             <div className={styles.description}>
-                <Text>
-                    {documentToReactComponents(partner.description)}
-                </Text>
+                <RichTextRenderer richTextDocument={partner.description} />
             </div>}
         </div>    
     );

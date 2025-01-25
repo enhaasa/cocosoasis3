@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext } from 'react';
 import styles from './About.module.scss';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 // Contexts
 import { CMSContext } from '@contexts/CMS';
@@ -17,6 +16,7 @@ import Separator from '@components/Separator/Separator';
 import PageCTA from '@components/PageCTA/PageCTA';
 import StaffList from '@components/StaffList/StaffList';
 import Rules from '@components/Rules/Rules';
+import RichTextRenderer from '@components/RichTextRenderer';
 
 // LOgo
 import Logo from '@assets/logo/logo.webp';
@@ -70,7 +70,7 @@ export default function About() {
                             images={highlight?.imageGallery?.map((img: any) => ({src: img?.file?.url}))}
                             headline={highlight.headline}
                             subline={highlight.subline}
-                            text={documentToReactComponents(highlight.text)}
+                            text={<RichTextRenderer richTextDocument={highlight.text} />}
                         />
                     ))
                 }
