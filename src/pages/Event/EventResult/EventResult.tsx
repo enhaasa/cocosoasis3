@@ -45,7 +45,6 @@ interface IEventResult {
 
 export default function EventResult({ event }: IEventResult) {
     const [ timezone, setTimezone ] = useState<Timezone>('Local Time');
-    //const { storedEvents } = useContext(PageContext);
 
     const ref = useRef(null);
 
@@ -58,19 +57,6 @@ export default function EventResult({ event }: IEventResult) {
             animation?.kill();
         }
     }, []);
-
-    /*
-    useEffect(() => {
-        if (!event || !storedEvents) return;
-
-        const newEvents = LocalStorage.addToEvents(event);
-
-        if (newEvents) {
-            storedEvents.setEvents(newEvents);
-        }
-        
-    }, [ event ]);
-    */
 
     return (
         <div className={styles.container} ref={ref}>

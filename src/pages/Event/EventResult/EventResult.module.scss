@@ -6,6 +6,7 @@
 .container {
     position: relative;
     padding: dimensions.padding('xl');
+    margin: dimensions.margin('xl');
 
     & .hero {
         position: relative;
