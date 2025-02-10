@@ -65,7 +65,7 @@ export default function EventResult({ event }: IEventResult) {
                 <div className={styles.content}>
                     {event &&
                         <>
-                            <div className={styles.title}>
+                            <div className={styles.eventTitle}>
                                 <Title 
                                     headline={event?.headline}
                                     subline={event?.subline}
