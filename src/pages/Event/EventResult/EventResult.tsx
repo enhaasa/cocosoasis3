@@ -45,7 +45,6 @@ interface IEventResult {
 
 export default function EventResult({ event }: IEventResult) {
     const [ timezone, setTimezone ] = useState<Timezone>('Local Time');
-    //const { storedEvents } = useContext(PageContext);
 
     const ref = useRef(null);
 
@@ -59,19 +58,6 @@ export default function EventResult({ event }: IEventResult) {
         }
     }, []);
 
-    /*
-    useEffect(() => {
-        if (!event || !storedEvents) return;
-
-        const newEvents = LocalStorage.addToEvents(event);
-
-        if (newEvents) {
-            storedEvents.setEvents(newEvents);
-        }
-        
-    }, [ event ]);
-    */
-
     return (
         <div className={styles.container} ref={ref}>
             <div className={styles.hero}>
@@ -79,13 +65,15 @@ export default function EventResult({ event }: IEventResult) {
                 <div className={styles.content}>
                     {event &&
                         <>
-                            <Title 
-                                headline={event?.headline}
-                                subline={event?.subline}
-                                style={'signature'}
-                                size={'xl'}
-                                isCentered={true}
-                            />
+                            <div className={styles.title}>
+                                <Title 
+                                    headline={event?.headline}
+                                    subline={event?.subline}
+                                    style={'signature'}
+                                    size={'xl'}
+                                    isCentered={true}
+                                />
+                            </div>
 
                             <Separator />
                             <div className={styles.infoWrapper}>

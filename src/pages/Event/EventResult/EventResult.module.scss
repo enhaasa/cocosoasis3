@@ -6,6 +6,7 @@
 .container {
     position: relative;
     padding: dimensions.padding('xl');
+    margin: dimensions.margin('xl');
 
     & .hero {
         position: relative;
@@ -18,6 +19,10 @@
             padding: dimensions.padding('md');
             z-index: 2;
 
+            & .title {
+                margin-top: dimensions.margin('xxl');
+            }
+
             & .infoWrapper {
                 display: flex;
                 flex-direction: row-reverse;
@@ -26,7 +31,7 @@
                 width: 100%;
                 
                 & .countdown {
-                    
+
                     & .title {
                         text-align: center;
                         color: colors.text('secondary');
