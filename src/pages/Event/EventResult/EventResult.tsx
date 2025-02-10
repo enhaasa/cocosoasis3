@@ -65,13 +65,15 @@ export default function EventResult({ event }: IEventResult) {
                 <div className={styles.content}>
                     {event &&
                         <>
-                            <Title 
-                                headline={event?.headline}
-                                subline={event?.subline}
-                                style={'signature'}
-                                size={'xl'}
-                                isCentered={true}
-                            />
+                            <div className={styles.title}>
+                                <Title 
+                                    headline={event?.headline}
+                                    subline={event?.subline}
+                                    style={'signature'}
+                                    size={'xl'}
+                                    isCentered={true}
+                                />
+                            </div>
 
                             <Separator />
                             <div className={styles.infoWrapper}>
