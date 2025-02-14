@@ -44,8 +44,6 @@ export default function InfoCard({ title, background, description, eventExclusiv
         )
     }
 
-    console.log('ee', `${styles.container} ${eventExclusivity ? eventExclusivity : ''}`)
-
     return (
         <div className={`${styles.container} ${eventExclusivity ? styles[eventExclusivity] : ''}`} onClick={handleClick} >
             <div className={styles.card} ref={ref}>

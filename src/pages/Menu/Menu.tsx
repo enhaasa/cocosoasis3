@@ -14,6 +14,8 @@ import SpecialDiningItems from '@components/SpecialDiningItems/SpecialDiningItem
 export default function Menu() {
     const cmsMenu = useContext(CMSContext).menu;
     const { specialItems } = useContext(KiwiContext).menu;
+
+
     
     return (
         <>
@@ -35,9 +37,7 @@ export default function Menu() {
                         />
                     </div>
 
-                    <MenuList 
-
-                    />
+                    <MenuList />
                 </div>
             </Page>   
         </> 
