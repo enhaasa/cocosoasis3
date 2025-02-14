@@ -47,6 +47,7 @@ export default function useServices(page: any, assets: any, components: any) {
             subline: fields?.subline,
             includedServices: parsedIncludedServices,
             paidServices: parsedPaidServices,
+            eventExclusivity: fields?.eventExclusivity,
             background: assets[fields?.background?.sys?.id]?.file?.url
         });
 

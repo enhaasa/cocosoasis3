@@ -16,10 +16,10 @@ interface IInfoCard {
     title: string;
     background?: string;
     description?: Document;
+    eventExclusivity?: string;
 }
 
-export default function InfoCard({ title, background, description }: IInfoCard) {
-
+export default function InfoCard({ title, background, description, eventExclusivity }: IInfoCard) {
     const { modals } = useContext(UIContext);
 
     const ref = useRef(null);
@@ -44,8 +44,10 @@ export default function InfoCard({ title, background, description }: IInfoCard) 
         )
     }
 
+    console.log('ee', `${styles.container} ${eventExclusivity ? eventExclusivity : ''}`)
+
     return (
-        <div className={styles.container} onClick={handleClick} >
+        <div className={`${styles.container} ${eventExclusivity ? styles[eventExclusivity] : ''}`} onClick={handleClick} >
             <div className={styles.card} ref={ref}>
                 <div 
                     className={styles.background} 
