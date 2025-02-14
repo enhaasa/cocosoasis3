@@ -54,6 +54,7 @@ export default function Services() {
                                                 title={service.headline} 
                                                 background={service.background}
                                                 description={service.description}
+                                                eventExclusivity={service.eventExclusivity}
                                             />
                                         )} />
                                     </Grid>
@@ -80,6 +81,7 @@ export default function Services() {
                                                 title={service.headline} 
                                                 background={service.background}
                                                 description={service.description}
+                                                eventExclusivity={service.eventExclusivity}
                                             />
                                         )} />
                                     </Grid>
