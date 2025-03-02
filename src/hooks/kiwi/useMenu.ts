@@ -52,11 +52,10 @@ export default function useMenu(client: KiwiClient) {
             menuResult.forEach((item) => {
                 if (!parsedMenu[item.type]) {
                     parsedMenu[item.type] = [];
-                } else {
-                    const specialItem = specialItems.find(specialItem => specialItem.id === item.id);
-                    
-                    parsedMenu[item.type].push(specialItem ?? item);
                 }
+                
+                const specialItem = specialItems.find(specialItem => specialItem.id === item.id);
+                parsedMenu[item.type].push(specialItem ?? item);
             });
 
             specialItems.forEach(item => {
@@ -66,10 +65,13 @@ export default function useMenu(client: KiwiClient) {
             const categories = _sortMenuByOrder(parsedMenu);
             const {Legacy, ...filteredCategories } = categories;
 
+
+
             setSpecialItems(parsedSpecialItems);
             setCategories(filteredCategories);
         })();
     }, [client]);
+
 
     return { categories, specialItems };
 
@@ -93,5 +95,5 @@ export default function useMenu(client: KiwiClient) {
         }
       
         return sortedObj as T;
-      }
+    }
 }
