@@ -24,7 +24,7 @@
             background: green;
         }
 
-        &.taken {
+        &.taken &.reserved {
             background: red;
         }
     }
