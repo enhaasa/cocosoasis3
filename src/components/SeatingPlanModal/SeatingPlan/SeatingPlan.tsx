@@ -80,7 +80,7 @@ export default function SeatingPlan() {
                             setSelectedSection(seatings.getSections().find(s => s.name === name)!)
                         }}
                         initSelected={selectedSection.name}
-                        size='xs'
+                        size='sm'
                     />
                 </nav>
                 <span className={styles.refresh}>

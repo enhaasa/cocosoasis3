@@ -8,6 +8,7 @@
     & .topNav {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding: dimensions.padding('sm') 0;
 
         & .sectionSelection {
