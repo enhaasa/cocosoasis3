@@ -14,7 +14,7 @@ export default function SeatingPlanModal({ id }: ISeatingPlanModal) {
         <div className={styles.container}>
             <Modal 
                 id={id}
-                headline='Seating Plan'
+                headline='Seating Availability'
             >
                 <SeatingPlan />
             </Modal>

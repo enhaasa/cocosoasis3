@@ -80,7 +80,7 @@ export default function Reservations() {
                                 <RichTextRenderer richTextDocument={reservations?.content?.description} />
 
                                 <nav>
-                                    {<Button name='Seating Plan' onClick={handleSeatingPlanClick} style='neutral' />}
+                                    {<Button name='Seating Availability' onClick={handleSeatingPlanClick} style='neutral' />}
                                     <Button name='Book a table for free' onClick={handleDiscordClick} style='accent' />
                                 </nav>
                             </div>

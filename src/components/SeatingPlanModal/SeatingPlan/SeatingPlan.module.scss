@@ -1,5 +1,45 @@
+@use '@styles/dimensions.scss' as dimensions;
+@use '@styles/colors.scss' as colors;
+@use '@styles/decorations.scss' as decorations;
+
 .container {
     display: grid;
+
+    & .topNav {
+        display: flex;
+        justify-content: space-between;
+        padding: dimensions.padding('sm') 0;
+
+        & .sectionSelection {
+            display: flex;
+            gap: dimensions.margin('sm');
+        }
+
+        & .refresh {
+            & button {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: dimensions.margin('xs');
+
+                cursor: pointer;
+                background: none;
+                outline: none;
+                border: none;
+
+                color: white;
+
+                & img {
+                    width: 20px;
+                    height: 20px;
+                }
+
+                &:hover {
+                    filter: brightness(0.6);
+                }
+            }
+        }
+    }
 
     & .section {
         position: relative;
@@ -12,20 +52,36 @@
 
     & .seating {
         position: absolute;
-
         left: 0;
         top: 0;
 
         display: grid;
         place-items: center;
         border-radius: 100%;
+        border: 4px double black;
+
+        color: black;
+
+        box-shadow: decorations.box-shadow('sm');
 
         &.available {
-            background: green;
+            background: colors.neutral('green');
         }
 
-        &.taken &.reserved {
-            background: red;
+        &.taken, &.reserved {
+            background: colors.neutral('red');
         }
+    }
+
+    & .spinnerContainer {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: rgba(0, 0, 0, 0.678);
+        width: 100%;
+        height: 100%;
+
+        display: grid;
+        place-items: center;
     }
 }

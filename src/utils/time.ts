@@ -105,6 +105,29 @@ export type LocalTimezone = {
     return timeDiffParts.slice(0, 2).join(' ') || '0 days';
 }
 
+export function getEpochTimeSinceInHoursAndMinutes(epochTime: number): string {
+  const currentDate = new Date();
+  const pastDate = new Date(epochTime);
+
+  let diffMs = currentDate.getTime() - pastDate.getTime();
+  let diffMinutes = Math.floor(diffMs / (1000 * 60));
+  let diffHours = Math.floor(diffMinutes / 60);
+  diffMinutes %= 60;
+
+  if (diffMinutes < 1 && diffHours < 1) {
+      return "just now";
+  }
+
+  // Pluralization helper
+  const pluralize = (count: number, noun: string) => `${count} ${noun}${count !== 1 ? 's' : ''}`;
+
+  let timeDiffParts = [];
+  if (diffHours > 0) timeDiffParts.push(pluralize(diffHours, 'hour') + ' ago');
+  if (diffMinutes > 0) timeDiffParts.push(pluralize(diffMinutes, 'minute') + ' ago');
+
+  return timeDiffParts.join(' ');
+}
+
 export function getCurrentYear() {
   return new Date().getFullYear();
 }
