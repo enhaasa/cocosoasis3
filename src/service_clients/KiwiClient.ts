@@ -3,6 +3,11 @@ import { ServiceClient } from "./ServiceClient";
 // Types
 import type { TCharacter, TRealm, TDiningItem, TSeating } from "@enhasa/kiwicore";
 
+export type Seating = TSeating & {
+    image_url: string;
+}
+
+
 export class KiwiClient {
     private baseUrl = window.location.hostname === 'localhost' 
     ? 'http://localhost:8000'
@@ -29,7 +34,7 @@ export class KiwiClient {
         return await this.client.get(url, true);
     }
 
-    public async getSeatings(): Promise<TSeating[]> {
+    public async getSeatings(): Promise<Seating[]> {
         const url = `${this.endpoint}?type=seatings`;
 
         return await this.client.get(url, true);

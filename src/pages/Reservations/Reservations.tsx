@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { CMSContext } from '@contexts/CMS';
 import { PageContext } from '@contexts/Page';
 import { KiwiContext } from '@contexts/Kiwi';
-//import { UIContext } from '@contexts/UI';
+import { UIContext } from '@contexts/UI';
 
 // Components
 import Page from '@components/Page/Page';
@@ -17,7 +17,7 @@ import Separator from '@components/Separator/Separator';
 import RichTextRenderer from '@components/RichTextRenderer';
 
 // Modals
-//import SeatingPlanModal from '@components/SeatingPlanModal/SeatingPlanModal';
+import SeatingPlanModal from '@components/SeatingPlanModal/SeatingPlanModal';
 
 // Logo
 import OasisLogo from '@assets/logo/logo.webp';
@@ -28,19 +28,19 @@ export default function Reservations() {
     const { reservations } = useContext(CMSContext);
     const { navigator } = useContext(PageContext);
     const { realm } = useContext(KiwiContext);
-    //const { modals } = useContext(UIContext);
+    const { modals } = useContext(UIContext);
 
     function handleDiscordClick() {
         navigator.externalNavigate(realm.data?.discord_invite_link ?? '', true);
     }
 
-    /*
+    
     function handleSeatingPlanClick() {
         modals.add(
             <SeatingPlanModal />
         );
     }
-        */
+        
 
     return (
         <Page background={reservations.content?.background}>
@@ -80,7 +80,7 @@ export default function Reservations() {
                                 <RichTextRenderer richTextDocument={reservations?.content?.description} />
 
                                 <nav>
-                                    {/*<Button name='Seating Plan' onClick={handleSeatingPlanClick} style='neutral' />*/}
+                                    {<Button name='Seating Availability' onClick={handleSeatingPlanClick} style='neutral' />}
                                     <Button name='Book a table for free' onClick={handleDiscordClick} style='accent' />
                                 </nav>
                             </div>

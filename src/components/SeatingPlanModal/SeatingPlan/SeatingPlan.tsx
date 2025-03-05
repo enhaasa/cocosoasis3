@@ -1,20 +1,128 @@
 import styles from './SeatingPlan.module.scss';
-//import { useContext } from 'react';
+import { useContext, useState, useRef, useEffect } from 'react';
 
 // Contexts
-//import { KiwiContext } from '@contexts/Kiwi';
+import { KiwiContext } from '@contexts/Kiwi';
 
-//const SECTION_HEIGHT = '700px';
-//const SECTION_WIDTH = '1000px';
+// Components
+import Spinner from '@components/Spinner/Spinner';
+import Text from '@components/Text/Text';
+import icon from '@utils/icon';
+import MultiToggle from '@components/MultiToggle/MultiToggle';
+
+// Utils
+import { getEpochTimeSinceInHoursAndMinutes } from '@utils/time';
+
+const ORIGINAL_HEIGHT = 700;
+const ORIGINAL_WIDTH = 1000;
+
+const SEATING_HEIGHT = 65;
+const SEATING_WIDTH = 65;
+
+const LAST_REFRESHED_UPDATE_INTERVAL = 60000;
 
 export default function SeatingPlan() {
-    //const { seatings } = useContext(KiwiContext);
+    const { seatings } = useContext(KiwiContext);
+    const [ selectedSection, setSelectedSection ] = useState(seatings.getSections()[0]);
+    const [ lastRefreshed, setLastRefreshed ] = useState<string>(getEpochTimeSinceInHoursAndMinutes(seatings.lastRefreshed));
 
-    //console.log('seatings', seatings.data)
+    const [ seatingOffset, setSeatingOffset ] = useState({ scaleX: 1, scaleY: 1 });
+    const [ seatingSize, setSeatingSize ] = useState({ height: SEATING_HEIGHT, width: SEATING_WIDTH });
+
+    const sectionRef = useRef<HTMLDivElement | null>(null);
+    const imageRef = useRef<HTMLImageElement | null>(null);
+
+    useEffect(() => {
+        if (!sectionRef.current) return;
+
+        const observer = new ResizeObserver(entries => {
+            for (let entry of entries) {
+                const { width, height } = entry.contentRect;
+
+                const scaleX = width / ORIGINAL_WIDTH;
+                const scaleY = height / ORIGINAL_HEIGHT;
+
+                setSeatingOffset({ scaleX, scaleY });
+                setSeatingSize({
+                    height: SEATING_HEIGHT * scaleX,
+                    width: SEATING_WIDTH * scaleX
+                });
+            }
+        });
+
+        observer.observe(sectionRef.current);
+        seatings.refresh();
+
+        const lastRefreshedInterval = setInterval(() => {
+            updateLastRefreshed();
+        }, LAST_REFRESHED_UPDATE_INTERVAL);
+
+        return () => {
+            clearInterval(lastRefreshedInterval);
+            observer.disconnect();
+        };
+    }, []);
+
+    useEffect(() => {
+        updateLastRefreshed();
+    }, [seatings.lastRefreshed]);
+
+    function getImage() {
+        return selectedSection.image_url.trim();
+    }
+
+    function updateLastRefreshed() {
+        setLastRefreshed(getEpochTimeSinceInHoursAndMinutes(seatings.lastRefreshed));
+    }
 
     return (
         <div className={styles.container}>
-            
+            <nav className={styles.topNav}>
+                <nav className={styles.sectionSelection}>
+                    <MultiToggle 
+                        options={seatings.getSections().map(s => s.name)} 
+                        onSelect={(name: string) => {
+                            setSelectedSection(seatings.getSections().find(s => s.name === name)!);
+                        }}
+                        initSelected={selectedSection.name}
+                        size='sm'
+                    />
+                </nav>
+                <span className={styles.refresh}>
+                    <button onClick={seatings.refresh}>
+                        <span className={styles.lastRefreshed}>Updated {lastRefreshed}</span>
+                        <img src={icon.refresh} />
+                    </button>
+                </span>
+            </nav>
+
+            <div className={styles.section} ref={sectionRef}>
+                <img 
+                    ref={imageRef}
+                    src={getImage()} 
+                    alt={`Section ${selectedSection.name}`} 
+                />
+
+                {!seatings.isLoading
+                    ? seatings.getSeatingsBySectionId(selectedSection.id).map(seating => (
+                        <div 
+                            key={seating.id}
+                            className={`${styles.seating} ${styles[seating.availability]}`}
+                            style={{
+                                left: seating.pos_x * seatingOffset.scaleX,
+                                top: seating.pos_y * seatingOffset.scaleY,
+                                height: seatingSize.height,
+                                width: seatingSize.width
+                            }}
+                        >
+                            <Text>{seating.number}</Text>
+                        </div>                        
+                    ))
+                    : <div className={styles.spinnerContainer}>
+                        <Spinner />
+                    </div>
+                }
+            </div>
         </div>    
     );
 }

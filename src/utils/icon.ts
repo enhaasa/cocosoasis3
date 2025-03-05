@@ -16,6 +16,7 @@ import location from '@assets/icons/location.svg';
 import clock from '@assets/icons/clock.svg';
 import calendar from '@assets/icons/calendar.svg';
 import flower from '@assets/icons/flower.svg';
+import refresh from '@assets/icons/refresh.svg';
 
 export default {
     fullscreen,
@@ -35,5 +36,6 @@ export default {
     location,
     clock,
     calendar,
-    flower
+    flower,
+    refresh
 }
