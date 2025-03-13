@@ -23,7 +23,7 @@ export default function useServices(page: any, assets: any, components: any) {
 
             parsedIncludedServices[index] = {
                 ...components[service.sys.id],
-                background: assets[backgroundId]?.file.url
+                background: assets[backgroundId]?.file.url,
             };
         });
 
@@ -48,6 +48,7 @@ export default function useServices(page: any, assets: any, components: any) {
             includedServices: parsedIncludedServices,
             paidServices: parsedPaidServices,
             eventExclusivity: fields?.eventExclusivity,
+            isTemporarilyUnavailable: fields?.isTemporarilyUnavailable,
             background: assets[fields?.background?.sys?.id]?.file?.url
         });
 

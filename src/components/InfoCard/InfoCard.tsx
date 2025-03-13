@@ -17,9 +17,10 @@ interface IInfoCard {
     background?: string;
     description?: Document;
     eventExclusivity?: string;
+    isTemporarilyUnavailable: boolean;
 }
 
-export default function InfoCard({ title, background, description, eventExclusivity }: IInfoCard) {
+export default function InfoCard({ title, background, description, eventExclusivity, isTemporarilyUnavailable }: IInfoCard) {
     const { modals } = useContext(UIContext);
 
     const ref = useRef(null);
@@ -48,7 +49,7 @@ export default function InfoCard({ title, background, description, eventExclusiv
         <div className={`${styles.container} ${eventExclusivity ? styles[eventExclusivity] : ''}`} onClick={handleClick} >
             <div className={styles.card} ref={ref}>
                 <div 
-                    className={styles.background} 
+                    className={`${styles.background} ${isTemporarilyUnavailable ? styles.isTemporarilyUnavailable : ''}`} 
                     style={{backgroundImage: `url("${background}")` }} 
                 />
 
@@ -63,6 +64,12 @@ export default function InfoCard({ title, background, description, eventExclusiv
                         </div>
                     </div>
                 </div>
+
+                {isTemporarilyUnavailable &&
+                    <div className={styles.isTemporarilyUnavailable}>
+                        <Text>Temporarily Unavailable</Text>
+                    </div>
+                }
             </div>
         </div>    
     );

@@ -55,6 +55,7 @@ export default function Services() {
                                                 background={service.background}
                                                 description={service.description}
                                                 eventExclusivity={service.eventExclusivity}
+                                                isTemporarilyUnavailable={service.isTemporarilyUnavailable}
                                             />
                                         )} />
                                     </Grid>
@@ -82,6 +83,7 @@ export default function Services() {
                                                 background={service.background}
                                                 description={service.description}
                                                 eventExclusivity={service.eventExclusivity}
+                                                isTemporarilyUnavailable={service.isTemporarilyUnavailable}
                                             />
                                         )} />
                                     </Grid>
