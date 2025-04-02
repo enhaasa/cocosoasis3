@@ -9,8 +9,14 @@ export type Partner = {
     address?: string;
     description?: Document;
     logo: string;
+    flags: Flag[];
     websiteLink: string;
     discordLink: string;
+}
+
+type Flag = {
+    title: string;
+    color: string;
 }
 
 export type PartnersContent = {
@@ -36,15 +42,21 @@ export default function usePartners(page: any, assets: any, components: any) {
         const parsedCommunities = [ ...fields?.communities ?? [] ];
 
         parsedPartners.forEach((partner: any, index: number) => {
+            const partnerComponent = components[partner.sys.id];
+
             parsedPartners[index] = {
-                ...components[partner.sys.id] ?? {},
+                ...partnerComponent ?? {},
+                flags: partnerComponent?.flags?.map((flag: any) => components[flag?.sys?.id]) ?? [],
                 logo: assets[components[partner.sys.id]?.logo?.sys.id]?.file?.url ?? ''
             }
         });
 
         parsedCommunities.forEach((partner: any, index: number) => {
+            const partnerComponent = components[partner.sys.id];
+
             parsedCommunities[index] = {
-                ...components[partner.sys.id] ?? {},
+                ...partnerComponent ?? {},
+                flags: partnerComponent?.flags?.map((flag: any) => components[flag?.sys?.id]) ?? [],
                 logo: assets[components[partner.sys.id]?.logo?.sys.id]?.file?.url ?? ''
             }
         });
