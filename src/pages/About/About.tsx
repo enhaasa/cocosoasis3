@@ -79,7 +79,7 @@ export default function About() {
                 <div className={styles.title} >
                     <Title 
                         headline={'Our family'}
-                        subline='🇧🇪 🇫🇮 🇫🇷 🇩🇪 🇪🇸 🇸🇪 🇬🇧'
+                        subline='🇧🇪 🇫🇮 🇫🇷 🇩🇪 🇪🇸 🇸🇪 🇬🇧 🇨🇾'
                         size='xl'
                         isCentered={true}
                         style='signature'
