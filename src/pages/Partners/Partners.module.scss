@@ -15,6 +15,10 @@
         & .category {
             display: grid;
 
+            & .headline {
+                margin-bottom: dimensions.margin('xxl');
+            }
+
             & .venues {
                 display: grid;
                 gap: dimensions.margin('xxl');

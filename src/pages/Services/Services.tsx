@@ -36,7 +36,9 @@ export default function Services() {
                     </div>
 
                     <div>
-                        <Separator label='Included' size='md' />
+                        <Separator>
+                            <Title headline='Included' size='xl' isNeon={true} />
+                        </Separator>
                         <Title
                             headline='Enjoy our included offerings to enhance your dining experience at our restaurant.'
                             isCentered={true}
@@ -66,7 +68,9 @@ export default function Services() {
                         {services.content?.paidServices.length > 0 &&
                         <>
                             <div>
-                                <Separator label='Paid Additions' size='md' />
+                                <Separator>
+                                    <Title headline='Paid Additions' size='xl' isNeon={true} />
+                                </Separator>
                                 <Title
                                     headline='Indulge in our premium offerings to take your dining experience to the next level.'
                                     isCentered={true}

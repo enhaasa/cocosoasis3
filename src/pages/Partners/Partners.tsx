@@ -27,29 +27,23 @@ export default function Partners() {
                     />
                 </div>
 
-                <Separator />
 
                 <div className={styles.categories}>
                         {
                             partners.content?.partnerCategories.map((category, index) => (
                                 <div className={styles.category}>
                                     <div className={styles.headline} key={`PartnerCategory-${index}`}>
-                                        <Title headline={category.headline} size='xl' isNeon={true} isCentered={false} />
+
+                                        <Separator>
+                                            <Title headline={category.headline} size='xl' isNeon={true} />
+                                        </Separator>
+
                                     </div>
 
-                                    {index !== partners.content?.partnerCategories.length &&
-                                        <div className={styles.bottomSeparator}>
-                                            <Separator />
-                                        </div>
-                                    }
 
                                     <div className={styles.venues}>
                                         <ChainSpawn items={category.items.map(partner => <PartnerCard key={`PartnerCard-${index}`} partner={partner} />)} />
                                     </div>
-
-                                    {index +1 !== partners.content?.partnerCategories.length &&
-                                        <Separator />
-                                    }
 
                                 </div>
                             ))
