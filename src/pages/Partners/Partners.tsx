@@ -29,14 +29,31 @@ export default function Partners() {
 
                 <Separator />
 
-                <div className={styles.partnerVenues}>
-                    <ChainSpawn 
-                        items={partners.content?.partners.map((partner, index) => (
-                            <PartnerCard key={`PartnerCardVenue-${index}`} partner={partner} />
-                        )) ?? []
+                <div className={styles.categories}>
+                        {
+                            partners.content?.partnerCategories.map((category, index) => (
+                                <div className={styles.category}>
+                                    <div className={styles.headline} key={`PartnerCategory-${index}`}>
+                                        <Title headline={category.headline} size='xl' isNeon={true} isCentered={false} />
+                                    </div>
 
+                                    {index !== partners.content?.partnerCategories.length &&
+                                        <div className={styles.bottomSeparator}>
+                                            <Separator />
+                                        </div>
+                                    }
+
+                                    <div className={styles.venues}>
+                                        <ChainSpawn items={category.items.map(partner => <PartnerCard key={`PartnerCard-${index}`} partner={partner} />)} />
+                                    </div>
+
+                                    {index +1 !== partners.content?.partnerCategories.length &&
+                                        <Separator />
+                                    }
+
+                                </div>
+                            ))
                         }
-                    />
                 </div>
 
                 <div className={styles.title}>
@@ -51,14 +68,19 @@ export default function Partners() {
 
                 <Separator />
 
-                <div className={styles.partnerVenues}>
-                    <ChainSpawn 
-                        items={partners.content?.communities.map((partner, index) => (
-                            <PartnerCard key={`PartnerCardCommunity-${index}`} partner={partner} />
-                        )) ?? []
-                        }
-                    
-                    />
+                <div className={styles.categories}>
+
+                    <div className={styles.category}>
+                        <div className={styles.venues}>
+                            <ChainSpawn 
+                                items={partners.content?.communities.map((partner, index) => (
+                                    <PartnerCard key={`PartnerCardCommunity-${index}`} partner={partner} />
+                                )) ?? []
+                                }
+                            
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>    
         </Page>

@@ -9,32 +9,47 @@
         margin-bottom: dimensions.margin('lg');
     }
 
-    & .partnerVenues {
+    & .categories {
         display: grid;
-        gap: dimensions.margin('xxl');
-        grid-template-columns: repeat(4, 1fr);
-        justify-content: center;
-    }
 
-    @media (max-width: breakpoints.screen('desktop')) {
-        & .partnerVenues {
-            grid-template-columns: repeat(3, 1fr);
+        & .category {
+            display: grid;
+
+            & .venues {
+                display: grid;
+                gap: dimensions.margin('xxl');
+                grid-template-columns: repeat(4, 1fr);
+                justify-content: center;
+                justify-items: center;
+            }
+
+            @media (max-width: breakpoints.screen('desktop')) {
+                & .venues {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+        
+            @media (max-width: breakpoints.halfway('tablet', 'desktop')) {
+                & .venues {
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: dimensions.margin('xl');
+                }
+            }
+        
+            @media (max-width: breakpoints.halfway('phone', 'tablet')) {
+                margin: dimensions.margin('md');
+        
+                & .venues {
+                    grid-template-columns: 1fr;
+                    gap: dimensions.margin('lg');
+                }
+            }
+
         }
     }
 
-    @media (max-width: breakpoints.screen('tablet')) {
-        & .partnerVenues {
-            grid-template-columns: repeat(2, 1fr);
-            gap: dimensions.margin('xl');
-        }
+    & .bottomSeparator {
+        margin-bottom: dimensions.margin('lg');
     }
 
-    @media (max-width: breakpoints.screen('phone')) {
-        margin: dimensions.margin('md');
-
-        & .partnerVenues {
-            grid-template-columns: 1fr;
-            gap: dimensions.margin('lg');
-        }
-    }
 }

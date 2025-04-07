@@ -20,7 +20,10 @@ type Flag = {
 }
 
 export type PartnersContent = {
-    partners: Partner[],
+    partnerCategories: {
+        headline: string;
+        items: Partner[];
+    }[]
     communities: Partner[],
     background?: string;
 }
@@ -30,39 +33,51 @@ export interface IUsePartners {
 }
 
 export default function usePartners(page: any, assets: any, components: any) {
-   const [ content, setContent ] = useState<null | PartnersContent>(null);
-   const isLoaded = useRef<boolean>(false);
+    const [ content, setContent ] = useState<null | PartnersContent>(null);
+    const isLoaded = useRef<boolean>(false);
+
+    function parsePartner(partner: any, components: any, assets: any) {
+
+        console.log('parsing', partner)
+
+        return {
+            ...partner,
+            flags: partner?.flags?.map((flag: any) => components[flag?.sys?.id]) ?? [],
+            logo: assets[partner?.logo?.sys?.id]?.file?.url ?? ''
+        }
+    }
 
     useEffect(() => {
         if (isLoaded.current || !page?.fields) return;
         
         const { fields } = page;
 
-        const parsedPartners = [ ...fields?.partners ?? [] ];
         const parsedCommunities = [ ...fields?.communities ?? [] ];
+        const parsedCategories = [ ...fields?.partnerCategories ?? [] ];
 
-        parsedPartners.forEach((partner: any, index: number) => {
-            const partnerComponent = components[partner.sys.id];
+        parsedCategories.forEach((category: any, index: number) => {
+            const categoryComponent = components[category?.sys?.id];
 
-            parsedPartners[index] = {
-                ...partnerComponent ?? {},
-                flags: partnerComponent?.flags?.map((flag: any) => components[flag?.sys?.id]) ?? [],
-                logo: assets[components[partner.sys.id]?.logo?.sys.id]?.file?.url ?? ''
+            parsedCategories[index] = {
+                ...categoryComponent,
+                items: categoryComponent.items.map((item: any) => parsePartner(components[item?.sys?.id], components, assets) as Partner)
             }
         });
 
         parsedCommunities.forEach((partner: any, index: number) => {
-            const partnerComponent = components[partner.sys.id];
+            const partnerComponent = components[partner?.sys?.id];
 
             parsedCommunities[index] = {
                 ...partnerComponent ?? {},
                 flags: partnerComponent?.flags?.map((flag: any) => components[flag?.sys?.id]) ?? [],
-                logo: assets[components[partner.sys.id]?.logo?.sys.id]?.file?.url ?? ''
+                logo: assets[components[partner?.sys?.id]?.logo?.sys.id]?.file?.url ?? ''
             }
         });
 
+        console.log('k', parsedCategories)
+
         setContent({
-            partners: parsedPartners,
+            partnerCategories: parsedCategories,
             communities: parsedCommunities,
             background: assets[fields.background?.sys?.id]?.file?.url
         });
