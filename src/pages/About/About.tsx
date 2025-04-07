@@ -17,6 +17,7 @@ import PageCTA from '@components/PageCTA/PageCTA';
 import StaffList from '@components/StaffList/StaffList';
 import Rules from '@components/Rules/Rules';
 import RichTextRenderer from '@components/RichTextRenderer';
+import Text from '@components/Text/Text';
 
 // LOgo
 import Logo from '@assets/logo/logo.webp';
@@ -79,16 +80,18 @@ export default function About() {
                 <div className={styles.title} >
                     <Title 
                         headline={'Our family'}
-                        subline='🇧🇪 🇫🇮 🇫🇷 🇩🇪 🇪🇸 🇸🇪 🇬🇧 🇨🇾'
                         size='xl'
                         isCentered={true}
                         style='signature'
                         isWinged={true}
                     />
+                    <div className={styles.flags}>
+                        <Text size='md'>🇧🇪 🇫🇮 🇫🇷 🇩🇪 🇪🇸 🇸🇪 🇬🇧 🇨🇾</Text>
+                    </div>
                 </div>
 
                 <div id='staff-list' />
-                <Separator />
+                
                         
                 <StaffList />
 
