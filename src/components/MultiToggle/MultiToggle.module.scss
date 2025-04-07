@@ -28,12 +28,24 @@
             }
             &.sm {
                 padding: dimensions.padding('sm') dimensions.padding('md');
+
+                @media (max-width: breakpoints.screen('tablet')) {
+                    padding: dimensions.padding('xs') dimensions.padding('sm');
+                }
             }
             &.md {
                 padding: dimensions.padding('md') dimensions.padding('xl');
+
+                @media (max-width: breakpoints.screen('tablet')) {
+                    padding: dimensions.padding('sm') dimensions.padding('md');
+                }
             }
             &.lg {
                 padding: dimensions.padding('lg') dimensions.padding('xl');
+
+                @media (max-width: breakpoints.screen('tablet')) {
+                    padding: dimensions.padding('md') dimensions.padding('xl');
+                }
             }
 
             &:first-child {
