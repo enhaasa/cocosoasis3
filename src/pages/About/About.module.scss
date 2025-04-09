@@ -49,6 +49,16 @@
 
    & .title {
       margin-top: dimensions.margin('xl');
+
+
+      & .flags {
+         margin-top: dimensions.margin('lg');
+      }
+   }
+
+   & .flags {
+      display: grid;
+      justify-content: center;
    }
 
    & .highlights {

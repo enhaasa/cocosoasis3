@@ -32,6 +32,17 @@ export default function PartnerCard({ partner }: IPartnerCard) {
 
     return (
         <div className={styles.container} ref={ref}>
+            
+            {partner?.flags &&
+                <div className={styles.flags}>
+                    {partner.flags.map((flag, index) => (
+                        <div className={`${styles.flag} ${styles[flag.color]}`} key={index}>
+                            {flag.title}
+                        </div>
+                    ))}
+                </div>
+            }
+
             <div className={styles.logo}>
                 <img src={partner.logo} />
             </div>

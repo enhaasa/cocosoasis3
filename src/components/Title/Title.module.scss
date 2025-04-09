@@ -5,6 +5,8 @@
 @use '@styles/gradients.scss' as gradients;
 
 .container {
+    text-align: center;
+
     & .md {
         font-size: fonts.size('md');
 

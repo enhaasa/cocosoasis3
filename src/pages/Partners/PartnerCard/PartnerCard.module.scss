@@ -1,10 +1,13 @@
 @use '@styles/dimensions.scss' as dimensions;
+@use '@styles/decorations.scss' as decorations;
 @use '@styles/colors.scss' as colors;
+@use '@styles/fonts.scss' as fonts;
 
 .container {
     display: grid;
     justify-content: center;
     align-content: start;
+    position: relative;
 
     & .name {
         margin-bottom: dimensions.margin('md');
@@ -21,6 +24,43 @@
 
         & a {
             color: colors.text('primary');
+        }
+    }
+
+    & .flags {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        display: grid;
+        justify-items: start;
+        gap: dimensions.margin('xs');
+
+        & .flag {
+            font-size: fonts.size('xs');
+            padding: dimensions.padding('xs') dimensions.padding('md');
+            border-radius: decorations.border-radius('md');
+            box-shadow: decorations.box-shadow('md');
+
+            &.Red {
+                color: colors.text('tertiary'); 
+                background: colors.neutral('red');
+            }
+
+            &.Yellow {
+                color: colors.text('tertiary'); 
+                background: colors.neutral('yellow');
+            }
+
+            &.Green {
+                color: colors.text('tertiary'); 
+                background: colors.neutral('green');
+            }
+
+            &.Black {
+                color: colors.neutral('white');
+                background: colors.bg('primary');
+            }
         }
     }
 }

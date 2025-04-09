@@ -3,7 +3,7 @@
 @use '@styles/decorations.scss' as decorations;
 @use '@styles/breakpoints.scss' as breakpoints;
 
-$cardHeightStandard: 400px;
+$cardHeightStandard: 550px;
 $cardHeightBig: 480px;
 $cardHeightBigger: 600px;
 
@@ -106,6 +106,14 @@ $cardHeightBigger: 600px;
         background: rgba(0, 0, 0, 0.7);
     }
 
+    @media (max-width: breakpoints.halfway('desktop', 'widescreen')) {
+        perspective: $cardHeightBig;
+
+        & .card {
+            min-height: $cardHeightBig;
+        }
+    }
+
     @media (max-width: breakpoints.screen('tablet')) {
         perspective: $cardHeightBigger;
 
@@ -113,6 +121,7 @@ $cardHeightBigger: 600px;
             min-height: $cardHeightBigger;
         }
     }
+
     @media (max-width: breakpoints.screen('phone')) {
         perspective: $cardHeightBig;
 
