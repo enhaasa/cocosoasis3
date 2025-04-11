@@ -17,7 +17,7 @@ import PageCTA from '@components/PageCTA/PageCTA';
 import StaffList from '@components/StaffList/StaffList';
 import Rules from '@components/Rules/Rules';
 import RichTextRenderer from '@components/RichTextRenderer';
-import Text from '@components/Text/Text';
+import Syncshell from '@components/Syncshell/Syncshell';
 
 // LOgo
 import Logo from '@assets/logo/logo.webp';
@@ -26,6 +26,8 @@ import Button from '@components/Button/Button';
 
 // Utils
 import icon from '@utils/icon';
+
+const STAFF_FLAGS = ['be', 'fi', 'fr', 'de', 'es', 'se', 'gb', 'cy'];
 
 export default function About() {
     const { about } = useContext(CMSContext);
@@ -36,6 +38,16 @@ export default function About() {
             <Modal headline='Rules' display='grid'>
                 <div>
                     <Rules />
+                </div>
+            </Modal>
+        );
+    }
+
+    function handleSyncshellClick() {
+        modals.add(
+            <Modal headline='Syncshell' display='grid'>
+                <div>
+                    <Syncshell />
                 </div>
             </Modal>
         );
@@ -61,6 +73,7 @@ export default function About() {
                 <nav>
                     <Button name='Staff' style='neutral' onClick={handleStaffScrollClick} icon={icon.chevronDown} /> 
                     <Button name='Rules' onClick={handleRulesClick} /> 
+                    <Button name='Syncshell' onClick={handleSyncshellClick} />
                 </nav>
 
                 <div className={styles.highlights}>
@@ -86,7 +99,9 @@ export default function About() {
                         isWinged={true}
                     />
                     <div className={styles.flags}>
-                        <Text size='md'>🇧🇪 🇫🇮 🇫🇷 🇩🇪 🇪🇸 🇸🇪 🇬🇧 🇨🇾</Text>
+                        {STAFF_FLAGS.map(flag => (
+                            <span className={`fi fi-${flag}`}></span>
+                        ))}
                     </div>
                 </div>
 

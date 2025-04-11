@@ -11,8 +11,6 @@ import RichTextRenderer from '@components/RichTextRenderer';
 export default function Rules() {
     const { about } = useContext(CMSContext);
 
-
-
     return (
         <div className={styles.container}>
             <Title 

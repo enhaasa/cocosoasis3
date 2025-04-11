@@ -1,0 +1,40 @@
+@use '@styles/dimensions.scss' as dimensions; 
+@use '@styles/colors.scss' as colors;
+
+.container {
+    padding: dimensions.padding('lg');
+    max-height: 100%;
+
+    & .content {     
+        display: grid; 
+        overflow-y: auto;
+        max-height: 75vh;
+        padding: 0 dimensions.margin('lg');
+        padding-bottom: dimensions.margin('md');
+    }
+
+    & .login {
+        display: grid;
+        justify-content: center;
+        
+        & .row {
+            display: grid;
+            grid-auto-flow: column;
+            grid-template-columns: 1fr 2fr;
+            
+            & .key {
+                color: colors.text('secondary');
+            }
+            
+            & .val {
+                text-align: right;
+            }
+        }
+    }
+
+    & .headline * {
+        display: flex;
+        align-items: center;
+        gap: dimensions.margin('sm');
+    }
+}
