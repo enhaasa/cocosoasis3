@@ -18,6 +18,7 @@ import StaffList from '@components/StaffList/StaffList';
 import Rules from '@components/Rules/Rules';
 import RichTextRenderer from '@components/RichTextRenderer';
 import Text from '@components/Text/Text';
+import Syncshell from '@components/Syncshell/Syncshell';
 
 // LOgo
 import Logo from '@assets/logo/logo.webp';
@@ -36,6 +37,16 @@ export default function About() {
             <Modal headline='Rules' display='grid'>
                 <div>
                     <Rules />
+                </div>
+            </Modal>
+        );
+    }
+
+    function handleSyncshellClick() {
+        modals.add(
+            <Modal headline='Syncshell' display='grid'>
+                <div>
+                    <Syncshell />
                 </div>
             </Modal>
         );
@@ -61,6 +72,7 @@ export default function About() {
                 <nav>
                     <Button name='Staff' style='neutral' onClick={handleStaffScrollClick} icon={icon.chevronDown} /> 
                     <Button name='Rules' onClick={handleRulesClick} /> 
+                    <Button name='Syncshell' onClick={handleSyncshellClick} />
                 </nav>
 
                 <div className={styles.highlights}>

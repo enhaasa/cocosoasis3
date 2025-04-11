@@ -17,6 +17,8 @@ import clock from '@assets/icons/clock.svg';
 import calendar from '@assets/icons/calendar.svg';
 import flower from '@assets/icons/flower.svg';
 import refresh from '@assets/icons/refresh.svg';
+import info from '@assets/icons/info.svg';
+import warning from '@assets/icons/warning.svg';
 
 export default {
     fullscreen,
@@ -37,5 +39,7 @@ export default {
     clock,
     calendar,
     flower,
-    refresh
+    refresh,
+    info,
+    warning
 }
