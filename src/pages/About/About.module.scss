@@ -57,7 +57,8 @@
    }
 
    & .flags {
-      display: grid;
+      display: flex;
+      gap: dimensions.padding('md');
       justify-content: center;
    }
 

@@ -17,7 +17,6 @@ import PageCTA from '@components/PageCTA/PageCTA';
 import StaffList from '@components/StaffList/StaffList';
 import Rules from '@components/Rules/Rules';
 import RichTextRenderer from '@components/RichTextRenderer';
-import Text from '@components/Text/Text';
 import Syncshell from '@components/Syncshell/Syncshell';
 
 // LOgo
@@ -27,6 +26,8 @@ import Button from '@components/Button/Button';
 
 // Utils
 import icon from '@utils/icon';
+
+const STAFF_FLAGS = ['be', 'fi', 'fr', 'de', 'es', 'se', 'gb', 'cy'];
 
 export default function About() {
     const { about } = useContext(CMSContext);
@@ -98,7 +99,9 @@ export default function About() {
                         isWinged={true}
                     />
                     <div className={styles.flags}>
-                        <Text size='md'>🇧🇪 🇫🇮 🇫🇷 🇩🇪 🇪🇸 🇸🇪 🇬🇧 🇨🇾</Text>
+                        {STAFF_FLAGS.map(flag => (
+                            <span className={`fi fi-${flag}`}></span>
+                        ))}
                     </div>
                 </div>
 
