@@ -11,8 +11,6 @@ import Text from '@components/Text/Text';
 export default function PartnerList() {
     const { partners } = useContext(CMSContext);
 
-    console.log(partners)
-
     return (
         <div className={styles.container}>
             <div className={styles.category}>
