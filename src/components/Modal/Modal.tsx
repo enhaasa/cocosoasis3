@@ -56,14 +56,14 @@ export default function Modal({
     useEffect(() => {
         if (id === undefined) return;
         
-        if (!modals.lifeSupportList.includes(id)) {
+        if (!modals.modalIds.includes(id)) {
             animate.slideOut(ref, 'top', {fade: true, duration: AnimationDuration.Fast});
 
             setTimeout(()=> {
                 modals.kill(id);
             }, 300);
         }
-    }, [id, modals, modals.lifeSupportList]);
+    }, [id, modals, modals.modalIds]);
 
     return (
         <div className={styles.container} onClick={handleModalClick} ref={ref}>

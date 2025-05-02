@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from './ModalManager.module.scss';
-import { useContext, useLayoutEffect, useRef, useState } from "react"
+import { useContext, useLayoutEffect, useRef, useState, useEffect } from "react"
 
 // Contexts
 import { UIContext } from "@contexts/UI";
@@ -16,10 +16,10 @@ export default function ModalManager() {
     const [ show, setShow ] = useState(false);
     const ref = useRef(null);
 
-    const reversedModals = modals.get.slice().reverse();
+    const reversedModals = Object.values(modals.get).slice().reverse();
 
     function shouldBlur(index: number) {
-        if (modals.get.length < 2) return false;
+        if (Object.values(modals.get).length < 2) return false;
 
         return index === 0;
     }
@@ -27,7 +27,7 @@ export default function ModalManager() {
     useLayoutEffect(() => {
         if (!ref.current) return;
 
-        if (modals.get.length > 0) {
+        if (Object.values(modals.get).length > 0) {
             setShow(true);
             animate.darkenBgIn(ref);
         } else {
@@ -37,7 +37,7 @@ export default function ModalManager() {
             }, 300)
         }
     }, [ modals.get ]);
-    
+
     return (
         <div 
             ref={ref} 
