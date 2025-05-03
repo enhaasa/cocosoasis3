@@ -30,7 +30,6 @@ export type TModalComponent = ReactElement;
 export interface IUseModals {
     get: TModals;
     add: (modalComponent: TModalComponent) => number | false;
-    kill: (id: number) => void;
     killAll: any;
     remove: (id: number) => void;
     closeCurrent: () => void;
@@ -169,7 +168,6 @@ export default function useModals(): IUseModals {
         get: state.modals,
         killAll,
         add,
-        kill: (id) => dispatch({ type: 'KILL_MODAL', id }),
         remove: beginRemoval,
         closeCurrent
     }

@@ -13,7 +13,10 @@ import animate, { AnimationDuration } from "@utils/animate";
 // Icons
 import icon from "@utils/icon";
 
-interface ITransparentModal {
+// Types
+import { IModalTimingProps } from "@hooks/modals/modalDefaults";
+
+interface ITransparentModal extends IModalTimingProps {
     id?: number;
     headline: string;
     message?: string;
@@ -40,24 +43,19 @@ export default function TransparentModal({
 
     useLayoutEffect(() => {
         if (!ref.current) return;
-        const animation = animate.slideIn(ref, 'top', {fade: true, duration: AnimationDuration.Fast});
 
-        return () => {
-            animation?.kill();
-        }
+        setTimeout(() => {
+            animate.slideIn(ref, 'top', {fade: true, duration: AnimationDuration.Fast});
+        }, modals.get[id!.toString()].mountDelay);
     }, []);
     
     useEffect(() => {
         if (id === undefined) return;
-        
-        if (!modals.lifeSupportList.includes(id)) {
-            animate.slideOut(ref, 'top', {fade: true, duration: AnimationDuration.Fast});
 
-            setTimeout(()=> {
-                modals.kill(id);
-            }, 300);
+        if (modals.get[id].isRemoving) {
+            animate.slideOut(ref, 'top', {fade: true, duration: AnimationDuration.Fast});
         }
-    }, [id, modals, modals.lifeSupportList]);
+    }, [id, modals]);
 
     return (
         <div className={styles.container} onClick={handleModalClick} ref={ref}>
