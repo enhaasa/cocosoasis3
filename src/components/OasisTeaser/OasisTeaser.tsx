@@ -20,7 +20,7 @@ export default function OasisTeaser() {
 
     function handleSyncshellClick() {
         modals.add(
-            <Modal headline='Syncshell' display='grid'>
+            <Modal headline='Syncshell' display='grid' mountDelay={1000} dismountDelay={2000}>
                 <div>
                     <Syncshell />
                 </div>

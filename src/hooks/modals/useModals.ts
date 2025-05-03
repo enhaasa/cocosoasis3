@@ -1,21 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, ReactElement } from 'react';
 
-const MOUNT_DELAY = 300;
-const DISMOUNT_DELAY = 300;
+// Constants
+import { DEFAULT_MOUNT_DELAY, DEFAULT_DISMOUNT_DELAY } from './modalDefaults';
 
 export type TModal = {
     id: number;
     component: TModalComponent;
-    mountDelay?: number;
-    dismountDelay?: number;
+    isRemoving: boolean;
+    mountDelay: number;
+    dismountDelay: number;
 }
 
 export type TModalComponent = ReactElement;
 
 export interface IUseModals {
     get: Record<string, TModal>;
-    modalIds: number[];
     add: (modalComponent: TModalComponent) => number | false;
     kill: (id: number) => void;
     killAll: any;
@@ -25,8 +25,6 @@ export interface IUseModals {
 
 export default function useModals(): IUseModals {
     const [ modals, setModals ] = useState<Record<string, TModal>>({});
-    const [ modalIds, setModalIds ] = useState<number[]>([]);
-
     const [ isChangingState, setIsChangingState ] = useState<boolean>(false);
 
     function add(modalComponent: TModalComponent) {
@@ -34,25 +32,36 @@ export default function useModals(): IUseModals {
         setIsChangingState(true);
 
         const id = Object.values(modals).length;
-        const ModalWithId = React.cloneElement(modalComponent, { id });
 
+        const props = modalComponent.props;
+        const mountDelay = props.mountDelay ?? DEFAULT_MOUNT_DELAY;
+        const dismountDelay = props.dismountDelay ?? DEFAULT_DISMOUNT_DELAY;
+        
+        const ModalWithId = React.cloneElement(modalComponent, {
+            ...props,
+            id,
+            mountDelay,
+            dismountDelay,
+        });
+        
         setModals(prev => {
             return {
                 ...prev,
                 [id.toString()]: {
                     id,
                     component: ModalWithId,
-                    mountDelay: modalComponent.props.mountDelay ?? MOUNT_DELAY,
-                    dismountDelay: modalComponent.props.dismountDelay ?? DISMOUNT_DELAY
+                    isRemoving: false,
+                    mountDelay: ModalWithId.props.mountDelay,
+                    dismountDelay: ModalWithId.props.dismountDelay
                 }
             }
         });
 
-        setModalIds(prev => [...prev, id]);
+        const delay = ModalWithId.props.mountDelay;
 
         setTimeout(() => {
             setIsChangingState(false);
-        }, 300);
+        }, delay);
         return id;
     }
 
@@ -62,35 +71,42 @@ export default function useModals(): IUseModals {
             delete newModals[id];
             return newModals;
         });
-
-        setTimeout(() => {
-            setIsChangingState(false);
-        }, 300);
+        
+        setIsChangingState(false);
     }
     
-    function unplugLifeSupport(id: number) {
+    function beginRemoval(id: number) {
         if (isChangingState) return false;
 
+        const delay = modals[id].dismountDelay;
+
+        setModals(prev => ({...prev, [id]: {
+            ...prev[id],
+            isRemoving: true
+        }}));
+
+        setTimeout(() => {
+            kill(id);
+        }, delay);
+
         setIsChangingState(true);
-        setModalIds((prev) => prev.filter((i) => i !== id));
     }
 
     function closeCurrent() {
-        unplugLifeSupport(modalIds[modalIds.length -1]);
+        const modalArray = Object.values(modals);
+        beginRemoval(modalArray[modalArray.length -1].id);
     }
 
     function killAll() {
         setModals({});
-        setModalIds([]);
     }
 
     return {
         get: modals,
         killAll,
-        modalIds,
         add,
         kill,
-        remove: unplugLifeSupport,
+        remove: beginRemoval,
         closeCurrent
     }
 }

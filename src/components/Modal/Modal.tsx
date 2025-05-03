@@ -14,7 +14,10 @@ import animate, { AnimationDuration } from "@utils/animate";
 // Icons
 import icon from "@utils/icon";
 
-interface IModal {
+// Types
+import { IModalTimingProps } from "@hooks/modals/modalDefaults";
+
+interface IModal extends IModalTimingProps {
     id?: number;
     headline: string;
     message?: string;
@@ -31,7 +34,7 @@ export default function Modal({
     children,
     closable = true,
     background = null,
-    display = 'flex'
+    display = 'flex',
 }: IModal) {
     const { modals } = useContext(UIContext);
     const ref = useRef(null);
@@ -45,25 +48,20 @@ export default function Modal({
     }
 
     useLayoutEffect(() => {
-        if (!ref.current) return;
-        const animation = animate.slideIn(ref, 'top', {fade: true, duration: AnimationDuration.Fast});
+        if (!ref.current || id === undefined) return;
 
-        return () => {
-            animation?.kill();
-        }
+        setTimeout(() => {
+            animate.slideIn(ref, 'top', {fade: true, duration: AnimationDuration.Fast});
+        }, modals.get[id!.toString()].mountDelay);
     }, []);
     
     useEffect(() => {
         if (id === undefined) return;
-        
-        if (!modals.modalIds.includes(id)) {
-            animate.slideOut(ref, 'top', {fade: true, duration: AnimationDuration.Fast});
 
-            setTimeout(()=> {
-                modals.kill(id);
-            }, 300);
+        if (modals.get[id].isRemoving) {
+            animate.slideOut(ref, 'top', {fade: true, duration: AnimationDuration.Fast});
         }
-    }, [id, modals, modals.modalIds]);
+    }, [id, modals]);
 
     return (
         <div className={styles.container} onClick={handleModalClick} ref={ref}>

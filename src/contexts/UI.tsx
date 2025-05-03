@@ -4,7 +4,7 @@ import { createContext } from 'react';
 // Hooks
 import useOffCanvas, { IUseOffCanvas } from '@hooks/useOffCanvas';
 import usePage, { IUsePage } from '@hooks/usePage';
-import useModals, { IUseModals } from '@hooks/useModals';
+import useModals, { IUseModals } from '@hooks/modals/useModals';
 
 export interface IUIContext {
     offCanvas: IUseOffCanvas;
