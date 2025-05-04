@@ -2,7 +2,7 @@ import { ReactNode, useContext, useEffect, useRef, useLayoutEffect } from "react
 import styles from './Modal.module.scss';
 
 // Contexts
-import { UIContext } from "@contexts/UI";
+import ModalContext from "@hooks/modals/ModalContext";
 
 // Components
 import Text from "@components/Text/Text";
@@ -36,7 +36,7 @@ export default function Modal({
     background = null,
     display = 'flex',
 }: IModal) {
-    const { modals } = useContext(UIContext);
+    const modals = useContext(ModalContext);
     const ref = useRef(null);
 
     function handleModalClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {

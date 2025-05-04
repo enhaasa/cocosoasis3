@@ -4,30 +4,23 @@ import { createContext } from 'react';
 // Hooks
 import useOffCanvas, { IUseOffCanvas } from '@hooks/useOffCanvas';
 import usePage, { IUsePage } from '@hooks/usePage';
-import useModals, { IUseModals } from '@hooks/modals/useModals';
 
 export interface IUIContext {
-    offCanvas: IUseOffCanvas;
-    page: IUsePage;
-    modals: IUseModals;
+  offCanvas: IUseOffCanvas;
+  page: IUsePage;
 }
 
 const UIContext = createContext<IUIContext>({} as IUIContext);
 
 function UIContextProvider({ children }: any) {
-    const offCanvas = useOffCanvas();
-    const page = usePage();
-    const modals = useModals();
+  const offCanvas = useOffCanvas();
+  const page = usePage();
 
-    return (
-        <UIContext.Provider value={{
-            offCanvas,
-            page,
-            modals
-        }}>
-            {children}
-        </UIContext.Provider>
-    )
+  return (
+    <UIContext.Provider value={{ offCanvas, page }}>
+      {children}
+    </UIContext.Provider>
+  );
 }
 
 export { UIContextProvider, UIContext };

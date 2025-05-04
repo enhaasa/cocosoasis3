@@ -5,7 +5,7 @@ import styles from './TransparentModal.module.scss';
 import Button from "@components/Button/Button";
 
 // Contexts
-import { UIContext } from "@contexts/UI";
+import ModalContext from "@hooks/modals/ModalContext";
 
 // Animations
 import animate, { AnimationDuration } from "@utils/animate";
@@ -29,7 +29,7 @@ export default function TransparentModal({
     message,
     children
 }: ITransparentModal) {
-    const { modals } = useContext(UIContext);
+    const modals = useContext(ModalContext);
     const ref = useRef(null);
 
     function handleModalClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {

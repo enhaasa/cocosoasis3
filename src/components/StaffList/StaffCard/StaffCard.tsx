@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { TCharacter } from '@enhasa/kiwicore';
 
 // Contexts
-import { UIContext } from '@contexts/UI';
+import ModalContext from '@hooks/modals/ModalContext';
 
 // Components
 import Text from '@components/Text/Text';
@@ -16,7 +16,7 @@ interface IStaffCard {
 }
 
 export default function StaffCard({ character }: IStaffCard) {
-    const { modals } = useContext(UIContext);
+    const modals = useContext(ModalContext);
 
     function handleClick() {
         modals.add(

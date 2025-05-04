@@ -6,6 +6,7 @@ import { PageContextProvider } from '@contexts/Page';
 import { CMSContextProvider } from '@contexts/CMS';
 import { KiwiContextProvider } from '@contexts/Kiwi';
 import { DiscordContextProvider } from '@contexts/Discord';
+import ModalProvider from '@hooks/modals/ModalProvider';
 
 // Components
 import Header from './components/Header/Header';
@@ -24,13 +25,14 @@ function App() {
   return (
     <Router>
       <UIContextProvider>
-        <CMSContextProvider>
-          <KiwiContextProvider>
-            <DiscordContextProvider>
-              <PageContextProvider>
-                <ModalManager />
-                <OffCanvas />
-                  <SiteContainer>
+        <ModalProvider>
+          <CMSContextProvider>
+            <KiwiContextProvider>
+              <DiscordContextProvider>
+                <PageContextProvider>
+                  <ModalManager />
+                  <OffCanvas />
+                    <SiteContainer>
                     <Header />
                     <Routes>
                       {
@@ -46,6 +48,7 @@ function App() {
               </DiscordContextProvider>
             </KiwiContextProvider>
           </CMSContextProvider>
+        </ModalProvider>
       </UIContextProvider>
     </Router>
   )

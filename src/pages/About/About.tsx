@@ -4,7 +4,7 @@ import styles from './About.module.scss';
 
 // Contexts
 import { CMSContext } from '@contexts/CMS';
-import { UIContext } from '@contexts/UI';
+import ModalContext from '@hooks/modals/ModalContext';
 
 // Components
 import Page from '@components/Page/Page';
@@ -31,7 +31,7 @@ const STAFF_FLAGS = ['be', 'fi', 'fr', 'de', 'es', 'se', 'gb', 'cy'];
 
 export default function About() {
     const { about } = useContext(CMSContext);
-    const { modals } = useContext(UIContext);
+    const modals = useContext(ModalContext);
 
     function handleRulesClick() {
         modals.add(
