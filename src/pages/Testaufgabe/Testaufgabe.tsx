@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import Title from '@components/Title/Title';
 import Button from '@components/Button/Button';
 import Modal from '@components/Modal/Modal';
+import Page from '@components/Page/Page';
 
 // Context
 import ModalContext from '@hooks/modals/ModalContext';
@@ -33,13 +34,15 @@ export default function Testaufgabe() {
     }
 
     return (
-        <div className={styles.container}>
-            <Title headline='Testaufgabe J.S' size='xxl' />
-        
-            <Button name='All defaults' onClick={() => handleTestModalClick({})} />
-            <Button name='mountDelay 1000' onClick={() => handleTestModalClick({ mountDelay: 1000 })} />
-            <Button name='dismountDelay 1000' onClick={() => handleTestModalClick({ dismountDelay: 1000 })} />
-            <Button name='mountDelay 3000 - dismountDelay 1500' onClick={() => handleTestModalClick({ mountDelay: 3000, dismountDelay: 1500 })} />
-        </div>    
+        <Page>
+            <div className={styles.container}>
+                <Title headline='Testaufgabe J.S' size='xxl' />
+            
+                <Button name='All defaults' onClick={() => handleTestModalClick({})} />
+                <Button name='mountDelay 1000' onClick={() => handleTestModalClick({ mountDelay: 1000 })} />
+                <Button name='dismountDelay 1000' onClick={() => handleTestModalClick({ dismountDelay: 1000 })} />
+                <Button name='mountDelay 3000 - dismountDelay 1500' onClick={() => handleTestModalClick({ mountDelay: 3000, dismountDelay: 1500 })} />
+            </div>    
+        </Page>
     );
 }
