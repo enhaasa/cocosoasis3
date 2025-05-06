@@ -20,10 +20,10 @@ export default function PartnerList() {
 
                 <div className={styles.list}>
                     {
-                        partners.content?.partnerCategories.map((category) => (
-                            <div>
+                        partners.content?.partnerCategories.map((category, index) => (
+                            <div key={`Category-${index}`}>
                                 {category.items.map((partner, index) => (
-                                    <Partner key={`PartnerCategory-${index}`} partner={partner} />
+                                    <Partner key={`Partner-${index}`} partner={partner} />
                                 ))}
                             </div>
                         ))
