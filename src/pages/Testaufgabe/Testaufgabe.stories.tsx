@@ -1,5 +1,6 @@
 import type { Meta } from '@ladle/react';
 import Testaufgabe from './Testaufgabe';
+import './../../index.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Contexts
@@ -21,25 +22,33 @@ export default {
 } satisfies Meta;
 
 export const Default = () => (
-    <Router>
-        <UIContextProvider>
-            <ModalProvider>
-                <CMSContextProvider>
-                    <KiwiContextProvider>
-                        <DiscordContextProvider>
-                            <PageContextProvider>
-                                <ModalManager />
-                                <OffCanvas />
-                                <SiteContainer>
-                                    <Routes>
-                                        <Route path="/" element={<Testaufgabe />} />
-                                    </Routes>
-                                </SiteContainer>
-                            </PageContextProvider>
-                        </DiscordContextProvider>
-                    </KiwiContextProvider>
-                </CMSContextProvider>
-            </ModalProvider>
-        </UIContextProvider>
-    </Router>
+    /* 
+        TODO | Preview purposes
+        index.css body styles just refuses to apply. 
+        This temporary work-around has to be cleaned up.
+    */
+    <div style={{ backgroundColor: "rgb(8,8,8)"}}>
+
+        <Router>
+            <UIContextProvider>
+                <ModalProvider>
+                    <CMSContextProvider>
+                        <KiwiContextProvider>
+                            <DiscordContextProvider>
+                                <PageContextProvider>
+                                    <ModalManager />
+                                    <OffCanvas />
+                                    <SiteContainer>
+                                        <Routes>
+                                            <Route path="/" element={<Testaufgabe />} />
+                                        </Routes>
+                                    </SiteContainer>
+                                </PageContextProvider>
+                            </DiscordContextProvider>
+                        </KiwiContextProvider>
+                    </CMSContextProvider>
+                </ModalProvider>
+            </UIContextProvider>
+        </Router>
+    </div>
 );
