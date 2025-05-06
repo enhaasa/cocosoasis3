@@ -3,44 +3,54 @@ import styles from './ModalManager.module.scss';
 import { useContext, useLayoutEffect, useRef, useState } from "react"
 
 // Contexts
-import { UIContext } from "@contexts/UI";
+import ModalContext from '@hooks/modals/ModalContext';
 
 // Animations
 import animate, { AnimationDuration } from '@utils/animate';
 
+const BG_FADE_DURATION = 300;
+
 export default function ModalManager() {
-    const {
-        modals
-    } = useContext(UIContext);
+    const modals = useContext(ModalContext);
 
     const [ show, setShow ] = useState(false);
-    const ref = useRef(null);
+    const isDarkenedRef = useRef(false);
+    const elementRef = useRef(null);
 
-    const reversedModals = modals.get.slice().reverse();
+    const reversedModals = Object.values(modals.get).slice().reverse();
 
     function shouldBlur(index: number) {
-        if (modals.get.length < 2) return false;
+        if (Object.values(modals.get).length < 2) return false;
 
         return index === 0;
     }
 
     useLayoutEffect(() => {
-        if (!ref.current) return;
-
-        if (modals.get.length > 0) {
+        if (!elementRef.current) return;
+    
+        const modalCount = Object.values(modals.get).length;
+    
+        if (modalCount > 0) {
+            if (!isDarkenedRef.current) {
+                animate.darkenBgIn(elementRef);
+                isDarkenedRef.current = true;
+            }
             setShow(true);
-            animate.darkenBgIn(ref);
         } else {
-            animate.darkenBgOut(ref, { duration: AnimationDuration.Fast});
+            if (isDarkenedRef.current) {
+                animate.darkenBgOut(elementRef, { duration: AnimationDuration.Fast });
+                isDarkenedRef.current = false;
+            }
+    
             setTimeout(() => {
                 setShow(false);
-            }, 300)
+            }, BG_FADE_DURATION);
         }
-    }, [ modals.get ]);
+    }, [modals.get]);
     
     return (
         <div 
-            ref={ref} 
+            ref={elementRef} 
             className={styles.container}
             onClick={modals.closeCurrent}
             style={{ display: show ? 'grid' : 'none'}}

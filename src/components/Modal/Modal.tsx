@@ -1,20 +1,20 @@
-import { ReactNode, useContext, useEffect, useRef, useLayoutEffect } from "react";
+import { ReactNode } from "react";
 import styles from './Modal.module.scss';
 
-// Contexts
-import { UIContext } from "@contexts/UI";
+// Types
+import type { IModalTimingProps } from "@hooks/modals/modalDefaults";
+
+// Hooks
+import useModalBase from '@hooks/modals/useModalBase';
 
 // Components
-import Text from "@components/Text/Text";
 import Icon from "@components/Icon/Icon";
-
-// Animations
-import animate, { AnimationDuration } from "@utils/animate";
+import Text from "@components/Text/Text";
 
 // Icons
 import icon from "@utils/icon";
 
-interface IModal {
+interface IModal extends IModalTimingProps {
     id?: number;
     headline: string;
     message?: string;
@@ -31,58 +31,25 @@ export default function Modal({
     children,
     closable = true,
     background = null,
-    display = 'flex'
+    display = 'flex',
 }: IModal) {
-    const { modals } = useContext(UIContext);
-    const ref = useRef(null);
-
-    function handleModalClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-        e.stopPropagation();
-    }
-
-    function handleClose() {
-        modals.closeCurrent();
-    }
-
-    useLayoutEffect(() => {
-        if (!ref.current) return;
-        const animation = animate.slideIn(ref, 'top', {fade: true, duration: AnimationDuration.Fast});
-
-        return () => {
-            animation?.kill();
-        }
-    }, []);
-    
-    useEffect(() => {
-        if (id === undefined) return;
-        
-        if (!modals.lifeSupportList.includes(id)) {
-            animate.slideOut(ref, 'top', {fade: true, duration: AnimationDuration.Fast});
-
-            setTimeout(()=> {
-                modals.kill(id);
-            }, 300);
-        }
-    }, [id, modals, modals.lifeSupportList]);
+    const { ref, modals } = useModalBase(id);
 
     return (
-        <div className={styles.container} onClick={handleModalClick} ref={ref}>
+        <div className={styles.container} onClick={e => e.stopPropagation()} ref={ref}>
             <div 
                 className={styles.header} 
-                style={{justifyContent: `${closable ? 'space-between' : 'center'}`}}
+                style={{ justifyContent: closable ? 'space-between' : 'center' }}
             >
                 <span>{headline}</span>
-                {closable && 
-                    <button onClick={handleClose} className={styles.closeButton}>
+                {closable && (
+                    <button onClick={modals.closeCurrent} className={styles.closeButton}>
                         <Icon icon={icon.close} />
                     </button>
-                }
+                )}
             </div>
-            <div className={styles.message}><Text>{message}</Text></div>
-            <div 
-                style={{ display: display }}
-                className={styles.content}
-            >
+            {message && <div className={styles.message}><Text>{message}</Text></div>}
+            <div style={{ display }} className={styles.content}>
                 {children}
                 <div className={styles.contentOverlay} />
             </div>
@@ -93,5 +60,5 @@ export default function Modal({
                 />
             </div>
         </div>
-    )
+    );
 }

@@ -3,7 +3,7 @@ import { useRef, useLayoutEffect, useContext } from 'react';
 import { Document } from '@contentful/rich-text-types';
 
 // Contexts
-import { UIContext } from '@contexts/UI';
+import ModalContext from '@hooks/modals/ModalContext';
 
 // Components
 import Text from '@components/Text/Text';
@@ -21,7 +21,7 @@ interface IInfoCard {
 }
 
 export default function InfoCard({ title, background, description, eventExclusivity, isTemporarilyUnavailable }: IInfoCard) {
-    const { modals } = useContext(UIContext);
+    const modals = useContext(ModalContext);
 
     const ref = useRef(null);
 

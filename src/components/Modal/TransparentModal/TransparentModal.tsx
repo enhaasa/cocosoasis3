@@ -1,19 +1,19 @@
-import { ReactNode, useContext, useEffect, useRef, useLayoutEffect } from "react";
+import { ReactNode } from "react";
 import styles from './TransparentModal.module.scss';
+
+// Hooks
+import useModalBase from '@hooks/modals/useModalBase';
 
 // Components
 import Button from "@components/Button/Button";
 
-// Contexts
-import { UIContext } from "@contexts/UI";
-
-// Animations
-import animate, { AnimationDuration } from "@utils/animate";
-
 // Icons
 import icon from "@utils/icon";
 
-interface ITransparentModal {
+// Types
+import { IModalTimingProps } from "@hooks/modals/modalDefaults";
+
+interface ITransparentModal extends IModalTimingProps {
     id?: number;
     headline: string;
     message?: string;
@@ -26,52 +26,18 @@ export default function TransparentModal({
     message,
     children
 }: ITransparentModal) {
-    const { modals } = useContext(UIContext);
-    const ref = useRef(null);
-
-    function handleModalClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-        modals.closeCurrent();
-        e.stopPropagation();
-    }
-
-    function handleClose() {
-        modals.closeCurrent();
-    }
-
-    useLayoutEffect(() => {
-        if (!ref.current) return;
-        const animation = animate.slideIn(ref, 'top', {fade: true, duration: AnimationDuration.Fast});
-
-        return () => {
-            animation?.kill();
-        }
-    }, []);
-    
-    useEffect(() => {
-        if (id === undefined) return;
-        
-        if (!modals.lifeSupportList.includes(id)) {
-            animate.slideOut(ref, 'top', {fade: true, duration: AnimationDuration.Fast});
-
-            setTimeout(()=> {
-                modals.kill(id);
-            }, 300);
-        }
-    }, [id, modals, modals.lifeSupportList]);
+    const { ref, modals } = useModalBase(id);
 
     return (
-        <div className={styles.container} onClick={handleModalClick} ref={ref}>
-            <div 
-                className={styles.header} 
-                style={{justifyContent: 'space-between'}}
-            >
+        <div className={styles.container} onClick={modals.closeCurrent} ref={ref}>
+            <div className={styles.header} style={{ justifyContent: 'space-between' }}>
                 <span>{headline}</span>
-                <Button style={false} icon={icon.close} onClick={handleClose} size={'lg'} />
+                <Button style={false} icon={icon.close} onClick={modals.closeCurrent} size={'lg'} />
             </div>
             <div className={styles.message}>{message}</div>
             <div className={styles.content}>
                 {children}
             </div>
         </div>
-    )
+    );
 }

@@ -3,7 +3,7 @@ import { forwardRef, useContext } from 'react';
 import styles from './Image.module.scss';
 
 // Contexts
-import { UIContext } from '@contexts/UI';
+import ModalContext from '@hooks/modals/ModalContext';
 
 // Components
 import ImageGalleryModal from '@components/Modal/ImageGalleryModal/ImageGalleryModal';
@@ -27,7 +27,7 @@ interface IImage {
 
 const Image = forwardRef<HTMLImageElement, IImage>(
     ({ images, fullscreenable = true, rounded = true, isPreview = false, className, style }: IImage, ref) => {
-        const { modals } = useContext(UIContext);
+        const modals = useContext(ModalContext);
 
         function onClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
             if (isPreview) return;
