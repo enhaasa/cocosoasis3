@@ -3,7 +3,7 @@ import styles from './ModalManager.module.scss';
 import { useContext, useLayoutEffect, useRef, useState } from "react"
 
 // Contexts
-import { UIContext } from "@contexts/UI";
+import ModalContext from '@hooks/modals/ModalContext';
 
 // Animations
 import animate, { AnimationDuration } from '@utils/animate';
@@ -11,9 +11,7 @@ import animate, { AnimationDuration } from '@utils/animate';
 const BG_FADE_DURATION = 300;
 
 export default function ModalManager() {
-    const {
-        modals
-    } = useContext(UIContext);
+    const modals = useContext(ModalContext);
 
     const [ show, setShow ] = useState(false);
     const isDarkenedRef = useRef(false);
@@ -50,7 +48,6 @@ export default function ModalManager() {
         }
     }, [modals.get]);
     
-
     return (
         <div 
             ref={elementRef} 

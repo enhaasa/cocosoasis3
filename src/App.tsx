@@ -17,6 +17,7 @@ import SiteContainer from '@components/SiteContainer/SiteContainer';
 // Pages
 import Event from '@pages/Event/Event';
 import ContentPage from '@pages/ContentPage/ContentPage';
+import Testaufgabe from '@pages/Testaufgabe/Testaufgabe';
 
 // Config
 import navbar from '@config/navbar';
@@ -42,6 +43,7 @@ function App() {
                       }
                       <Route path={'/e/:slug'} element={<Event />}/>
                       <Route path={'/p/:slug'} element={<ContentPage />}/>
+                      <Route path={'/testaufgabe'} element={<Testaufgabe />} />
                     </Routes>
                   </SiteContainer>
                 </PageContextProvider>

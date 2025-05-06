@@ -15,8 +15,8 @@ import Syncshell from '@components/Syncshell/Syncshell';
 
 export default function OasisTeaser() {
     const discord = useContext(DiscordContext);
-    const { navigator } = useContext(PageContext);
     const modals = useContext(ModalContext);
+    const { navigator } = useContext(PageContext);
 
     function handleSyncshellClick() {
         modals.add(
@@ -30,9 +30,7 @@ export default function OasisTeaser() {
 
     return (
         <div className={styles.container}>
-            
             <div className={styles.wrapper}>
-
                 <div className={styles.nextEvent}>
                     <DiscordEvent event={discord.data.nextDiscordEvent} />
                 </div>

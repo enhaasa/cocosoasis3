@@ -1,14 +1,11 @@
-import { ReactNode, useContext, useEffect, useRef, useLayoutEffect } from "react";
+import { ReactNode } from "react";
 import styles from './TransparentModal.module.scss';
+
+// Hooks
+import useModalBase from '@hooks/modals/useModalBase';
 
 // Components
 import Button from "@components/Button/Button";
-
-// Contexts
-import ModalContext from "@hooks/modals/ModalContext";
-
-// Animations
-import animate, { AnimationDuration } from "@utils/animate";
 
 // Icons
 import icon from "@utils/icon";
@@ -29,47 +26,18 @@ export default function TransparentModal({
     message,
     children
 }: ITransparentModal) {
-    const modals = useContext(ModalContext);
-    const ref = useRef(null);
-
-    function handleModalClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-        modals.closeCurrent();
-        e.stopPropagation();
-    }
-
-    function handleClose() {
-        modals.closeCurrent();
-    }
-
-    useLayoutEffect(() => {
-        if (!ref.current) return;
-
-        setTimeout(() => {
-            animate.slideIn(ref, 'top', {fade: true, duration: AnimationDuration.Fast});
-        }, modals.get[id!.toString()].mountDelay);
-    }, []);
-    
-    useEffect(() => {
-        if (id === undefined) return;
-
-        if (modals.get[id].isRemoving) {
-            animate.slideOut(ref, 'top', {fade: true, duration: AnimationDuration.Fast});
-        }
-    }, [id, modals]);
+    const { ref, modals } = useModalBase(id);
 
     return (
-        <div className={styles.container} onClick={handleModalClick} ref={ref}>
-            <div 
-                className={styles.header} 
-                style={{justifyContent: 'space-between'}}
-            >
+        <div className={styles.container} onClick={modals.closeCurrent} ref={ref}>
+            <div className={styles.header} style={{ justifyContent: 'space-between' }}>
                 <span>{headline}</span>
-                <Button style={false} icon={icon.close} onClick={handleClose} size={'lg'} />
+                <Button style={false} icon={icon.close} onClick={modals.closeCurrent} size={'lg'} />
             </div>
             <div className={styles.message}>{message}</div>
             <div className={styles.content}>
                 {children}
             </div>
         </div>
-    )
+    );
 }
