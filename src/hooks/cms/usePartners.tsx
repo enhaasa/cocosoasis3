@@ -37,9 +37,6 @@ export default function usePartners(page: any, assets: any, components: any) {
     const isLoaded = useRef<boolean>(false);
 
     function parsePartner(partner: any, components: any, assets: any) {
-
-        console.log('parsing', partner)
-
         return {
             ...partner,
             flags: partner?.flags?.map((flag: any) => components[flag?.sys?.id]) ?? [],
@@ -73,8 +70,6 @@ export default function usePartners(page: any, assets: any, components: any) {
                 logo: assets[components[partner?.sys?.id]?.logo?.sys.id]?.file?.url ?? ''
             }
         });
-
-        console.log('k', parsedCategories)
 
         setContent({
             partnerCategories: parsedCategories,

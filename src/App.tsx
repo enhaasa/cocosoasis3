@@ -6,6 +6,7 @@ import { PageContextProvider } from '@contexts/Page';
 import { CMSContextProvider } from '@contexts/CMS';
 import { KiwiContextProvider } from '@contexts/Kiwi';
 import { DiscordContextProvider } from '@contexts/Discord';
+import ModalProvider from '@hooks/modals/ModalProvider';
 
 // Components
 import Header from './components/Header/Header';
@@ -16,6 +17,7 @@ import SiteContainer from '@components/SiteContainer/SiteContainer';
 // Pages
 import Event from '@pages/Event/Event';
 import ContentPage from '@pages/ContentPage/ContentPage';
+import Testaufgabe from '@pages/Testaufgabe/Testaufgabe';
 
 // Config
 import navbar from '@config/navbar';
@@ -24,12 +26,13 @@ function App() {
   return (
     <Router>
       <UIContextProvider>
-        <CMSContextProvider>
-          <KiwiContextProvider>
-            <DiscordContextProvider>
-              <PageContextProvider>
-                <ModalManager />
-                <OffCanvas />
+        <ModalProvider>
+          <CMSContextProvider>
+            <KiwiContextProvider>
+              <DiscordContextProvider>
+                <PageContextProvider>
+                  <ModalManager />
+                  <OffCanvas />
                   <SiteContainer>
                     <Header />
                     <Routes>
@@ -40,12 +43,14 @@ function App() {
                       }
                       <Route path={'/e/:slug'} element={<Event />}/>
                       <Route path={'/p/:slug'} element={<ContentPage />}/>
+                      <Route path={'/testaufgabe'} element={<Testaufgabe />} />
                     </Routes>
                   </SiteContainer>
                 </PageContextProvider>
               </DiscordContextProvider>
             </KiwiContextProvider>
           </CMSContextProvider>
+        </ModalProvider>
       </UIContextProvider>
     </Router>
   )

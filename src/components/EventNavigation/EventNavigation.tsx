@@ -3,7 +3,7 @@ import { useContext, useState, useRef } from 'react';
 
 // Contexts
 import { PageContext } from '@contexts/Page';
-import { UIContext } from '@contexts/UI';
+import ModalContext from '@hooks/modals/ModalContext';
 
 // Components
 import EventList from './EventList/EventList';
@@ -21,7 +21,7 @@ import gsap from 'gsap';
 
 export default function EventNavigation() {
     const { storedEvents, navigator } = useContext(PageContext);
-    const { modals } = useContext(UIContext);
+    const modals = useContext(ModalContext);
 
     const eventListRef = useRef(null);
 

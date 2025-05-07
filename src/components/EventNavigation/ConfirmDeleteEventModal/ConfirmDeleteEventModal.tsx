@@ -7,7 +7,7 @@ import Button from '@components/Button/Button';
 import ContentModal from '@components/Modal/ContentModal';
 
 // Contexts
-import { UIContext } from '@contexts/UI';
+import ModalContext from '@hooks/modals/ModalContext';
 import { PageContext } from '@contexts/Page';
 
 // Types
@@ -24,7 +24,7 @@ export interface IConfirmDeleteEventModal {
 
 export default function ConfirmDeleteEventModal({ headline, event, id }: IConfirmDeleteEventModal) {
     
-    const { modals } = useContext(UIContext);
+    const modals = useContext(ModalContext);
     const { storedEvents } = useContext(PageContext);
 
     function handleDelete() {

@@ -9,7 +9,7 @@ import { type GalleryImage, } from '@components/ImageGallery/ImageGallery';
 import ImageGalleryModal from '@components/Modal/ImageGalleryModal/ImageGalleryModal';
 
 // Contexts
-import { UIContext } from '@contexts/UI';
+import ModalContext from '@hooks/modals/ModalContext';
 
 // Animations
 import gsap from 'gsap';
@@ -33,7 +33,7 @@ const horizontalStyle = {
  };
 
 export default function ImageGalleryButton({ images, orientation = 'horizontal', size = 'sm' }: IImageGalleryButton) {
-    const { modals } = useContext(UIContext);
+    const modals = useContext(ModalContext);
     const modalId = useRef<false | number>(false);
 
     const firstRef = useRef(null);
@@ -75,7 +75,7 @@ export default function ImageGalleryButton({ images, orientation = 'horizontal',
     }, [firstRef, secondRef, thirdRef, images, modals]); 
     
     useEffect(() => {
-        if (!modals.get.find(modal => modal.id === modalId.current)) {
+        if (!Object.values(modals.get).find(modal => modal.id === modalId.current)) {
             slide('in');
         }
     }, [modals.get, slide]); 

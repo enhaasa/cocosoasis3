@@ -11,8 +11,6 @@ import Text from '@components/Text/Text';
 export default function PartnerList() {
     const { partners } = useContext(CMSContext);
 
-    console.log(partners)
-
     return (
         <div className={styles.container}>
             <div className={styles.category}>
@@ -22,10 +20,10 @@ export default function PartnerList() {
 
                 <div className={styles.list}>
                     {
-                        partners.content?.partnerCategories.map((category) => (
-                            <div>
+                        partners.content?.partnerCategories.map((category, index) => (
+                            <div key={`Category-${index}`}>
                                 {category.items.map((partner, index) => (
-                                    <Partner key={`PartnerCategory-${index}`} partner={partner} />
+                                    <Partner key={`Partner-${index}`} partner={partner} />
                                 ))}
                             </div>
                         ))
