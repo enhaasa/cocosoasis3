@@ -44,7 +44,9 @@ export default function OasisTeaser() {
                         style='neutral'
                     />
 
-                    <Button name='Syncshell' onClick={handleSyncshellClick} />
+                     {
+                        //<Button name='Syncshell' onClick={handleSyncshellClick} />
+                     }
 
                     <Button 
                         name='Reservations' 
