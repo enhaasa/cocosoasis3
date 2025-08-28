@@ -10,14 +10,15 @@ import { UIContext } from '@contexts/UI';
 // Components
 import DiscordEvent from '@components/DiscordEvent/DiscordEvent';
 import Button from '@components/Button/Button';
-import Modal from '@components/Modal/Modal';
-import Syncshell from '@components/Syncshell/Syncshell';
+//import Modal from '@components/Modal/Modal';
+//import Syncshell from '@components/Syncshell/Syncshell';
 
 export default function OasisTeaser() {
     const discord = useContext(DiscordContext);
     const { navigator } = useContext(PageContext);
     const { modals } = useContext(UIContext);
 
+    /*
     function handleSyncshellClick() {
         modals.add(
             <Modal headline='Syncshell' display='grid'>
@@ -27,6 +28,7 @@ export default function OasisTeaser() {
             </Modal>
         );
     }
+        */
 
     return (
         <div className={styles.container}>

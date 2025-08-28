@@ -17,7 +17,7 @@ import PageCTA from '@components/PageCTA/PageCTA';
 import StaffList from '@components/StaffList/StaffList';
 import Rules from '@components/Rules/Rules';
 import RichTextRenderer from '@components/RichTextRenderer';
-import Syncshell from '@components/Syncshell/Syncshell';
+//import Syncshell from '@components/Syncshell/Syncshell';
 
 // LOgo
 import Logo from '@assets/logo/logo.webp';
@@ -43,6 +43,7 @@ export default function About() {
         );
     }
 
+    /*
     function handleSyncshellClick() {
         modals.add(
             <Modal headline='Syncshell' display='grid'>
@@ -52,6 +53,7 @@ export default function About() {
             </Modal>
         );
     }
+        */
 
     function handleStaffScrollClick() {
         location.hash = '';
