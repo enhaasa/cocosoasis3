@@ -5,7 +5,7 @@ import { useContext } from 'react';
 // Contexts
 import { DiscordContext } from '@contexts/Discord';
 import { PageContext } from '@contexts/Page';
-import { UIContext } from '@contexts/UI';
+//import { UIContext } from '@contexts/UI';
 
 // Components
 import DiscordEvent from '@components/DiscordEvent/DiscordEvent';
@@ -16,7 +16,7 @@ import Button from '@components/Button/Button';
 export default function OasisTeaser() {
     const discord = useContext(DiscordContext);
     const { navigator } = useContext(PageContext);
-    const { modals } = useContext(UIContext);
+    //const { modals } = useContext(UIContext);
 
     /*
     function handleSyncshellClick() {
