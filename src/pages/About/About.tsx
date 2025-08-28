@@ -73,7 +73,9 @@ export default function About() {
                 <nav>
                     <Button name='Staff' style='neutral' onClick={handleStaffScrollClick} icon={icon.chevronDown} /> 
                     <Button name='Rules' onClick={handleRulesClick} /> 
-                    <Button name='Syncshell' onClick={handleSyncshellClick} />
+                    {
+                        // <Button name='Syncshell' onClick={handleSyncshellClick} />
+                    }
                 </nav>
 
                 <div className={styles.highlights}>
