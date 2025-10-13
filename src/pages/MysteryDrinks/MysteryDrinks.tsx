@@ -12,31 +12,41 @@ import Grid from '@components/Grid/Grid';
 import ChainSpawn from '@components/ChainSpawn/ChainSpawn';
 
 export default function MysteryDrinks() {
-    const { mysteryDrinks } = useContext(CMSContext);
+  const { mysteryDrinks } = useContext(CMSContext);
 
-    const { background, drinks, headline, subline } = mysteryDrinks?.content || {};
+  const { background, drinks, headline, subline } =
+    mysteryDrinks?.content || {};
 
-    return (
-        <Page background={background} backgroundOptions={{ brightness: 0.4}}>
-            <div className={styles.container}>
-                <div className={styles.title}>
-                    <Title headline={headline} subline={subline} />
-                </div>
-                
-                <div className={styles.drinks}>
+  return (
+    <Page background={background} backgroundOptions={{ brightness: 0.4 }}>
+      <div className={styles.container}>
+        <div className={styles.title}>
+          <Title
+            headline={headline}
+            subline={subline}
+            size="xxl"
+            isWinged={true}
+            style="handwritten"
+          />
+        </div>
 
-                    <Grid>
-                        {drinks && <ChainSpawn items={drinks?.map((drink: any) => 
-                            <InfoCard 
-                                title={drink.headline} 
-                                background={drink.background}
-                                description={drink.description}
-                                isTemporarilyUnavailable={drink.isTemporarilyUnavailable}
-                            />
-                        )} />}
-                    </Grid>
-                </div>
-            </div>    
-        </Page>
-    );
+        <div className={styles.drinks}>
+          <Grid>
+            {drinks && (
+              <ChainSpawn
+                items={drinks?.map((drink: any) => (
+                  <InfoCard
+                    title={drink.headline}
+                    background={drink.background}
+                    description={drink.description}
+                    isTemporarilyUnavailable={drink.isTemporarilyUnavailable}
+                  />
+                ))}
+              />
+            )}
+          </Grid>
+        </div>
+      </div>
+    </Page>
+  );
 }
