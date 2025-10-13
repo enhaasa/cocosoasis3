@@ -19,6 +19,7 @@ import ContentPage from '@pages/ContentPage/ContentPage';
 
 // Config
 import navbar from '@config/navbar';
+import MysteryDrinks from '@pages/MysteryDrinks/MysteryDrinks';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
                           <Route key={`Route-${index}`} path={item.target} element={item.component} />
                         ))
                       }
+                      <Route path={'/mystery-drinks'} element={<MysteryDrinks />}/>
                       <Route path={'/e/:slug'} element={<Event />}/>
                       <Route path={'/p/:slug'} element={<ContentPage />}/>
                     </Routes>

@@ -16,177 +16,206 @@ import usePartners, { IUsePartners } from '@hooks/cms/usePartners';
 import type { Event } from '@pages/Event/EventResult/EventResult';
 
 // Utils
-import { 
-    convertToLocalTimezone,
-    convertToServerTimezone,
-    LocalTimezone
+import {
+  convertToLocalTimezone,
+  convertToServerTimezone,
+  LocalTimezone,
 } from '@utils/time';
+import useMysteryDrinks, {
+  IUseMysteryDrinks,
+} from '@hooks/cms/useMysteryDrinks';
 
 export type ContentfulEvent = Event & {
-    local_start_time: LocalTimezone,
-    local_end_time: LocalTimezone,
-    server_start_time: string,
-    server_end_time: string,
-    raw_start_time: string,
-    raw_end_time: string,
-}
+  local_start_time: LocalTimezone;
+  local_end_time: LocalTimezone;
+  server_start_time: string;
+  server_end_time: string;
+  raw_start_time: string;
+  raw_end_time: string;
+};
 
 export interface ICMSContext {
-    home: IUseHome;
-    about: IUseVenue;
-    services: IUseServices;
-    reservations: IUseReservations;
-    partners: IUsePartners;
-    menu: IUseMenu;
-    components: any;
-    assets: any;
-    pages: any;
-    events: null | ContentfulEvent[];
+  home: IUseHome;
+  about: IUseVenue;
+  services: IUseServices;
+  reservations: IUseReservations;
+  partners: IUsePartners;
+  menu: IUseMenu;
+  mysteryDrinks: IUseMysteryDrinks;
+  components: any;
+  assets: any;
+  pages: any;
+  events: null | ContentfulEvent[];
 }
 
 const CMSContext = createContext<ICMSContext>({} as ICMSContext);
 const client = new ContentfulClient();
 
 const pagesToFetch: any = {
-    landingPage: 'landingPage',
-    servicesPage: 'servicesPage',
-    menuPage: 'menuPage',
-    venuePage: 'aboutPage',
-    partnersPage: 'partnersPage',
-    reservationsPage: 'reservationsPage'
+  landingPage: 'landingPage',
+  servicesPage: 'servicesPage',
+  menuPage: 'menuPage',
+  venuePage: 'aboutPage',
+  partnersPage: 'partnersPage',
+  reservationsPage: 'reservationsPage',
+  mysteryDrinksPage: 'mysteryDrinksPage',
 };
 
 function CMSContextProvider({ children }: any) {
-    const [ events, setEvents ] = useState(null);
-    const [ assets, setAssets ] = useState(null);
-    const [ components, setComponents ] = useState(null);
-    const [ pages, setPages ] = useState(_copyNullValuedObject(pagesToFetch));
+  const [events, setEvents] = useState(null);
+  const [assets, setAssets] = useState(null);
+  const [components, setComponents] = useState(null);
+  const [pages, setPages] = useState(_copyNullValuedObject(pagesToFetch));
 
-    useEffect(() => {
-        client.getEntries(Object.values(pagesToFetch).filter(e => e !== '').join(',')).then(result => {
-            const newEvents: any = [];
-            const newAssets: any = {};
-            const newComponents: any = {};
-            const newPages: any = {};
+  useEffect(() => {
+    client
+      .getEntries(
+        Object.values(pagesToFetch)
+          .filter((e) => e !== '')
+          .join(',')
+      )
+      .then((result) => {
+        const newEvents: any = [];
+        const newAssets: any = {};
+        const newComponents: any = {};
+        const newPages: any = {};
 
-            result.includes.Asset.forEach((asset: any) => (
-                newAssets[asset.sys.id] = { 
-                    ...asset.fields, 
-                    file: { ...asset.fields.file, url: `https:${asset.fields.file.url}` } 
-                }
-            ));
-            
-            Object.keys(pagesToFetch).forEach(page => {
-                const resultEntryIndex = result.items.findIndex((entry: any) => {
-                    return entry && entry.sys.contentType.sys.id === pagesToFetch[page];
-                });
-            
-                if (resultEntryIndex !== -1) {
-                    newPages[page] = result.items[resultEntryIndex];
-                    result.items.splice(resultEntryIndex, 1); 
-                }
-            });
+        result.includes.Asset.forEach(
+          (asset: any) =>
+            (newAssets[asset.sys.id] = {
+              ...asset.fields,
+              file: {
+                ...asset.fields.file,
+                url: `https:${asset.fields.file.url}`,
+              },
+            })
+        );
 
-            // Probably components
-            if (result.includes?.Entry) {
-                result.includes?.Entry.forEach((item: any) => {
-                    if (item) {
-                        newComponents[item.sys.id] = item.fields;
-                    }
-                });
-            }
+        Object.keys(pagesToFetch).forEach((page) => {
+          const resultEntryIndex = result.items.findIndex((entry: any) => {
+            return entry && entry.sys.contentType.sys.id === pagesToFetch[page];
+          });
 
-            if (result.items) {
-                // Probably content pages
-                result.items.forEach((item: any) => {
-                    if (item?.sys?.contentType?.sys?.id === 'contentPage') {
-                        newPages[item.fields.slug] = {
-                            ...item,
-                            background: newAssets?.[item.fields?.background?.sys?.id]?.file?.url ?? ''
-                        };
-                    }
-                });
-
-                // Cleaning up the content pages
-                result.items = result.items.filter((item: any) => item?.sys?.contentType?.sys.id !== 'contentPage');
-
-                // Probably events
-                sortEventsByDate(result.items).forEach((item: any) => {
-                    if (!item) return;
-
-                    if (item?.sys?.contentType?.sys?.id === 'event') {
-                        newEvents.push({
-                            ...formatCmsEvent(item.fields),
-                            background: newAssets[item?.fields?.background?.sys?.id]?.file?.url
-                        });
-                    }
-                })
-            }
-
-            setAssets(newAssets);
-            setComponents(newComponents);
-            setPages(newPages);
-            setEvents(newEvents);
+          if (resultEntryIndex !== -1) {
+            newPages[page] = result.items[resultEntryIndex];
+            result.items.splice(resultEntryIndex, 1);
+          }
         });
-    }, []);
 
-    const home = useHome(pages.landingPage, assets);
-    const about = useVenue(pages.venuePage, assets, components);
-    const services = useServices(pages.servicesPage, assets, components);
-    const reservations = useReservations(pages.reservationsPage, assets);
-    const partners = usePartners(pages.partnersPage, assets, components);
-    const menu = useMenu(pages.menuPage, assets);
+        // Probably components
+        if (result.includes?.Entry) {
+          result.includes?.Entry.forEach((item: any) => {
+            if (item) {
+              newComponents[item.sys.id] = item.fields;
+            }
+          });
+        }
 
-    return (
-        <CMSContext.Provider value={{
-            assets: assets,
-            components,
-            home,
-            about,
-            services,
-            reservations,
-            partners,
-            menu,
-            events,
-            pages
-        }}>
-            {children}
-        </CMSContext.Provider>
-    )
+        if (result.items) {
+          // Probably content pages
+          result.items.forEach((item: any) => {
+            if (item?.sys?.contentType?.sys?.id === 'contentPage') {
+              newPages[item.fields.slug] = {
+                ...item,
+                background:
+                  newAssets?.[item.fields?.background?.sys?.id]?.file?.url ??
+                  '',
+              };
+            }
+          });
+
+          // Cleaning up the content pages
+          result.items = result.items.filter(
+            (item: any) => item?.sys?.contentType?.sys.id !== 'contentPage'
+          );
+
+          // Probably events
+          sortEventsByDate(result.items).forEach((item: any) => {
+            if (!item) return;
+
+            if (item?.sys?.contentType?.sys?.id === 'event') {
+              newEvents.push({
+                ...formatCmsEvent(item.fields),
+                background:
+                  newAssets[item?.fields?.background?.sys?.id]?.file?.url,
+              });
+            }
+          });
+        }
+
+        setAssets(newAssets);
+        setComponents(newComponents);
+        setPages(newPages);
+        setEvents(newEvents);
+      });
+  }, []);
+
+  const home = useHome(pages.landingPage, assets);
+  const about = useVenue(pages.venuePage, assets, components);
+  const services = useServices(pages.servicesPage, assets, components);
+  const reservations = useReservations(pages.reservationsPage, assets);
+  const partners = usePartners(pages.partnersPage, assets, components);
+  const menu = useMenu(pages.menuPage, assets);
+  const mysteryDrinks = useMysteryDrinks(
+    pages.mysteryDrinksPage,
+    assets,
+    components
+  );
+
+  return (
+    <CMSContext.Provider
+      value={{
+        assets: assets,
+        components,
+        home,
+        about,
+        services,
+        reservations,
+        partners,
+        menu,
+        mysteryDrinks,
+        events,
+        pages,
+      }}
+    >
+      {children}
+    </CMSContext.Provider>
+  );
 }
 
 function sortEventsByDate(events: any): Event[] {
-    const today = new Date(); 
+  const today = new Date();
 
-    const sortedEvents = events
-        .filter((event: any) => new Date(event.fields.startTime) > today) 
-        .sort((a: any, b: any) => 
-            new Date(a.fields.startTime).getTime() - new Date(b.fields.startTime).getTime()
-        );
+  const sortedEvents = events
+    .filter((event: any) => new Date(event.fields.startTime) > today)
+    .sort(
+      (a: any, b: any) =>
+        new Date(a.fields.startTime).getTime() -
+        new Date(b.fields.startTime).getTime()
+    );
 
-    return sortedEvents;
+  return sortedEvents;
 }
 
 function _copyNullValuedObject(obj: any) {
-    const newObj: any = {};
-    Object.keys(obj).forEach((key: string) => newObj[key] = null);
+  const newObj: any = {};
+  Object.keys(obj).forEach((key: string) => (newObj[key] = null));
 
-    return newObj;
+  return newObj;
 }
 
 function formatCmsEvent(event: Event): ContentfulEvent {
-    
-    const formattedEvent = {
-        ...event,
-        local_start_time: convertToLocalTimezone(event.startTime),
-        local_end_time: convertToLocalTimezone(event.endTime),
-        server_start_time: convertToServerTimezone(event.startTime),
-        server_end_time: convertToServerTimezone(event.endTime),
-        raw_start_time: event.startTime,
-        raw_end_time: event.endTime,
-    }
+  const formattedEvent = {
+    ...event,
+    local_start_time: convertToLocalTimezone(event.startTime),
+    local_end_time: convertToLocalTimezone(event.endTime),
+    server_start_time: convertToServerTimezone(event.startTime),
+    server_end_time: convertToServerTimezone(event.endTime),
+    raw_start_time: event.startTime,
+    raw_end_time: event.endTime,
+  };
 
-    return formattedEvent;
+  return formattedEvent;
 }
 
 export { CMSContextProvider, CMSContext };
