@@ -31,26 +31,31 @@ function App() {
               <PageContextProvider>
                 <ModalManager />
                 <OffCanvas />
-                  <SiteContainer>
-                    <Header />
-                    <Routes>
-                      {
-                        navbar.map((item, index) => (
-                          <Route key={`Route-${index}`} path={item.target} element={item.component} />
-                        ))
-                      }
-                      <Route path={'/mystery-drinks'} element={<MysteryDrinks />}/>
-                      <Route path={'/e/:slug'} element={<Event />}/>
-                      <Route path={'/p/:slug'} element={<ContentPage />}/>
-                    </Routes>
-                  </SiteContainer>
-                </PageContextProvider>
-              </DiscordContextProvider>
-            </KiwiContextProvider>
-          </CMSContextProvider>
+                <SiteContainer>
+                  <Header />
+                  <Routes>
+                    {navbar.map((item, index) => (
+                      <Route
+                        key={`Route-${index}`}
+                        path={item.target}
+                        element={item.component}
+                      />
+                    ))}
+                    <Route
+                      path={'/mystery-potions'}
+                      element={<MysteryDrinks />}
+                    />
+                    <Route path={'/e/:slug'} element={<Event />} />
+                    <Route path={'/p/:slug'} element={<ContentPage />} />
+                  </Routes>
+                </SiteContainer>
+              </PageContextProvider>
+            </DiscordContextProvider>
+          </KiwiContextProvider>
+        </CMSContextProvider>
       </UIContextProvider>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
