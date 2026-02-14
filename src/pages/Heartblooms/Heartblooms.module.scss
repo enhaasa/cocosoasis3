@@ -1,0 +1,17 @@
+@use '@styles/colors.scss' as colors;
+@use '@styles/dimensions.scss' as dimensions;
+@use '@styles/decorations.scss' as decorations;
+@use '@styles/breakpoints.scss' as breakpoints;
+
+.container {
+  height: 100vh;
+
+  .title {
+    margin-top: dimensions.margin('xxl');
+    margin-bottom: dimensions.margin('xxl');
+  }
+
+  .flowers {
+    padding: dimensions.padding('xl');
+  }
+}

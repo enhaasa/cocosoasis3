@@ -24,6 +24,7 @@ import {
 import useMysteryDrinks, {
   IUseMysteryDrinks,
 } from '@hooks/cms/useMysteryDrinks';
+import useHeartblooms, { IUseHeartblooms} from '@hooks/cms/useHeartblooms';
 
 export type ContentfulEvent = Event & {
   local_start_time: LocalTimezone;
@@ -42,6 +43,7 @@ export interface ICMSContext {
   partners: IUsePartners;
   menu: IUseMenu;
   mysteryDrinks: IUseMysteryDrinks;
+  heartblooms: IUseHeartblooms;
   components: any;
   assets: any;
   pages: any;
@@ -59,6 +61,7 @@ const pagesToFetch: any = {
   partnersPage: 'partnersPage',
   reservationsPage: 'reservationsPage',
   mysteryDrinksPage: 'mysteryDrinksPage',
+  heartbloomsPage: 'heartBloomsPage'
 };
 
 function CMSContextProvider({ children }: any) {
@@ -161,6 +164,7 @@ function CMSContextProvider({ children }: any) {
     assets,
     components
   );
+  const heartblooms = useHeartblooms(pages.heartbloomsPage, assets, components)
 
   return (
     <CMSContext.Provider
@@ -174,6 +178,7 @@ function CMSContextProvider({ children }: any) {
         partners,
         menu,
         mysteryDrinks,
+        heartblooms,
         events,
         pages,
       }}
