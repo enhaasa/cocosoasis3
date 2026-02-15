@@ -21,29 +21,40 @@ export default function Home() {
     const discord = useContext(DiscordContext);
     const { singleInteractions, contentfulEvent, setContentfulEvent } = useContext(PageContext);
 
-    useLayoutEffect(() => {
-        if (contentfulEvent) {
-            return;
+useLayoutEffect(() => {
+    if (contentfulEvent) {
+        return;
+    }
+
+    const nextDiscordEvent = discord.data.nextDiscordEvent;
+    const nextContentfulEvent = events?.[0];
+
+    if (nextContentfulEvent) {
+        const now = new Date();
+
+        const contentfulStart = new Date(nextContentfulEvent.raw_start_time);
+        const contentfulEnd = new Date(nextContentfulEvent.raw_end_time);
+
+        const discordStart = new Date(nextDiscordEvent?.raw_start_time ?? Infinity);
+
+        const isContentfulOngoing =
+            now >= contentfulStart && now <= contentfulEnd;
+
+        const isContentfulNext =
+            contentfulStart <= discordStart;
+
+        if (isContentfulOngoing || isContentfulNext) {
+            setContentfulEvent(nextContentfulEvent);
         }
+    }
 
-        const nextDiscordEvent = discord.data.nextDiscordEvent;
-        const nextContentfulEvent = events?.[0];
+    if (!singleInteractions.startScreen.hasSeenStartScreen) {
+        setTimeout(() => {
+            singleInteractions.startScreen.setHasSeenStartScreen(true);
+        }, START_SCREEN_DURATION + 1000);
+    }
+}, [events]);
 
-        if (nextContentfulEvent) {
-            const contentfulISOStartTime = new Date(nextContentfulEvent.raw_start_time);
-            const discordISOStartTime = new Date(nextDiscordEvent?.raw_start_time ?? Infinity);
-
-            if (contentfulISOStartTime <= discordISOStartTime) {
-                setContentfulEvent(nextContentfulEvent);
-            }
-        }
-
-        if (!singleInteractions.startScreen.hasSeenStartScreen) {
-            setTimeout(() => {
-                singleInteractions.startScreen.setHasSeenStartScreen(true);
-            }, START_SCREEN_DURATION + 1000);
-        }
-    }, [ events ]);
 
     return (
         <>

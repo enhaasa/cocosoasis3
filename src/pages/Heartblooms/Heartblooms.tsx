@@ -20,7 +20,7 @@ export default function Heartblooms() {
     console.log(flowers)
 
   return (
-    <Page background={background} backgroundOptions={{ brightness: 0.4 }}>
+    <Page background={background} backgroundOptions={{ brightness: 0.1 }}>
       <div className={styles.container}>
         <div className={styles.title}>
           <Title
