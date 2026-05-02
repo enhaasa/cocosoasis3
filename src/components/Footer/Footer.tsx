@@ -32,7 +32,7 @@ export default function Footer() {
 
                         <div className={styles.developer}>
                             <Text size='sm'>
-                                Website developed by 
+                                Website developed by
                                 <a href='https://github.com/enhaasa' target='_blank'>
                                     <img src={GithubIcon} /> Enhasa
                                 </a>
@@ -50,12 +50,12 @@ export default function Footer() {
                                 <a href={realm.data?.discord_invite_link} target='_blank'>Coco's Oasis Discord</a>
                             </Text>
                             <Text size='sm'>
-                                <a href='https://lagoon.events' target='_blank'>The Lagoon</a>
+                                <a href='https://lagoon.cocosoasis.info' target='_blank'>The Lagoon</a>
                             </Text>
                         </div>
                     </div>
                 </div>
             </nav>
-        </div>    
+        </div>
     );
 }

@@ -34,20 +34,20 @@ export default function Reservations() {
         navigator.externalNavigate(realm.data?.discord_invite_link ?? '', true);
     }
 
-    
+
     function handleSeatingPlanClick() {
         modals.add(
             <SeatingPlanModal />
         );
     }
-        
+
 
     return (
         <Page background={reservations.content?.background}>
             <div className={styles.container}>
                 <div className={styles.teaser}>
-                    <Button 
-                        name='Book through Discord' 
+                    <Button
+                        name='Book through Discord'
                         style='primary'
                         onClick={handleDiscordClick}
                     />
@@ -65,11 +65,11 @@ export default function Reservations() {
                         <div className={styles.subline}>
                             <Text>
                                 Head over to the
-                                &#8203;<LinkButton 
-                                    name= 'Oasis Discord' 
-                                    target={''} 
-                                    isUnderlined={true} 
-                                    isNewTab={true} 
+                                &#8203;<LinkButton
+                                    name='Oasis Discord'
+                                    target={''}
+                                    isUnderlined={true}
+                                    isNewTab={true}
                                 />&#8203;
                                 and open a new ticket!
                             </Text>
@@ -85,7 +85,7 @@ export default function Reservations() {
                                 </nav>
                             </div>
                         }
-                        
+
                     </div>
 
                     <Separator />
@@ -93,7 +93,7 @@ export default function Reservations() {
                     <div className={styles.lagoon}>
 
                         <div className={styles.logo}>
-                            <a href={'https://lagoon.events/'} target='_blank'>
+                            <a href={'https://lagoon.cocosoasis.info/'} target='_blank'>
                                 <img src={LagoonLogo} />
                             </a>
                         </div>
@@ -101,7 +101,7 @@ export default function Reservations() {
                         {reservations?.content?.lagoonDescription &&
                             <div className={styles.description}>
                                 <div className={styles.title}>
-                                    <Title 
+                                    <Title
                                         headline={reservations.content?.lagoonTitle.headline ?? ''}
                                         size='lg'
                                     />
@@ -110,7 +110,7 @@ export default function Reservations() {
                                 <RichTextRenderer richTextDocument={reservations?.content?.lagoonDescription} />
 
                                 <nav>
-                                    <Button name='Lagoon Site' onClick={() => {navigator.externalNavigate('https://lagoon.events/', true)}} style='neutral' />
+                                    <Button name='Lagoon Site' onClick={() => { navigator.externalNavigate('https://lagoon.cocosoasis.info/', true) }} style='neutral' />
                                     <Button name='Book a private event' onClick={handleDiscordClick} style='accent' />
                                 </nav>
                             </div>
@@ -118,6 +118,6 @@ export default function Reservations() {
                     </div>
                 </div>
             </div>
-        </Page>    
+        </Page>
     );
 }
