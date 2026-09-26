@@ -29,7 +29,7 @@ export default function DiscordEvent({ event }: IDiscordEvent) {
             <div className={styles.nextOpening}>
                 <OasisLocation isCentered={true} />
 
-                <div className={styles.countdown}>
+                {/*<div className={styles.countdown}>
                     <div className={styles.title}>
                         <Text>Next opening in:</Text>
                     </div>
@@ -40,7 +40,7 @@ export default function DiscordEvent({ event }: IDiscordEvent) {
                         <div className={styles.timeunit}>
                             <img src={icon.calendar} />
                             <Text>
-                                {timezone === 'Local Time' 
+                                {timezone === 'Local Time'
                                     ? event?.local_start_time.time
                                     : event?.server_start_time
                                 }
@@ -50,25 +50,25 @@ export default function DiscordEvent({ event }: IDiscordEvent) {
                         <div className={styles.timeunit}>
                             <img src={icon.clock} />
                             <Text>
-                                {timezone === 'Local Time' 
+                                {timezone === 'Local Time'
                                     ? `${getLocalTimeOnly(event?.raw_start_time)} - ${getLocalTimeOnly(event?.raw_end_time)}`
                                     : `${getServerTimeOnly(event?.raw_start_time)} - ${getServerTimeOnly(event?.raw_end_time) }`
                                 }
                             </Text>
                         </div>
 
-                        <div className={styles.timezone}>  
-                            <MultiToggle 
-                                options={['Local Time', 'Server Time']} 
+                        <div className={styles.timezone}>
+                            <MultiToggle
+                                options={['Local Time', 'Server Time']}
                                 initSelected='Local Time'
-                                onSelect={(timezone: string) => {setTimezone(timezone as Timezone)}} 
+                                onSelect={(timezone: string) => {setTimezone(timezone as Timezone)}}
                                 activeColor='blue'
-                                size='xs' 
+                                size='xs'
                             />
                         </div>
                     </div>
-                </div>
+                </div>*/}
             </div>
-        </div>    
+        </div>
     );
 }

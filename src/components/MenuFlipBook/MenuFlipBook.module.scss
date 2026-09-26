@@ -1,0 +1,24 @@
+.wrapper {
+  width: 100%;
+  max-width: 1000px;
+  height: 620px;
+
+  margin: 0 auto;
+  margin-bottom: 40px;
+
+  padding: 20px;
+
+  // prevents the animated pages escaping horizontally
+  // overflow: hidden;
+}
+
+.flipbook {
+  height: 620px !important;
+  position: relative;
+
+  :global(.c-flipbook__page) {
+    height: 620px;
+    background: black;
+    padding: 10px;
+  }
+}

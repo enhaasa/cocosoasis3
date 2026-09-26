@@ -32,7 +32,7 @@ export default function OasisTeaser() {
 
     return (
         <div className={styles.container}>
-            
+
             <div className={styles.wrapper}>
 
                 <div className={styles.nextEvent}>
@@ -40,9 +40,9 @@ export default function OasisTeaser() {
                 </div>
 
                 <nav className={styles.nav}>
-                    <Button 
-                        name='About' 
-                        onClick={() => navigator.internalNavigate('/about')} 
+                    <Button
+                        name='About'
+                        onClick={() => navigator.internalNavigate('/about')}
                         style='neutral'
                     />
 
@@ -50,13 +50,13 @@ export default function OasisTeaser() {
                         //<Button name='Syncshell' onClick={handleSyncshellClick} />
                      }
 
-                    <Button 
-                        name='Reservations' 
-                        onClick={() => navigator.internalNavigate('/reservations')} 
+                    <Button
+                        name='Reservations'
+                        onClick={() => navigator.internalNavigate('/reservations')}
                         style='accent'
                     />
                 </nav>
             </div>
-        </div>    
+        </div>
     );
 }

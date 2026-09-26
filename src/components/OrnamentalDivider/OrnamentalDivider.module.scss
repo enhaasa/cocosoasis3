@@ -1,0 +1,39 @@
+@use '@styles/colors.scss' as colors;
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  width: 100%;
+  max-width: 280px;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+
+  background: linear-gradient(90deg, transparent, colors.fg('primary'));
+
+  &:last-child {
+    background: linear-gradient(90deg, colors.fg('primary'), transparent);
+  }
+}
+
+.diamond {
+  position: relative;
+
+  width: 10px;
+  height: 10px;
+
+  border: 1px solid colors.fg('primary');
+  transform: rotate(45deg);
+}
+
+.innerDiamond {
+  position: absolute;
+  inset: 3px;
+
+  background: colors.fg('primary');
+}
