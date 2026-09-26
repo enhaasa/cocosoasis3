@@ -1,29 +1,9 @@
 import styles from './DiscordEvent.module.scss';
 
-import { useState } from 'react';
-
-// Types
-import { type DiscordEvent as DiscordEventType } from '@utils/discord';
-
 // Components
-import MultiToggle from '@components/MultiToggle/MultiToggle';
-import Countdown from '@components/Countdown/Countdown';
-import Text from '@components/Text/Text';
 import OasisLocation from '@components/Location/OasisLocation/OasisLocation';
 
-// Utils
-import { getLocalTimeOnly, getServerTimeOnly } from '@utils/time';
-import icon from '@utils/icon';
-
-type Timezone = 'Local Time' | 'Server Time';
-
-interface IDiscordEvent {
-    event?: DiscordEventType;
-}
-
-export default function DiscordEvent({ event }: IDiscordEvent) {
-    const [ timezone, setTimezone ] = useState<Timezone>('Local Time');
-
+export default function DiscordEvent() {
     return (
         <div className={styles.container}>
             <div className={styles.nextOpening}>

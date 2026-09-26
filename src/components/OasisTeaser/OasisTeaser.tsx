@@ -3,7 +3,6 @@ import styles from './OasisTeaser.module.scss';
 import { useContext } from 'react';
 
 // Contexts
-import { DiscordContext } from '@contexts/Discord';
 import { PageContext } from '@contexts/Page';
 //import { UIContext } from '@contexts/UI';
 
@@ -14,7 +13,6 @@ import Button from '@components/Button/Button';
 //import Syncshell from '@components/Syncshell/Syncshell';
 
 export default function OasisTeaser() {
-    const discord = useContext(DiscordContext);
     const { navigator } = useContext(PageContext);
     //const { modals } = useContext(UIContext);
 
@@ -36,7 +34,7 @@ export default function OasisTeaser() {
             <div className={styles.wrapper}>
 
                 <div className={styles.nextEvent}>
-                    <DiscordEvent event={discord.data.nextDiscordEvent} />
+                    <DiscordEvent />
                 </div>
 
                 <nav className={styles.nav}>
